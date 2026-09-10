@@ -1,0 +1,105 @@
+{
+  "schema_version": "5.0",
+  "status": "template_catalog_frozen_model_execution_not_authorized",
+  "random_seed": 20260902,
+  "answer_instruction": "Answer with A or B only.",
+  "prompt_suffix": "\nAnswer:",
+  "pools": {
+    "calibration": {
+      "names": ["Nadia", "Omar", "Priya", "Ruben"],
+      "label_pairs": [["amber", "azure"], ["coral", "ivory"], ["north", "south"], ["bright", "dim"]],
+      "tag_pairs": [["BLUE", "RED"], ["ROUND", "SQUARE"], ["NORTH", "SOUTH"], ["OPEN", "CLOSED"]]
+    },
+    "replication": {
+      "names": ["Talia", "Umar", "Vera", "Wes", "Yara", "Zane", "Lina", "Marek"],
+      "label_pairs": [["cobalt", "pearl"], ["gold", "gray"], ["inner", "outer"], ["early", "late"], ["maple", "cedar"], ["clear", "cloudy"], ["front", "back"], ["day", "night"]],
+      "tag_pairs": [["GREEN", "BLACK"], ["UP", "DOWN"], ["LEFT", "RIGHT"], ["ON", "OFF"], ["FIRST", "SECOND"], ["CIRCLE", "TRIANGLE"], ["LIGHT", "DARK"], ["EAST", "WEST"]]
+    }
+  },
+  "family_items": {
+    "calibration": {
+      "points_balance": ["game score", "token total", "bonus balance", "round points"],
+      "temperature": ["room temperature", "tank temperature", "oven temperature", "cell temperature"]
+    },
+    "replication": {
+      "points_balance": ["match score", "credit balance", "trial points", "award total", "level score", "prize balance", "event points", "star total"],
+      "temperature": ["cabinet temperature", "pool temperature", "furnace temperature", "sample temperature", "storage temperature", "fluid temperature", "case temperature", "surface temperature"]
+    }
+  },
+  "calibration_styles": [
+    {
+      "style_id": "v5_cal_style_01",
+      "arithmetic": "{name}'s {label} {item}: START={start}; CHANGE={delta}; RULE={operation}; A={choice_a}; B={choice_b}.",
+      "selector": "{name}'s {label} {item}: ACTIVE={active_tag}; {tag_1}={tag_1_value}; {tag_2}={tag_2_value}; A={choice_a}; B={choice_b}.",
+      "question": "Which choice gives {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_cal_style_02",
+      "arithmetic": "For {name}'s {label} {item}, the start is {start}, the change is {delta}, and the rule is {operation}. Choice A is {choice_a}; choice B is {choice_b}.",
+      "selector": "For {name}'s {label} {item}, {active_tag} is active. {tag_1} means {tag_1_value}; {tag_2} means {tag_2_value}. Choice A is {choice_a}; choice B is {choice_b}.",
+      "question": "Which choice is the current {target_label} {item} for {name}?"
+    },
+    {
+      "style_id": "v5_cal_style_03",
+      "arithmetic": "{name}'s {label} {item} uses START {start}, CHANGE {delta}, and {operation}. The available answers are A={choice_a} and B={choice_b}.",
+      "selector": "{name}'s {label} {item} uses active tag {active_tag}. Tag {tag_1} has {tag_1_value}; tag {tag_2} has {tag_2_value}. The available answers are A={choice_a} and B={choice_b}.",
+      "question": "Which available answer matches {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_cal_style_04",
+      "arithmetic": "Compute {name}'s {label} {item} from START={start}, CHANGE={delta}, RULE={operation}. Select A={choice_a} or B={choice_b}.",
+      "selector": "Select {name}'s {label} {item} using ACTIVE={active_tag}, with {tag_1}={tag_1_value} and {tag_2}={tag_2_value}. Select A={choice_a} or B={choice_b}.",
+      "question": "Which selection gives {name}'s current {target_label} {item}?"
+    }
+  ],
+  "replication_styles": [
+    {
+      "style_id": "v5_rep_style_01",
+      "arithmetic": "{name}'s {label} {item} has base {start}, shift {delta}, and command {operation}. Option A={choice_a}; option B={choice_b}.",
+      "selector": "{name}'s {label} {item} has live tag {active_tag}. {tag_1} carries {tag_1_value}; {tag_2} carries {tag_2_value}. Option A={choice_a}; option B={choice_b}.",
+      "question": "Which option gives the present {target_label} {item} for {name}?"
+    },
+    {
+      "style_id": "v5_rep_style_02",
+      "arithmetic": "For the {label} {item} of {name}: begin at {start}, change by {delta}, then {operation}. Candidate A={choice_a}; candidate B={choice_b}.",
+      "selector": "For the {label} {item} of {name}: active marker {active_tag}; {tag_1} maps to {tag_1_value}, and {tag_2} maps to {tag_2_value}. Candidate A={choice_a}; candidate B={choice_b}.",
+      "question": "Which candidate is {name}'s present {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_rep_style_03",
+      "arithmetic": "To update {name}'s {label} {item}, use initial value {start}, adjustment {delta}, operation {operation}. Answer A={choice_a}; answer B={choice_b}.",
+      "selector": "To select {name}'s {label} {item}, use active code {active_tag}. Code {tag_1} gives {tag_1_value}; code {tag_2} gives {tag_2_value}. Answer A={choice_a}; answer B={choice_b}.",
+      "question": "Which answer gives the current {target_label} {item} of {name}?"
+    },
+    {
+      "style_id": "v5_rep_style_04",
+      "arithmetic": "The {label} {item} for {name} lists START {start}, CHANGE {delta}, RULE {operation}, with A {choice_a} and B {choice_b}.",
+      "selector": "The {label} {item} for {name} lists ACTIVE {active_tag}, {tag_1} {tag_1_value}, {tag_2} {tag_2_value}, with A {choice_a} and B {choice_b}.",
+      "question": "Which letter gives {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_rep_style_05",
+      "arithmetic": "{name} must find the {label} {item}: START={start}, CHANGE={delta}, apply {operation}; choices A={choice_a}, B={choice_b}.",
+      "selector": "{name} must find the {label} {item}: ACTIVE={active_tag}, {tag_1}={tag_1_value}, {tag_2}={tag_2_value}; choices A={choice_a}, B={choice_b}.",
+      "question": "Which choice is correct for the current {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_rep_style_06",
+      "arithmetic": "Current {label} {item} for {name}: combine {start} and {delta} with {operation}. The result choices are A={choice_a}, B={choice_b}.",
+      "selector": "Current {label} {item} for {name}: follow active label {active_tag}; {tag_1}={tag_1_value}, {tag_2}={tag_2_value}. The result choices are A={choice_a}, B={choice_b}.",
+      "question": "Which result choice gives the current {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_rep_style_07",
+      "arithmetic": "The rule card for {name}'s {label} {item} says {start}, {delta}, {operation}. It offers A={choice_a} and B={choice_b}.",
+      "selector": "The tag card for {name}'s {label} {item} says active {active_tag}, {tag_1}={tag_1_value}, {tag_2}={tag_2_value}. It offers A={choice_a} and B={choice_b}.",
+      "question": "Which offered choice matches the current {target_label} {item}?"
+    },
+    {
+      "style_id": "v5_rep_style_08",
+      "arithmetic": "Check {name}'s {label} {item}. Starting number {start}; change {delta}; action {operation}; A is {choice_a}; B is {choice_b}.",
+      "selector": "Check {name}'s {label} {item}. Active tag {active_tag}; {tag_1} is {tag_1_value}; {tag_2} is {tag_2_value}; A is {choice_a}; B is {choice_b}.",
+      "question": "Which of A or B is {name}'s current {target_label} {item}?"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_id": "stage_e_transformation_replication_v2_1_preflight_static_review",
+  "status": "PASS",
+  "review_date": "2026-08-31",
+  "implementation_sha256": "7fb4d8b0ae09facfc2e5f28cf0e5c0e422948abf595dbf0efe15218baf3593dd",
+  "amendment_sha256": "def80214cb3928c6eb7c291c9e596a8a59dfc5099b65e4d7cd59c1dd5e6d2082",
+  "parent_failure_sha256": "dd1d2e7e887ad6dcd4c9b560c86a3ff5932670e93ce056f2af5a5e957a0232d5",
+  "checks": {
+    "new_preflight_disjoint_from_attempt01": true,
+    "output_change_is_format_only_for_score": true,
+    "transformation_codebook_reuses_preexisting_v1_1_instrument": true,
+    "blind_fields_only": true,
+    "no_internal_outcomes": true,
+    "no_study_model": true,
+    "no_hooks_or_intervention": true,
+    "frozen_thresholds_unchanged": true
+  },
+  "annotation_preflight_allowed": true,
+  "full_candidate_annotation_allowed": false,
+  "study_model_execution_allowed": false
+}

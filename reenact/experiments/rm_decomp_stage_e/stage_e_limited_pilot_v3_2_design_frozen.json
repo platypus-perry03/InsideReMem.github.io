@@ -1,0 +1,209 @@
+{
+  "schema_version": "3.2",
+  "design_id": "stage_e_limited_same_sample_pilot_v3_2_20260830",
+  "status": "design_frozen_implementation_allowed_model_execution_not_authorized",
+  "frozen_date": "2026-08-30",
+  "approved_by": "user_explicit_request_in_conversation",
+  "evidence_class": "limited_same_sample_pilot",
+  "independent_or_confirmatory_evidence": false,
+  "locked_artifacts": {
+    "calibration_v3_dataset": {
+      "path": "AI/reenact/experiments/rm_decomp_stage_e/calibration_v3_assets/calibration_v3_dataset_draft.json",
+      "sha256": "d2187c0623ba9752776cf0251dee3dabf9d80ac04e339cf3eb4bd1d1b42761a1"
+    },
+    "calibration_v3_design": {
+      "path": "AI/reenact/experiments/rm_decomp_stage_e/calibration_v3_design_frozen.json",
+      "sha256": "c60a579729376d391582dbc03af9cfd3ba0a1e1743a9e9a884967aacc177adfc"
+    },
+    "continuation_amendment": {
+      "path": "AI/reenact/experiments/rm_decomp_stage_e/stage_e_pilot_continuation_amendment_v3_2_frozen.json",
+      "sha256": "3e9d14c676c96ee6d950761d39faa176c0e9267d613856d1bd57ff826d41e5fe"
+    },
+    "baseline_pair_results": {
+      "path": "AI/reenact/liref_outputs/rm_decomp/v3/calv3_1_baseline_20260830_02/baseline_pair_results.json",
+      "sha256": "c4562fcfb109083b8c501ac90af64ae5a8f6e6f7f33485619a86366aaec78e6a"
+    },
+    "discovery_liref_directions": {
+      "path": "AI/reenact/liref_outputs/rm_decomp/v2/a_core/checkpoints/discovery_liref_directions.pt",
+      "sha256": "55647779ecf44a33143f66800af9ae3b2767d34b99b8877abd3711b6bba6adf6",
+      "expected_shape": [
+        32,
+        4096
+      ],
+      "direction_definition": "unit_normalized_reasoning_mean_minus_memorization_mean",
+      "reestimation_allowed": false,
+      "sign_flip_after_results_allowed": false
+    },
+    "stage_a_candidate_manifest": {
+      "path": "AI/reenact/liref_outputs/rm_decomp/v2/a_core/manifests/candidate_manifest.json",
+      "sha256": "244b7397790fc71224ed77aafb4b4a1f267cd2dbebe67336b8560d67acbb52b9"
+    },
+    "stage_c_causal_design": {
+      "path": "AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01/manifests/causal_design.json",
+      "sha256": "96db9e6dae8d1a6ec75ac7933b19ac657b41a1306260948dd8d4e4ce7e6cd697"
+    },
+    "pilot_candidate_manifest": {
+      "path": "AI/reenact/experiments/rm_decomp_stage_e/stage_e_pilot_v3_2_candidate_manifest.json",
+      "sha256": "e9d20904967512fa73581d528eb3026a3142f1a5d2c8b0f878e847dbc7eeb233"
+    },
+    "model_config": {
+      "path": "AI/reenact/models/Meta-Llama-3-8B/config.json",
+      "sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441"
+    }
+  },
+  "population": {
+    "dataset_pair_count": 192,
+    "dataset_prompt_count": 384,
+    "template_cluster_count": 24,
+    "families": [
+      "object_count",
+      "points_balance",
+      "temperature"
+    ],
+    "templates_per_family": 8,
+    "pairs_per_template": 8,
+    "include_all_pairs": true,
+    "correct_only_primary_filter_allowed": false,
+    "result_dependent_family_template_or_item_exclusion_allowed": false
+  },
+  "prompt_and_position": {
+    "prompt_source": "dataset_conditions_full_prompt_exact_string",
+    "answer_token_appended": false,
+    "padding_side": "left",
+    "readout_position": "last_nonpadding_prompt_token",
+    "tensor_index_for_left_padded_batch": -1,
+    "primary_residual_layer_index": 31,
+    "layer_and_component_indices_zero_based": true
+  },
+  "primary_endpoints": {
+    "layer_31_liref_projection": {
+      "formula": "h_out_layer31_last_prompt_token dot r_hat_layer31",
+      "pair_effect": "arithmetic_minus_selector",
+      "positive_interpretation": "arithmetic_is_more_reasoning_direction_aligned_than_selector"
+    },
+    "candidate_scalar_contributions": {
+      "L31N13336": "z_31_13336 times (down_proj_31[:,13336] dot r_hat_31)",
+      "L29H00030": "pre_o_29_head30 dot (o_proj_29_head30_block_transpose r_hat_29)",
+      "L30H00006": "pre_o_30_head6 dot (o_proj_30_head6_block_transpose r_hat_30)",
+      "L29H00031": "pre_o_29_head31 dot (o_proj_29_head31_block_transpose r_hat_29)",
+      "pair_effect": "arithmetic_minus_selector",
+      "candidate_ranking_allowed": false
+    }
+  },
+  "aggregation": {
+    "order": [
+      "paired_condition_difference",
+      "mean_across_8_frames_within_template_cluster",
+      "mean_across_8_template_clusters_within_family",
+      "equal_weight_mean_across_3_families"
+    ],
+    "overall_equivalence_check": "equal_family_weight_mean_must_equal_simple_mean_of_24_clusters",
+    "item_level_independent_sample_p_values_allowed": false
+  },
+  "family_interaction": {
+    "definition": "family_effect_f_minus_family_effect_g",
+    "report_all_pairwise_contrasts": [
+      "object_count_minus_points_balance",
+      "object_count_minus_temperature",
+      "points_balance_minus_temperature"
+    ],
+    "result_dependent_contrast_selection_allowed": false,
+    "exploratory_derived_directional_hypothesis": {
+      "endpoint": "L31N13336_primary_scalar_contribution",
+      "object_count_minus_temperature": "greater_than_zero",
+      "points_balance_minus_temperature": "greater_than_zero",
+      "independent_confirmatory_hypothesis": false
+    }
+  },
+  "statistics": {
+    "independent_unit": "template_family",
+    "family_cluster_count": 8,
+    "overall_cluster_count": 24,
+    "bootstrap_repetitions": 10000,
+    "bootstrap_seed": 20260831,
+    "bootstrap_resampling": "template_clusters_with_replacement_stratified_within_family",
+    "overall_bootstrap": "equal_weight_mean_of_three_separately_resampled_family_means",
+    "confidence_interval": "percentile_95_percent",
+    "standardized_effect": "mean_cluster_effect_divided_by_sample_sd_ddof_1",
+    "report_cluster_sign_counts": true,
+    "interaction_ci": "difference_of_bootstrap_family_means_percentile_95_percent",
+    "pilot_signal_label_rule": "cluster_bootstrap_95ci_excludes_zero",
+    "pilot_signal_is_confirmatory_significance": false,
+    "p_values_allowed": false,
+    "bh_fdr_allowed": false,
+    "hard_pass_fail_threshold_allowed": false,
+    "nan_infinity_missing_pair_or_cluster_action": "fail_run"
+  },
+  "secondary_diagnostics": {
+    "allowed_only_after_primary_all_sample_results": true,
+    "strata": [
+      "add_vs_subtract",
+      "arithmetic_one_token_generation_correct_vs_incorrect",
+      "arithmetic_forced_choice_correct_vs_incorrect"
+    ],
+    "behavior_source": "locked_baseline_pair_results_joined_by_pair_id",
+    "behavior_internal_relation": "template_cluster_spearman_correlation_between_baseline_arithmetic_margin_and_internal_pair_effect",
+    "raw_component_scalars": [
+      "L31N13336_signed_z",
+      "L31N13336_absolute_z",
+      "attention_candidate_pre_o_l2_norm"
+    ],
+    "secondary_subset_may_replace_primary": false,
+    "secondary_subset_p_values_allowed": false,
+    "secondary_results_may_select_candidates": false
+  },
+  "output_contract": {
+    "prompt_scalar_row_count": 384,
+    "pair_difference_row_count": 192,
+    "template_cluster_row_count": 24,
+    "family_summary_count": 3,
+    "primary_endpoint_count": 5,
+    "interaction_contrast_count_per_endpoint": 3,
+    "include_overall_summary": true,
+    "include_secondary_diagnostics": true,
+    "include_behavioral_calibration_alongside_internal_results": true,
+    "include_environment_and_hash_provenance": true,
+    "save_raw_hidden_state_tensors": false,
+    "save_raw_candidate_state_tensors": false,
+    "save_checkpoints": false,
+    "scalar_outputs_only": true
+  },
+  "execution_contract": {
+    "model": "local_Meta_Llama_3_8B",
+    "dtype": "float32",
+    "batch_size": 8,
+    "do_sample": false,
+    "model_eval": true,
+    "local_files_only": true,
+    "trust_remote_code": false,
+    "read_only_capture_hooks_required": true,
+    "read_only_hook_scope": [
+      "layer_31_block_output_last_token",
+      "layer_29_and_30_attention_o_proj_input_last_token",
+      "layer_31_mlp_down_proj_input_last_token"
+    ],
+    "intervention_hooks_allowed": false,
+    "tensor_replacement_allowed": false,
+    "model_training_allowed": false
+  },
+  "claim_limits": {
+    "perfect_behavioral_equivalence": false,
+    "independent_replication": false,
+    "confirmatory_evidence": false,
+    "component_mediation": false,
+    "causal_mechanism": false,
+    "reasoning_neuron_or_head": false,
+    "broad_rm_feature": false
+  },
+  "current_permissions": {
+    "pilot_implementation_allowed": true,
+    "model_free_tests_allowed": true,
+    "static_safety_schema_review_allowed": true,
+    "pilot_model_loading_allowed": false,
+    "pilot_gpu_forward_allowed": false,
+    "liref_direction_runtime_loading_allowed": false,
+    "candidate_runtime_capture_allowed": false,
+    "intervention_patching_suppression_allowed": false
+  },
+  "next_allowed_work": "limited_pilot_v3_2_implementation_model_free_tests_and_static_review_only"
+}

@@ -1,0 +1,51 @@
+{
+  "study_id": "meta_llama_behavioral_validation_v1",
+  "status": "FROZEN_IMPLEMENTATION_ALLOWED_MODEL_EXECUTION_REQUIRES_HASH_LOCK",
+  "frozen_at": "2026-09-01",
+  "run_id": "meta_llama_behavioral_prevalidation_20260901_01",
+  "model_name": "Meta-Llama-3-8B",
+  "model_path": "AI/reenact/models/Meta-Llama-3-8B",
+  "physical_gpu": 1,
+  "logical_device": "cuda:0",
+  "batch_size": 4,
+  "dtype": "float32",
+  "dataset_path": "AI/reenact/liref/dataset/mmlu-pro-3000samples.json",
+  "split_path": "AI/reenact/liref_outputs/layerwise_liref/split_ids.json",
+  "candidate_manifest_path": "AI/reenact/experiments/rm_decomp_behavioral_validation/candidate_manifest_v1_frozen.json",
+  "output_root": "AI/reenact/liref_outputs/rm_decomp/meta_llama_behavioral_validation_v1",
+  "evaluation_split": "heldout_600_same_sample_exploratory",
+  "score_threshold": 0.5,
+  "prompt_template_id": "mmlu_pro_choice_labels_v1",
+  "prompt_template": "Question: {question}\nChoices:\n{choices}\nAnswer with only the letter of the correct choice.\nAnswer:",
+  "answer_labels": "ABCDEFGHIJ",
+  "choice_scoring": "single_token_leading_space_labels_normalized_within_available_options",
+  "intervention_position": "last_prompt_token_only",
+  "candidate_alphas": [0.5, 1.0],
+  "control_alpha": 1.0,
+  "seed": 20260901,
+  "bootstrap_replicates": 5000,
+  "permutation_replicates": 5000,
+  "fdr_alpha": 0.05,
+  "baseline_solvability_gate": {
+    "minimum_forced_choice_accuracy_each_group": 0.20,
+    "minimum_accuracy_above_mean_uniform_chance_each_group": 0.05,
+    "all_answer_labels_single_token": true,
+    "all_rows_have_valid_answer_index": true
+  },
+  "outcomes": {
+    "primary_behavior": "paired forced-choice accuracy drop",
+    "primary_sensitive": "paired normalized correct-choice probability drop",
+    "secondary": ["correct-choice log-probability drop", "correct-vs-best-foil margin drop", "valid-label vocabulary top1 rate"]
+  },
+  "strict_behavioral_signal": {
+    "same_group_accuracy_drop_ci_low_gt": 0.0,
+    "same_group_accuracy_mcnemar_bh_q_lt": 0.05,
+    "same_group_probability_drop_ci_low_gt": 0.0,
+    "same_group_probability_signflip_bh_q_lt": 0.05,
+    "probability_dose_monotonic": true,
+    "candidate_minus_matched_probability_drop_ci_low_gt": 0.0,
+    "candidate_minus_random_probability_drop_ci_low_gt": 0.0
+  },
+  "interpretation": "Same-sample exploratory behavioral validation. A strict signal supports behavioral contribution on this prompt and dataset, not a reasoning neuron, memory store, circuit, or independent replication.",
+  "automatic_pdf_update_allowed": false
+}

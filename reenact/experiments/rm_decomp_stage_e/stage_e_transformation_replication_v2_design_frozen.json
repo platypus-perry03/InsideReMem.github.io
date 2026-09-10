@@ -1,0 +1,74 @@
+{
+  "schema_id": "stage_e_transformation_replication_v2",
+  "status": "design_frozen_annotation_preflight_allowed_study_model_execution_not_authorized",
+  "freeze_date": "2026-08-31",
+  "study_model_execution_allowed": false,
+  "intervention_allowed": false,
+  "design_document": "STAGE_E_TRANSFORMATION_REPLICATION_V2_DESIGN_KO.md",
+  "design_document_sha256": "bd08cad4450ebd9ba5b579b06244c199514415a3f955f0c478d4a6602fad54eb",
+  "candidate_pool": {
+    "rows": 8656,
+    "private_path": "experiments/rm_decomp_stage_e/stage_e_transformation_replication_v2_assets/candidate_pool_private.jsonl",
+    "private_sha256": "eb995504322256e7ee386ca4e592b09e65b8c84c8dbc5f529b763db42f3f72c1",
+    "blind_path": "experiments/rm_decomp_stage_e/stage_e_transformation_replication_v2_assets/candidate_pool_blind.jsonl",
+    "blind_sha256": "c0295f1abe071b076d6d7aa2c4cd9a66b73e3eac0cc5688bf5c22fc212d28844",
+    "audit_path": "experiments/rm_decomp_stage_e/stage_e_transformation_replication_v2_assets/candidate_pool_audit.json",
+    "audit_sha256": "277bb84456927030ab297a3d4823c68f421790ee530d2007b099068e1d863131"
+  },
+  "inputs": {
+    "full_mmlu_test_arrow": {
+      "path": "liref/dataset/mmlu-pro/test/data-00000-of-00001.arrow",
+      "sha256": "705b68f9c765ef102520e1b82f391e57ad3bab9034d1f47a705907a20828c3a8"
+    },
+    "used_3000": {
+      "path": "liref/dataset/mmlu-pro-3000samples.json",
+      "sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96"
+    },
+    "used_600": {
+      "path": "liref/dataset/mmlu-pro-600samples.json",
+      "sha256": "82754adc69adc778117bf89ff2a2f513471daf40a768e63b7094c25d9dae2806"
+    },
+    "previous_split": {
+      "path": "liref_outputs/layerwise_liref/split_ids.json",
+      "sha256": "d188586c8c5caa9f661064659540889e49423c276075dc7b91b31e53a43b32bd"
+    }
+  },
+  "models": {
+    "study": {
+      "path": "models/Meta-Llama-3-8B",
+      "config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441"
+    },
+    "annotator_a": {
+      "path": "models/Meta-Llama-3-8B-Instruct",
+      "config_sha256": "61f3de03a16ca8046b05dc777bce72717022bc8522152eee61a69072272ef54b"
+    },
+    "annotator_b": {
+      "path": "models/Mistral-7B-Instruct-v0.3",
+      "config_sha256": "affafc6478ec0fd07a32f0ca57aa2fc57743f4d17d6730f86a96ac24d1507f99"
+    }
+  },
+  "annotation_preflight": {
+    "rows": 192,
+    "score_bins": 4,
+    "rows_per_score_bin": 48,
+    "seed": 20260831,
+    "full_candidate_annotation_allowed_only_after_pass": true
+  },
+  "target_dataset": {
+    "cells": ["proxy_R_transformation_Y", "proxy_R_transformation_N", "proxy_M_transformation_Y", "proxy_M_transformation_N"],
+    "rows_per_cell": 96,
+    "total_rows": 384,
+    "matched_blocks": 96,
+    "category_exact_within_block": true
+  },
+  "primary_endpoints": ["layer31_liref", "L29H00030", "L30H00006"],
+  "secondary_endpoints": ["L31N13336", "L29H00031", "layer_0_to_30_trajectory"],
+  "claims": {
+    "item_independent_same_benchmark": true,
+    "local_proxy_is_official_gpt4o_rm_label": false,
+    "association_only": true,
+    "human_annotated": false,
+    "causal_feature": false,
+    "component_mediation": false
+  }
+}

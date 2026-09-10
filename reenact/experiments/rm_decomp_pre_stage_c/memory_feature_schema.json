@@ -1,0 +1,37 @@
+{
+  "schema_id": "memory_surface_and_factual_proxy_v1",
+  "approved": true,
+  "scope": "English question text only under the frozen question-only prompt",
+  "interpretation_boundary": "These deterministic features are surface/factual proxies, not direct measurements of memorization or named-entity representations.",
+  "features": {
+    "has_capitalized_span": "At least one capitalized lexical span after filtering fixed sentence-initial/function-word exclusions.",
+    "has_year": "A four-digit integer from 1000 through 2099.",
+    "has_date_word": "A frozen English month, weekday, or calendar-unit word.",
+    "has_person_cue": "A frozen person/factual-agent cue such as who, author, invented, discovered, founded, or born.",
+    "has_location_cue": "A frozen location cue such as where, capital, country, city, located, or continent.",
+    "has_temporal_cue": "A frozen temporal cue such as when, year, date, century, era, or period.",
+    "has_factual_association_cue": "A frozen phrase such as known for, author of, invented, discovered, capital of, symbol for, or located in.",
+    "has_entity_attribute_proxy": "A capitalized span co-occurs with a frozen attribute/relation cue; this is explicitly a proxy and not NER."
+  },
+  "capitalized_exclusions": [
+    "A", "An", "And", "Are", "As", "At", "Based", "By", "Can", "Choose", "Consider", "Do", "Does",
+    "For", "From", "Given", "How", "If", "In", "Is", "It", "Of", "On", "Select", "Suppose", "The",
+    "These", "This", "To", "True", "What", "When", "Where", "Which", "Who", "Why"
+  ],
+  "date_words": [
+    "january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
+    "november", "december", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
+    "day", "month", "calendar"
+  ],
+  "person_cues": ["who", "whom", "whose", "author", "invented", "discovered", "founded", "born", "wrote", "creator"],
+  "location_cues": ["where", "capital", "country", "city", "located", "continent", "region", "state"],
+  "temporal_cues": ["when", "year", "date", "century", "era", "period", "decade", "founded", "born"],
+  "factual_association_phrases": [
+    "known for", "associated with", "author of", "invented", "discovered", "founded", "capital of", "symbol for",
+    "located in", "born in", "wrote", "created by", "named after"
+  ],
+  "attribute_cues": [
+    "who", "where", "when", "author", "capital", "invented", "discovered", "founded", "born", "wrote",
+    "known for", "associated with", "symbol", "located", "created by", "named after"
+  ]
+}

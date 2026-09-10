@@ -1,0 +1,161 @@
+{
+  "schema_version": "4.0",
+  "design_id": "stage_e_independent_replication_v4_20260830",
+  "status": "design_frozen_dataset_build_allowed_model_execution_not_authorized",
+  "frozen_date": "2026-08-30",
+  "approved_by": "user_explicit_request_to_proceed_all_steps",
+  "source_design": {
+    "path": "AI/reenact/experiments/rm_decomp_stage_e/STAGE_E_INDEPENDENT_REPLICATION_V4_DESIGN_KO.md",
+    "sha256": "23a4be315bca4b7fe35289921e169922c3e0f3cc64aca8400543bedf1f3c7d3a"
+  },
+  "template_catalog": {
+    "path": "AI/reenact/experiments/rm_decomp_stage_e/stage_e_replication_v4_template_catalog_frozen.json",
+    "sha256": "d49fab4ceb9be75ec6d9ec2549b433abcbb108fb57862d12659232a3b7fe186b"
+  },
+  "model": {
+    "name": "Meta-Llama-3-8B-base",
+    "path": "AI/reenact/models/Meta-Llama-3-8B",
+    "config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+    "tokenizer_json_sha256": "e134af98b985517b4f068e3755ae90d4e9cd2d45d328325dc503f1c6b2d06cc7",
+    "local_files_only": true,
+    "trust_remote_code": false
+  },
+  "pools": {
+    "calibration": {
+      "families": ["points_balance", "temperature"],
+      "templates_per_family": 8,
+      "frames_per_template": 8,
+      "pair_count": 128,
+      "prompt_count": 256,
+      "model_use": "behavioral_calibration_only"
+    },
+    "replication": {
+      "families": ["points_balance", "temperature"],
+      "templates_per_family": 8,
+      "frames_per_template": 8,
+      "pair_count": 128,
+      "prompt_count": 256,
+      "model_use": "independent_internal_replication_only_after_calibration_gate"
+    },
+    "cross_pool_item_prompt_template_id_and_numeric_block_overlap_allowed": false
+  },
+  "prompt_contract": {
+    "conditions": ["arithmetic", "selector"],
+    "shared_context_within_pair": true,
+    "question_differs_only_by_target_label": true,
+    "answer_instruction": "Answer with A or B only.",
+    "prompt_suffix": "\nAnswer:",
+    "candidate_continuations": {"A": " A", "B": " B"},
+    "candidate_continuation_token_count": 1,
+    "correct_and_foil_numeric_values_exposed_once_per_condition": true,
+    "absolute_answer_exposure_matched_across_conditions": true,
+    "answer_token_appended_for_internal_readout": false
+  },
+  "counterbalance": {
+    "design_type": "OA(8,6,2,2)_strength_2",
+    "factor_names": [
+      "arithmetic_operation_add_subtract",
+      "selector_active_entry_1_2",
+      "arithmetic_correct_choice_A_B",
+      "selector_correct_choice_A_B",
+      "label_role_orientation",
+      "block_order"
+    ],
+    "matrix": [
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 1, 1],
+      [0, 1, 0, 1, 0, 1],
+      [0, 1, 1, 1, 1, 0],
+      [1, 0, 0, 1, 1, 0],
+      [1, 0, 1, 1, 0, 1],
+      [1, 1, 0, 0, 1, 1],
+      [1, 1, 1, 0, 0, 0]
+    ],
+    "each_factor_balance": "4:4",
+    "each_pairwise_2x2_cell_count": 2,
+    "interaction_estimation_from_nuisance_matrix_allowed": false,
+    "matrix_substitution_allowed": false
+  },
+  "numeric_design": {
+    "start_min": 40,
+    "start_max": 69,
+    "delta_min": 2,
+    "delta_max": 9,
+    "answer_digit_count": 2,
+    "arithmetic_foil": "wrong_operation_result",
+    "four_candidate_values_pairwise_distinct": true,
+    "candidate_operand_collision_allowed": false,
+    "seed": 20260901
+  },
+  "calibration": {
+    "margin_formula": "logP_correct_choice_token_minus_logP_incorrect_choice_token",
+    "template_contrast": "mean_8frames_margin_arithmetic_minus_selector",
+    "family_pair_count_per_condition": 64,
+    "forced_choice_correct_count_range_inclusive": [40, 60],
+    "forced_choice_max_condition_count_gap": 6,
+    "generation_correct_count_range_inclusive": [32, 60],
+    "generation_max_condition_count_gap": 6,
+    "maximum_absolute_mean_template_contrast_nats": 0.4,
+    "maximum_absolute_cluster_dz": 0.35,
+    "sample_sd_ddof": 1,
+    "all_criteria_required": true,
+    "post_result_item_template_threshold_change_allowed": false,
+    "points_balance_pass_required_for_primary_replication": true,
+    "both_families_pass_required_for_interaction_replication": true
+  },
+  "replication": {
+    "primary": {
+      "family": "points_balance",
+      "endpoint": "layer31_last_prompt_token_frozen_liref_projection",
+      "pair_effect": "arithmetic_minus_selector",
+      "cluster_count": 8,
+      "success_rule": "template_cluster_bootstrap_95ci_lower_bound_greater_than_zero"
+    },
+    "prespecified_secondary": {
+      "endpoint": "layer31_points_balance_minus_temperature_interaction",
+      "requires_both_families_calibration_pass": true,
+      "success_rule": "paired_template_stratum_bootstrap_95ci_lower_bound_greater_than_zero"
+    },
+    "exploratory": {
+      "layer_trajectory": "layers_0_through_30_frozen_liref_projection",
+      "candidate_contributions": ["L31N13336", "L29H00030", "L30H00006", "L29H00031"],
+      "may_replace_primary": false,
+      "may_select_new_layer_or_candidate_for_claim": false
+    },
+    "bootstrap_repetitions": 10000,
+    "bootstrap_seed": 20260901,
+    "p_values": false,
+    "confirmatory_significance_language_allowed": false
+  },
+  "audit": {
+    "automatic_required": true,
+    "primary_ai_audit_required": true,
+    "adversarial_ai_audit_required": true,
+    "human_audit": "not_performed",
+    "human_audited_evidence_claim_allowed": false,
+    "any_audit_failure_action": "block_model_execution_and_create_new_dataset_version"
+  },
+  "locked_prior_artifacts": {
+    "v3_dataset_sha256": "d2187c0623ba9752776cf0251dee3dabf9d80ac04e339cf3eb4bd1d1b42761a1",
+    "v3_2_run_manifest_sha256": "0d8d7a922461597df5028e6a3da22cf44385aea7f1d6fc4b65a0395612043f0d",
+    "frozen_liref_directions_sha256": "55647779ecf44a33143f66800af9ae3b2767d34b99b8877abd3711b6bba6adf6"
+  },
+  "claim_limits": {
+    "model_scope": "Meta-Llama-3-8B-base-only",
+    "absolute_rm_classification": false,
+    "reasoning_neuron_or_head": false,
+    "component_mediation": false,
+    "causal_mechanism": false,
+    "cross_model_generalization": false
+  },
+  "permissions": {
+    "dataset_builder_allowed": true,
+    "tokenizer_cpu_allowed": true,
+    "model_free_audits_allowed": true,
+    "model_loading_allowed": false,
+    "gpu_forward_allowed": false,
+    "liref_runtime_loading_allowed": false,
+    "intervention_allowed": false
+  },
+  "next_allowed_work": "deterministic_builder_dataset_generation_and_model_free_audits_only"
+}

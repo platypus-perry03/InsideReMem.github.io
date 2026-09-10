@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "stage_e_calibration_v2_1_1_ai_only_audit_amendment_v1",
+  "status": "audit_policy_frozen_execution_not_approved",
+  "frozen_date": "2026-08-30",
+  "authorized_by": "user_explicit_request_in_conversation",
+  "source_policy_document": {
+    "path": "CALIBRATION_V2_1_1_AI_ONLY_AUDIT_AMENDMENT_KO.md",
+    "sha256": "33d6fa80f8f92373b05897d6cbb7b16f9a70f8818f1b44009504ec8b22a7b2d2"
+  },
+  "audit_guide": {
+    "path": "CALIBRATION_V2_1_1_AI_ONLY_AUDIT_GUIDE_KO.md",
+    "sha256": "f02851b2a3694d0d09692bbd7d1cf3aa0867fe94353a7350d73193f80869c5bc"
+  },
+  "parent_design": {
+    "path": "calibration_v2_1_design_frozen.json",
+    "sha256": "d0d6d19432eb48234a9729cc5f297c09963eb485bf5ec02178d504a93dc8307f",
+    "preserved_without_modification": true
+  },
+  "dataset_lock": {
+    "version": "2.1.1",
+    "path": "calibration_v2_1_1_assets/calibration_v2_1_1_dataset_draft.json",
+    "sha256": "322d80f3c2c0723f6a4e8b0a968b30baac23e28cf68b6c60c5a7a95a5bca7420",
+    "pair_count": 192,
+    "template_family_count": 24,
+    "content_modified_by_amendment": false
+  },
+  "superseded_parent_audit_fields": {
+    "human_audit.required": {
+      "parent_value": true,
+      "amended_value": false
+    },
+    "human_audit.waiver_allowed_for_this_frozen_design": {
+      "parent_value": false,
+      "amended_value": true
+    },
+    "ai_preaudit.human_audit_substitute": {
+      "parent_value": false,
+      "amended_value": "replaced_by_explicit_ai_only_audit_gate_not_mislabeled_as_human"
+    }
+  },
+  "human_audit_record": {
+    "status": "not_performed",
+    "gate": "waived_by_user",
+    "human_audited_evidence": false,
+    "reviewer_csvs_must_remain_unmodified_by_ai": true,
+    "claim_as_independent_or_blind_human_review_allowed": false
+  },
+  "ai_only_audit": {
+    "required": true,
+    "pair_count": 192,
+    "template_family_count": 24,
+    "required_passes": [
+      "locked_automatic_audit",
+      "existing_model_blind_ai_linguistic_preaudit",
+      "structured_ten_criterion_full_pair_audit",
+      "template_family_adversarial_semantic_review"
+    ],
+    "pair_criteria": [
+      "arithmetic_answer_correct",
+      "direct_answer_correct",
+      "label_key_record_binding_clear",
+      "relevant_transformation_required",
+      "irrelevant_keyed_retrieval_valid",
+      "answer_copy_shortcut_absent",
+      "question_target_only_change",
+      "natural_grammar_and_unambiguous_direction",
+      "counterbalance_counterpart_equivalent",
+      "output_instruction_clear"
+    ],
+    "pair_pass_rule": "all_ten_criteria_yes",
+    "dataset_pass_rule": "all_192_pairs_pass_and_all_24_templates_pass_and_all_locked_hashes_match",
+    "any_fail_or_needs_revision": "dataset_execution_forbidden_create_new_dataset_version",
+    "independent_human_equivalence_claim_allowed": false
+  },
+  "locked_prior_audit_artifacts": {
+    "automatic_audit_sha256": "93cd89e6901772c87435eb9f208bd4fc310e032b660c7678c34acf044f348e3b",
+    "ai_preaudit_csv_sha256": "0c6de07362252dc3bce44379c81c8ca74558c455e34bd5e95fe9fd56f059ef88",
+    "ai_preaudit_summary_sha256": "3cf6d5645134f66692395d17297eb445194565e66504ed3d14ef382fded4d339",
+    "supplemental_adversarial_review_sha256": "a6a4ab82812a2603174b6bebc739d9488be1a97bd2da8c87f5ca74b36fd0fbdd"
+  },
+  "post_audit_gates": {
+    "baseline_calibration_implementation_review_allowed_after_ai_audit_pass": true,
+    "baseline_calibration_execution_requires_separate_explicit_authorization": true,
+    "baseline_calibration_execution_allowed_now": false,
+    "stage_e_pilot_allowed_now": false,
+    "confirmatory_claim_allowed": false,
+    "family_postselection_allowed": false,
+    "patching_or_suppression_allowed": false
+  },
+  "required_result_labels": {
+    "human_audit": "not_performed",
+    "human_audit_gate": "waived_by_user",
+    "human_audited_evidence": false,
+    "ai_only_audited": true
+  },
+  "execution_allowed": false
+}

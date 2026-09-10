@@ -1,0 +1,53 @@
+{
+  "schema_version": "3.1",
+  "record_type": "baseline_calibration_implementation_and_static_review",
+  "status": "implementation_complete_static_review_pass_execution_not_authorized",
+  "result_label_if_later_authorized": "protocol-authorized AI-only-audited Baseline Calibration v3.1",
+  "implementation": {
+    "path": "run_calibration_v3_1_baseline.py",
+    "sha256": "0a91b55dec112efba829e9e8039ca8e0082c08e73ebbe2d96ebe49a669abd6bb"
+  },
+  "static_reviewer": {
+    "path": "review_calibration_v3_1_baseline_static.py",
+    "sha256": "7bea61aafb37cc7e990a189d28cd0288d12377e54fcb9371c47893d6fa7e0ab0"
+  },
+  "model_free_tests": {
+    "path": "tests/test_calibration_v3_1_baseline.py",
+    "sha256": "1fe84f8065128072dd208b99c7cc2ef6c47866f1cfced8ead523b783e0ac1794",
+    "test_count": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "static_review": {
+    "path": "calibration_v3_assets/calibration_v3_1_baseline_static_safety_review.json",
+    "sha256": "f9fb29033a7a50cbaec396d462d50232eda6df6b3cd4cc78373280cf6f64c3d7",
+    "all_checks_pass": true
+  },
+  "locked_inputs": {
+    "design_sha256": "c60a579729376d391582dbc03af9cfd3ba0a1e1743a9e9a884967aacc177adfc",
+    "amendment_sha256": "15ce7892f12e00360b07ce533188249229dc24409119bd96e4c2c25c1bf8f9de",
+    "dataset_sha256": "d2187c0623ba9752776cf0251dee3dabf9d80ac04e339cf3eb4bd1d1b42761a1",
+    "dataset_manifest_sha256": "a157ec7bd463c739ee046f9e3f85a08d2e3ebb7dc6a794a63757653c93fad822",
+    "automatic_audit_sha256": "e904fcec13b97bf9d09afc707aedd2b37c100c911b560f2b88f0ed270e654e26",
+    "primary_ai_audit_sha256": "d5e1743e27aa7e78e6879a5d6902cabd7998774844e67d1eb29de9133a70827a",
+    "adversarial_ai_audit_sha256": "94dcf1ea437ab2a16e30b2475778372e7c78e0e325c7f288d5a6a547e209f712"
+  },
+  "execution_state": {
+    "separate_hash_locked_authorization_required": true,
+    "baseline_calibration_execution_allowed": false,
+    "model_loading_allowed": false,
+    "model_forward_allowed": false,
+    "gpu_execution_allowed": false,
+    "stage_e_pilot_allowed": false
+  },
+  "forbidden_scope": {
+    "load_liref_direction": false,
+    "inspect_candidate_components": false,
+    "capture_hidden_states": false,
+    "forward_hooks": false,
+    "activation_or_weight_intervention": false,
+    "stage_e_pilot": false
+  },
+  "human_audit": "not_performed",
+  "human_audited_evidence": false
+}

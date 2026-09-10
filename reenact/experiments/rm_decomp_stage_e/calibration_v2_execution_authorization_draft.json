@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "status": "execution_not_approved",
+  "explicit_execution_approval": false,
+  "execution_allowed": false,
+  "approved_scope": "baseline_calibration_v2_behavior_only",
+  "run_id": null,
+  "device": null,
+  "batch_size": null,
+  "torch_dtype": "float32",
+  "trust_remote_code": false,
+  "local_files_only": true,
+  "implementation_sha256": "78681b8e2b778e4cb7f224baff82a6eb9a4f67eaa7dcf139d13097e9131b9884",
+  "static_safety_review_sha256": "fa9fd731d70712b11439e22359abbc76ce42ad4b2118c20d9e632f9f3b38358d",
+  "dataset_sha256": "c58390cdcb0f7282e36c918b193db69a0733851cfd07c291ab59a6fe12df1c87",
+  "dataset_manifest_sha256": "f79a80aa7b55a546724a3f639ebed22858addc39b21aaa73c65b495a9ce3898e",
+  "human_audit": "not_performed",
+  "human_audit_gate": "waived_by_user",
+  "human_audit_waiver_sha256": "52e01895394f48c7e9391b43042953f23173df89d37585d34ad1b70e4d60752f",
+  "approval_recorded_by": null,
+  "approval_recorded_at": null,
+  "note": "This draft cannot authorize model loading or inference. Create a separately frozen approved authorization only after explicit user approval."
+}

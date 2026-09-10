@@ -1,0 +1,33 @@
+{
+  "schema_id": "stage_e_transformation_taxonomy_v1_1_static_review",
+  "status": "PASS",
+  "review_date": "2026-08-31",
+  "implementation_sha256": "a3e3cf3a9ae25827c4ef791dd9f9f12f1deecf04e21f95cca8890e49c0834c18",
+  "manifest_sha256": "b011e04e796376e20c85dd025bc430ea4351799a9dda12df83417bb1e9e28f95",
+  "tests_sha256": "9fdae095923cec8585e0cf711d1abb4286b1e579b7c969b7894f458715d258a8",
+  "unit_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "checks": {
+    "authoritative_parent_transformation_not_rejudged": true,
+    "parent_y_only_sent_to_local_annotators": true,
+    "parent_n_fixed_as_none_zero_only_after_annotation": true,
+    "parent_unc_excluded": true,
+    "blind_fields_limited_to_id_question_options": true,
+    "v1_parent_y_preflight_ids_excluded": true,
+    "preflight_hard_gate_precedes_full_annotation": true,
+    "full_reliability_gate_precedes_internal_outcome_merge": true,
+    "discovery_selection_frozen_before_heldout": true,
+    "external_api_code_absent": true,
+    "new_study_model_forward_absent": true,
+    "hidden_state_storage_absent": true,
+    "forward_hook_absent": true,
+    "intervention_absent": true,
+    "failed_v1_artifacts_preserved": true
+  },
+  "allowed_execution": "local_blind_annotation_and_preserved_scalar_analysis_only",
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false
+}

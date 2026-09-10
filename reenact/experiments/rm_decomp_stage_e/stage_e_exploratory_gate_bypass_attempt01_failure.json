@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "run_id": "stage_e_exploratory_gate_bypass_20260830_01",
+  "attempt": 1,
+  "status": "failed_before_model_forward",
+  "failure_date": "2026-08-30",
+  "authorization_sha256": "da29d6d2d7f85f573e088f8ab66a8aa6c1b50697a8455849345339335750961d",
+  "implementation_sha256": "7389e00a4e007edc175b9c7df766a832975717432ad08217c77588cb3738724b",
+  "completed_before_failure": [
+    "input_artifact_hash_verification",
+    "model_shard_hash_verification",
+    "model_load",
+    "runtime_one_token_contract_verification_for_384_prompts"
+  ],
+  "failure": "Authorization stored batch_size under execution_scope while the implementation requires a root-level batch_size field.",
+  "model_forward_performed": false,
+  "candidate_capture_performed": false,
+  "result_output_created": false,
+  "recovery": "Preserve attempt 1 authorization and add a separate run02 authorization containing the same frozen values plus root-level batch_size=8."
+}

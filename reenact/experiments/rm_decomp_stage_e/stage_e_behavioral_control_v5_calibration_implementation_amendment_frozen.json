@@ -1,0 +1,38 @@
+{
+  "schema_version": "5.0",
+  "status": "calibration_implementation_and_static_review_allowed_execution_not_authorized",
+  "date": "2026-08-30",
+  "locked_inputs": {
+    "design_sha256": "033969f85f9f982ff686c22f4bdd3977baae1dcc76a4f91b537e758a8fd98982",
+    "catalog_sha256": "995d2086164a1ccf51b458b11ad70c2b328742c16b51c4ab6f34ad3bba010de2",
+    "catalog_amendment_sha256": "56cd132085180db25322d2a1563a53fb835e01a541a5848324fa34bfb47fed19",
+    "calibration_dataset_sha256": "18005ac5c5733ab389f1b9f8d4850a671f4bdfa0f0c4755ddd62a43e4348922a",
+    "calibration_automatic_audit_sha256": "ea2bc26a9a090167f63fdba65c4bb1c90d630f692c2cda3f9a6950f2a4e3fee4",
+    "calibration_primary_ai_audit_sha256": "5c68f3c14adab276a0a226359adb96484533bd730b1989c5d5a91191ffe99e24",
+    "calibration_adversarial_ai_audit_sha256": "3ab9b070e8c96af1b38ae8dbfc22c7051c29b5711fdaa7408664b4434d4e9fb8",
+    "ai_audit_summary_sha256": "d07b7adc284cd4110fecf38b9187e01946622b5604ce1ece893e5a7347af0163"
+  },
+  "audit_status": {
+    "automatic": "PASS",
+    "primary_ai_calibration": "PASS_64_of_64",
+    "adversarial_ai_calibration": "PASS_8_of_8_templates",
+    "primary_ai_replication": "PASS_128_of_128",
+    "adversarial_ai_replication": "PASS_16_of_16_templates",
+    "human_audit": "not_performed",
+    "human_audited_evidence": false
+  },
+  "permissions": {
+    "calibration_runner_implementation_allowed": true,
+    "model_free_unit_tests_allowed": true,
+    "static_review_allowed": true,
+    "execution_authorization_creation_allowed_after_static_review_pass": true,
+    "model_loading_allowed": false,
+    "gpu_forward_allowed": false,
+    "replication_pool_access_allowed": false,
+    "liref_loading_allowed": false,
+    "candidate_component_access_allowed": false,
+    "hidden_state_capture_allowed": false,
+    "hooks_allowed": false,
+    "intervention_allowed": false
+  }
+}

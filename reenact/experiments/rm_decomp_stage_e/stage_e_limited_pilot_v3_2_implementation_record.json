@@ -1,0 +1,63 @@
+{
+  "schema_version": "3.2",
+  "record_id": "stage_e_limited_pilot_v3_2_implementation_20260830",
+  "status": "implementation_and_static_review_complete_execution_not_authorized",
+  "recorded_date": "2026-08-30",
+  "evidence_class": "limited_same_sample_pilot",
+  "implementation": {
+    "path": "AI/reenact/experiments/rm_decomp_stage_e/run_stage_e_limited_pilot_v3_2.py",
+    "sha256": "b51e0ed5e5500fffdd98c79057fe1aabbe619fa967e33affdb9a674be5e10455"
+  },
+  "model_free_unit_tests": {
+    "path": "AI/reenact/experiments/rm_decomp_stage_e/tests/test_stage_e_limited_pilot_v3_2.py",
+    "sha256": "ef8494a898118da4d3666d955f765df02ff60e05e6edaa25e2305af1afa6965a",
+    "tests_run": 8,
+    "tests_passed": 8,
+    "tests_failed": 0
+  },
+  "static_reviewer": {
+    "path": "AI/reenact/experiments/rm_decomp_stage_e/review_stage_e_limited_pilot_v3_2_static.py",
+    "sha256": "67788c45a6c03c4d498190a6f1c682ac0443f0b20dec7173749af8b91de1e694"
+  },
+  "static_review": {
+    "path": "AI/reenact/experiments/rm_decomp_stage_e/stage_e_limited_pilot_v3_2_static_safety_review.json",
+    "sha256": "e62de0a136998c26a6b01ff7079a2e8d74eabe236df24e3e15fc74d24fc9159e",
+    "status": "PASS",
+    "all_checks_pass": true
+  },
+  "locked_inputs": {
+    "detailed_design_sha256": "b8b74d59975230589adae9ec91eeb2e98cefcb80e818f41f15bad45e3f58e3b3",
+    "continuation_amendment_sha256": "3e9d14c676c96ee6d950761d39faa176c0e9267d613856d1bd57ff826d41e5fe",
+    "candidate_manifest_sha256": "e9d20904967512fa73581d528eb3026a3142f1a5d2c8b0f878e847dbc7eeb233",
+    "dataset_sha256": "d2187c0623ba9752776cf0251dee3dabf9d80ac04e339cf3eb4bd1d1b42761a1",
+    "baseline_pair_results_sha256": "c4562fcfb109083b8c501ac90af64ae5a8f6e6f7f33485619a86366aaec78e6a",
+    "discovery_liref_directions_sha256": "55647779ecf44a33143f66800af9ae3b2767d34b99b8877abd3711b6bba6adf6",
+    "stage_a_candidate_manifest_sha256": "244b7397790fc71224ed77aafb4b4a1f267cd2dbebe67336b8560d67acbb52b9",
+    "stage_c_causal_design_sha256": "96db9e6dae8d1a6ec75ac7933b19ac657b41a1306260948dd8d4e4ce7e6cd697"
+  },
+  "verified_contract": {
+    "primary_population_pairs": 192,
+    "prompt_scalar_rows": 384,
+    "template_clusters": 24,
+    "primary_endpoint_count": 5,
+    "pair_difference": "arithmetic_minus_selector",
+    "bootstrap_unit": "template_family_cluster_stratified_within_family",
+    "bootstrap_repetitions": 10000,
+    "bootstrap_seed": 20260831,
+    "read_only_forward_capture_hook_count": 4,
+    "backward_or_intervention_hook_count": 0,
+    "raw_state_tensor_persistence": false
+  },
+  "runtime_actions_performed": {
+    "model_loaded": false,
+    "gpu_used": false,
+    "model_forward_performed": false,
+    "liref_direction_loaded": false,
+    "candidate_state_captured": false,
+    "hook_installed": false,
+    "intervention_performed": false
+  },
+  "execution_authorized": false,
+  "separate_hash_locked_execution_authorization_required": true,
+  "stage_e_intervention_authorized": false
+}

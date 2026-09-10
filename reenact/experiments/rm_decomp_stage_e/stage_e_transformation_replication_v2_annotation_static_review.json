@@ -1,0 +1,39 @@
+{
+  "schema_id": "stage_e_transformation_replication_v2_annotation_static_review",
+  "status": "PASS",
+  "review_date": "2026-08-31",
+  "scope": "annotation_preflight_only",
+  "implementation_sha256": "9d2c1319b4c8fd7ccc532bfc575bbca0abb6da1133a22b11c01cc6cb12c01846",
+  "pool_builder_sha256": "65ccbfaae8e27426dbaffd1eb32d31fae0734560a717acd149158bf2d149f3fa",
+  "design_manifest_sha256": "ed055d76e0068221a016b9090b2cb25adb8395c4658823c80fc43947280f9364",
+  "checks": {
+    "blind_annotation_fields_only": true,
+    "answer_and_cot_not_exposed": true,
+    "rm_label_and_original_score_not_exposed": true,
+    "category_source_split_not_exposed": true,
+    "liref_and_component_outcomes_not_loaded": true,
+    "study_model_not_loaded": true,
+    "no_forward_hooks": true,
+    "no_intervention_or_tensor_modification": true,
+    "separate_reasoning_proxy_and_transformation_passes": true,
+    "greedy_generation_only": true,
+    "frozen_preflight_thresholds_applied_without_override": true,
+    "full_candidate_annotation_blocked_until_preflight_pass": true,
+    "study_model_execution_blocked": true
+  },
+  "model_free_tests": {
+    "status": "PASS",
+    "passed": 7,
+    "failed": 0,
+    "pytest_unavailable_used_direct_function_runner": true
+  },
+  "known_limitations": [
+    "The local reasoning score is a proxy and is not the original GPT-4o score.",
+    "The preflight can validate agreement with released scores but cannot prove equivalence to GPT-4o on new items.",
+    "No human annotation is performed."
+  ],
+  "annotation_preflight_allowed": true,
+  "full_candidate_annotation_allowed": false,
+  "study_model_execution_allowed": false,
+  "intervention_allowed": false
+}

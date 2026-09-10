@@ -1,0 +1,42 @@
+{
+  "schema_version": "4.0.1",
+  "amendment_id": "stage_e_replication_v4_tokenizer_label_length_correction_20260830",
+  "status": "frozen_dataset_not_yet_created_model_execution_not_authorized",
+  "base_catalog_sha256": "d49fab4ceb9be75ec6d9ec2549b433abcbb108fb57862d12659232a3b7fe186b",
+  "reason": "Model-free temporary generation found unequal Meta-Llama-3-8B tokenizer lengths in three label pairs. No official dataset, model loading, forward pass, GPU result, LiReF result, or candidate result existed when this amendment was frozen.",
+  "replacements": [
+    {
+      "pool": "calibration",
+      "pair_index_zero_based": 1,
+      "old": ["crimson", "indigo"],
+      "new": ["ruby", "navy"],
+      "new_leading_space_token_counts": [1, 1]
+    },
+    {
+      "pool": "calibration",
+      "pair_index_zero_based": 5,
+      "old": ["opal", "slate"],
+      "new": ["gold", "gray"],
+      "new_leading_space_token_counts": [1, 1]
+    },
+    {
+      "pool": "replication",
+      "pair_index_zero_based": 1,
+      "old": ["scarlet", "violet"],
+      "new": ["pale", "dark"],
+      "new_leading_space_token_counts": [1, 1]
+    }
+  ],
+  "unchanged": [
+    "hypotheses",
+    "pool_sizes",
+    "template_text",
+    "numeric_rules",
+    "OA_matrix",
+    "behavioral_thresholds",
+    "replication_success_rule",
+    "claim_limits"
+  ],
+  "model_execution_authorized": false,
+  "next_allowed_action": "rerun_full_deterministic_generation_and_automatic_audits"
+}

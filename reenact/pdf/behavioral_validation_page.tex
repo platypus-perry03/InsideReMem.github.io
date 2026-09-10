@@ -1,0 +1,70 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=14mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Noto Sans CJK KR}
+\setsansfont{Noto Sans CJK KR}
+\usepackage{booktabs,array,tabularx,xcolor}
+\pagestyle{empty}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{blue}{HTML}{2E6F9E}
+\definecolor{pale}{HTML}{EEF5FA}
+\definecolor{green}{HTML}{147A55}
+\definecolor{orange}{HTML}{C46A17}
+\newcommand{\Title}[2]{%
+  {\fontsize{20}{24}\selectfont\bfseries\color{navy} #1}\par
+  \vspace{1mm}{\color{blue}\rule{\textwidth}{1.2pt}}\par
+  \vspace{1mm}{\small\color{black!70}#2}\par\vspace{4mm}}
+\newcommand{\NoteBox}[1]{\noindent\fcolorbox{blue}{pale}{\begin{minipage}{.965\linewidth}\vspace{1mm}#1\vspace{1mm}\end{minipage}}}
+\newcommand{\Section}[1]{\vspace{3mm}{\large\bfseries\color{navy}#1}\par\vspace{1mm}}
+\begin{document}
+\sloppy
+
+\Title{외부 데이터 Behavioral Validation}{Meta-Llama-3-8B base · C-Eval-H / GSM8K / GSM-Symbolic / MGSM · frozen forced-choice protocol}
+
+\NoteBox{\textbf{질문}\quad 기존 Head/Neuron을 억제했을 때 R/M 내부 표현 차이만 줄어드는 것이 아니라, \textbf{실제 정답 선택도 나빠지는가?}\quad
+후보 13개에 50\%·100\% suppression과 matched/random control을 적용했다. C-Eval-H는 LiReF의 M task-family, 세 수학 데이터는 R task-family로 사용했다. 이는 새 문항별 \texttt{memory\_reason\_score}가 아니다.}
+
+\Section{1. Primary baseline · 4개 데이터셋 모두 gate PASS}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Pole & 정답 & 전체 & 정답률 & 평균 정답 확률\\
+\midrule
+C-Eval-H & M & 43 & 70 & 61.4\% & 0.4397\\
+GSM8K & R & 23 & 70 & 32.9\% & 0.2960\\
+GSM-Symbolic & R & 20 & 70 & 28.6\% & 0.2656\\
+MGSM-en & R & 21 & 70 & 30.0\% & 0.2994\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\Section{2. 억제 결과}
+\begin{center}
+\renewcommand{\arraystretch}{1.28}
+\begin{tabular}{lccc}
+\toprule
+판정 & 후보 수 & Component & 의미\\
+\midrule
+Strict behavioral signal & \textbf{0} & -- & 정답률+정답 확률 동시 변화 없음\\
+Probability-only & \textbf{3} & L29H31, L30H6, L31H3 & 정답 확률만 소폭 변화\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1mm}
+\noindent\textbf{Probability-only의 구체적 의미}\quad L29H31은 M/R에서 평균 정답 확률이 각각 0.000861/0.000847 감소했고, L30H6은 M에서 0.000840 감소했으며, L31H3은 R에서 0.001948 감소했다. 그러나 정답 개수는 각각 43$\rightarrow$43, 64$\rightarrow$63, 43$\rightarrow$43, 64$\rightarrow$65로 일관되게 감소하지 않았다. 따라서 \textbf{실제 성능 저하 근거로 판정하지 않았다}.
+
+\Section{3. Sealed confirmation과 조건부 중단}
+확인시험 30문항씩에서 C-Eval-H 11/30, GSM8K 10/30, GSM-Symbolic 11/30은 gate를 통과했지만, \textbf{MGSM-en은 7/30(23.3\%)으로 chance 25\%보다 낮아 baseline FAIL}이었다. 사전 동결 규칙에 따라 confirmation intervention을 실행하지 않았고, Mistral·OLMo·Gemma 확장도 실행하지 않았다.
+
+\vspace{3mm}
+\NoteBox{\textbf{결론}\quad 이번 실험은 일부 component가 정답 확률에 미세한 영향을 줄 가능성은 보였지만, \textbf{억제 시 실제 정답률이 안정적으로 감소한다는 증거는 확인하지 못했다}. 따라서 앞선 결과는 계속해서 ``R/M representation 차이를 유지하는 데 기능적으로 기여''하는 수준으로 제한하며, 더 좋은 정답을 만드는 행동 원인이라고 말하지 않는다.}
+
+\vfill
+\begin{center}
+\large\bfseries\color{navy}
+Representation-level causal contribution은 확인됐지만, behavioral necessity는 이번 strict protocol에서 확인되지 않았다.
+\end{center}
+
+\end{document}

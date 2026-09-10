@@ -1,0 +1,128 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=14mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Noto Sans CJK KR}
+\setsansfont{Noto Sans CJK KR}
+\usepackage{booktabs,array,tabularx,multicol,xcolor}
+\pagestyle{empty}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{blue}{HTML}{2E6F9E}
+\definecolor{pale}{HTML}{EEF5FA}
+\definecolor{green}{HTML}{147A55}
+\newcommand{\Title}[2]{%
+  {\fontsize{20}{24}\selectfont\bfseries\color{navy} #1}\par
+  \vspace{1mm}{\color{blue}\rule{\textwidth}{1.2pt}}\par
+  \vspace{1mm}{\small\color{black!70}#2}\par\vspace{4mm}}
+\newcommand{\ModelTitle}[2]{\vspace{1mm}{\large\bfseries\color{navy}#1}\hfill{\bfseries\color{green}#2}\par\vspace{1mm}}
+\newcommand{\FiveColHead}{\toprule ID & M mean & R mean & $\Delta$ & gap 감소\\\midrule}
+\newenvironment{ResultTable}{\renewcommand{\arraystretch}{1.16}\small\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}>{\ttfamily}l rrrr}\FiveColHead}{\bottomrule\end{tabular*}}
+\newcommand{\NoteBox}[1]{\noindent\fcolorbox{blue}{pale}{\begin{minipage}{.965\linewidth}\vspace{1mm}#1\vspace{1mm}\end{minipage}}}
+\begin{document}
+
+\Title{R-direction component 검색}{Whole-depth v1.5 · Discovery 2,400 / heldout 600 · 기존 Gap/M-direction 결과는 변경하지 않음}
+
+\NoteBox{\textbf{R-direction component의 정확한 기준}\quad R 문항에서 부품의 평균 contribution이 R 방향(양수)이고, $\Delta=R-M>0$이며, heldout 재현·FDR·50\%→100\% dose·matched/random control을 모두 통과하고, 억제 시 최종 R/M gap이 안정적으로 감소한 부품이다. 이는 ``추론 담당 부품''이라는 뜻이 아니라 \textbf{R 방향 표현을 지지하며 gap 유지에 기능적으로 기여한 부품}이라는 뜻이다.}
+
+\vspace{2mm}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{lrrrr}
+\toprule
+Model & 검증 후보 & PASS Head & PASS Neuron & 총 PASS\\
+\midrule
+Meta-Llama-3-8B & 10 & 5 & 5 & \textbf{10}\\
+Mistral-7B-v0.3 & 10 & 5 & 4 & \textbf{9}\\
+OLMo-2-1124-7B & 10 & 5 & 5 & \textbf{10}\\
+Gemma-2-9B & 10 & 0 & 0 & \textbf{0}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\ModelTitle{Meta-Llama-3-8B}{Head 5 + Neuron 5}
+\begin{ResultTable}
+L30H6 & $-0.0477$ & $+0.3904$ & $+0.4381$ & $0.7198$\\
+L29H30 & $-0.0475$ & $+0.3691$ & $+0.4166$ & $0.8417$\\
+L28H5 & $-0.0560$ & $+0.2763$ & $+0.3323$ & $0.5526$\\
+L31H3 & $+0.0441$ & $+0.3503$ & $+0.3062$ & $0.1450$\\
+L29H31 & $-0.1597$ & $+0.1237$ & $+0.2834$ & $0.3303$\\
+L31N8468 & $+1.1793$ & $+2.3593$ & $+1.1800$ & $1.1800$\\
+L31N2398 & $+1.8643$ & $+2.8552$ & $+0.9909$ & $0.9909$\\
+L31N13336 & $+1.0785$ & $+1.8778$ & $+0.7994$ & $0.7994$\\
+L31N6018 & $+0.1263$ & $+0.6554$ & $+0.5292$ & $0.5292$\\
+L31N1209 & $+1.5254$ & $+2.0444$ & $+0.5190$ & $0.5190$\\
+\end{ResultTable}
+
+\vfill
+{\footnotesize\color{black!65}Baseline $|G|=35.4262$. 표의 mean은 heldout scalar contribution, gap 감소는 100\% suppression 결과다.}
+\newpage
+
+\Title{R-direction component · Mistral / OLMo}{동일한 5개 열과 동일한 strict 판정 규칙}
+
+\begin{multicols}{2}
+\ModelTitle{Mistral-7B-v0.3}{5H + 4N}
+\begin{ResultTable}
+L29H29 & $-0.0458$ & $+0.2475$ & $+0.2933$ & $0.8789$\\
+L29H30 & $+0.0204$ & $+0.2860$ & $+0.2656$ & $0.6796$\\
+L31H14 & $-0.0125$ & $+0.2192$ & $+0.2317$ & $0.1597$\\
+L31H13 & $+0.0043$ & $+0.2201$ & $+0.2158$ & $0.2303$\\
+L29H31 & $-0.0699$ & $+0.1293$ & $+0.1992$ & $0.4385$\\
+L31N8035 & $+0.1073$ & $+0.3618$ & $+0.2545$ & $0.2545$\\
+L31N11179 & $+0.3385$ & $+0.5859$ & $+0.2474$ & $0.2474$\\
+L31N1186 & $+0.4915$ & $+0.7043$ & $+0.2128$ & $0.2128$\\
+L31N5199 & $+0.0444$ & $+0.1987$ & $+0.1544$ & $0.1544$\\
+\end{ResultTable}
+
+\columnbreak
+\ModelTitle{OLMo-2-1124-7B}{5H + 5N}
+\begin{ResultTable}
+L30H30 & $+1.2367$ & $+6.6358$ & $+5.3990$ & $6.9722$\\
+L31H0 & $+1.0170$ & $+3.5113$ & $+2.4944$ & $0.9742$\\
+L31H25 & $+0.8903$ & $+2.4305$ & $+1.5402$ & $1.2709$\\
+L29H9 & $+0.3646$ & $+1.5875$ & $+1.2229$ & $1.2964$\\
+L30H0 & $+0.2395$ & $+1.4135$ & $+1.1740$ & $0.5214$\\
+L31N4479 & $+4.7564$ & $+20.3736$ & $+15.6172$ & $4.9227$\\
+L31N5664 & $+0.8004$ & $+7.7210$ & $+6.9207$ & $2.9486$\\
+L30N9739 & $+1.3562$ & $+7.8539$ & $+6.4978$ & $5.7937$\\
+L29N2564 & $+1.9288$ & $+8.5200$ & $+6.5912$ & $9.1117$\\
+L30N1652 & $+5.1392$ & $+10.1204$ & $+4.9811$ & $4.0619$\\
+\end{ResultTable}
+\end{multicols}
+
+\vspace{3mm}
+\NoteBox{\textbf{공통점}\quad Meta-Llama·Mistral·OLMo에서는 R 방향을 지지하고 억제 시 gap을 줄이는 Head와 Neuron이 모두 확인됐으며, 통과 후보는 전부 후반부였다. \textbf{주의}\quad 숫자 크기는 모델별 LiReF 축과 residual scale이 달라 모델 간 직접 비교하지 않는다.}
+\newpage
+
+\Title{Gemma 결과와 전체 해석}{R/M Gap · R-direction · M-direction을 합쳐서 읽기}
+
+\ModelTitle{Gemma-2-9B · R-direction}{strict PASS 0}
+Discovery와 heldout에서 R 방향 선택성을 보인 후보 10개는 있었지만, suppression 단계에서 gap 감소의 CI·FDR·dose·control 기준을 모두 만족한 후보는 없었다. 따라서 Gemma에서 R-direction functional component가 없다고 증명한 것이 아니라, \textbf{이번 strict protocol에서는 확인하지 못했다}고 해석한다.
+
+\vspace{4mm}
+\begin{center}
+\renewcommand{\arraystretch}{1.28}
+\begin{tabular}{lrrr}
+\toprule
+Model & R/M Gap & R-direction & M-direction\\
+\midrule
+Meta-Llama-3-8B & 9 & 10 & 7\\
+Mistral-7B-v0.3 & 10 & 9 & 9\\
+OLMo-2-1124-7B & 10 & 10 & 7\\
+Gemma-2-9B & 0 & 0 & 2\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\NoteBox{\textbf{세 숫자의 의미}\quad Gap은 R과 M의 차이를 유지하는 부품, R-direction은 R 문항에서 R 방향을 지지하는 부품, M-direction은 M 문항에서 M 방향을 지지하는 부품이다. 검색 목적과 후보 할당 규칙이 다르므로 개수 자체를 모델의 ``부품 총량''으로 비교하면 안 된다.}
+
+\vspace{2mm}
+{\bfseries\color{green}확인한 것}\quad 세 Llama 계열/유사 7B base 모델에서 후반부 Head+Neuron의 R-direction 기능 패턴이 반복됐다. M-direction은 Gemma의 Head 2개까지 포함해 네 모델 모두에서 일부 확인됐다.\par\vspace{2mm}
+{\bfseries\color{green}확인하지 못한 것}\quad 동일한 번호나 weight-level 회로, 네 모델에 공통된 보편적 component 구조, 실제 reasoning/memorization 성능의 원인, 또는 R/M을 다르게 작동시키는 입력 Feature.\par\vspace{2mm}
+{\bfseries\color{green}행동 검증}\quad Meta-Llama 예비 행동 검증에서는 strict behavioral signal이 0개였다. 따라서 현재 결론은 representation 수준의 기능적 기여까지로 제한한다.
+
+\vfill
+\begin{center}
+\large\bfseries\color{navy}
+R/M 표현 차이를 지지하는 방향성 component는 여러 base 모델에서 부분적으로 반복됐지만, 보편적 R/M 회로나 행동 원인은 아직 확인되지 않았다.
+\end{center}
+
+\end{document}

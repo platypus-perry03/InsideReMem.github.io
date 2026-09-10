@@ -1,0 +1,24 @@
+{
+  "schema_id": "stage_e_natural_feature_discovery_v1_1_annotation_instrument_amendment",
+  "status": "frozen_before_second_annotator_and_before_internal_outcome_analysis",
+  "freeze_date": "2026-08-30",
+  "reason": "Annotator-A v1.0 quality control produced answer_mode=MIX for 3000/3000 items, demonstrating a degenerate annotation instrument before any LiReF/component outcome analysis.",
+  "preserved_failed_artifact": {
+    "path": "stage_e_natural_feature_discovery_v1_assets/annotator_a_annotations.jsonl",
+    "sha256": "778f1a3b1ba1b1fd322d6632449a97ca8be05f2067b3df80eeda83ef16121af5",
+    "status": "INVALID_ANNOTATION_INSTRUMENT_DO_NOT_ANALYZE"
+  },
+  "feature_codebook_changed": false,
+  "dataset_changed": false,
+  "analysis_plan_changed": false,
+  "internal_outcomes_inspected": false,
+  "corrections": [
+    "Clarify that MIX is reserved for cases where both external factual knowledge and nontrivial derivation are indispensable; it must not be a default.",
+    "Clarify that named concepts in answer options do not themselves supply the factual relation needed to select the answer.",
+    "Add synthetic examples outside the study dataset for RET, DER, and MIX.",
+    "Require a 48-item blind preflight; reject an annotator if any categorical feature has more than 95 percent in one level or parse validity is below 95 percent.",
+    "Write all corrected annotations to v1_1 filenames and never overwrite the failed v1.0 artifact."
+  ],
+  "preflight_uses_internal_labels_or_outcomes": false,
+  "corrected_annotation_execution_allowed": true
+}

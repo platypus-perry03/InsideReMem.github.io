@@ -1,0 +1,33 @@
+# Local models and generated experiment outputs
+models/
+liref_models/
+liref_outputs/
+
+# Datasets and hidden-state caches
+liref/dataset/
+liref/dataset.zip
+**/.partial/
+**/*hidden_state*
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.npy
+*.npz
+
+# Private or blinded evaluation material
+**/*private*
+**/*blind*
+**/*annotation_key*
+**/*_assets/
+experiments/rm_decomp_b/template_rules.json
+
+# Logs, temporary files, and Python caches
+*.log
+*.aux
+*.out
+*.tmp
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/

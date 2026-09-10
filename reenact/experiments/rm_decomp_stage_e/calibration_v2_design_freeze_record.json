@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "stage_e_calibration_v2_design_freeze",
+  "freeze_date": "2026-08-29",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "approved_prefreeze_source_document": {
+    "path": "CALIBRATION_V2_DESIGN_DRAFT_KO.md",
+    "sha256": "85334c4fac6b4ffb09d4cb0ffc6cc256158408cbd042604e8164574604f86e35"
+  },
+  "frozen_human_readable_document": {
+    "path": "CALIBRATION_V2_DESIGN_DRAFT_KO.md",
+    "sha256": "b0348abd3321d241443abbdc92f2a0c6428bec767e40c6070985b10ff7348056",
+    "difference_from_prefreeze_source": "Status and design-freeze record metadata only."
+  },
+  "machine_readable_frozen_manifest": {
+    "path": "calibration_v2_design_frozen.json",
+    "sha256": "a8f3dad7fced945377194074f9aa12d673faff3b55c3ec45bd82e397b5a5302b",
+    "status": "design_frozen_execution_not_approved",
+    "execution_allowed": false
+  },
+  "preserved_v1_artifacts": {
+    "frozen_design_sha256": "ba9939e30b1e68c7b061e407f981c37bc2b1878055ef9074ede86f2afe5aacb0",
+    "dataset_sha256": "ba4c0fe2b17633c082ca666c4af7133b90a7e221efb6824bac74c99eddf2505b"
+  },
+  "next_allowed_work": "Write the deterministic v2 dataset builder and run dataset-only shortcut, counterbalance, structural, and tokenizer audits.",
+  "model_forward_allowed": false,
+  "gpu_allowed": false,
+  "baseline_calibration_allowed": false,
+  "stage_e_pilot_allowed": false,
+  "change_control": "Do not overwrite frozen artifacts. Any design-rule or threshold change requires a new design version, reason, and hashes."
+}

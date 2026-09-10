@@ -1,0 +1,35 @@
+{
+  "stage_b_extension_run_id": "v2_b03_extension",
+  "source_stage_b_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/b_characterization_v2_b02",
+  "stage_a_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/a_core",
+  "output_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/b_extension_v2_b03",
+  "model_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/models/Meta-Llama-3-8B",
+  "dataset_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref/dataset/mmlu-pro-3000samples.json",
+  "split_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/layerwise_liref/split_ids.json",
+  "prompt_template": "Q: {question}\nA: ",
+  "dtype": "float32",
+  "gpu_id": 1,
+  "batch_size": 4,
+  "seed": 20260825,
+  "pilot_context_clusters": 10,
+  "confirmatory_context_clusters": 80,
+  "statistics": {
+    "bootstrap_iterations": 10000,
+    "permutation_iterations": 10000,
+    "random_seed": 20260825,
+    "fdr_alpha": 0.05,
+    "minimum_effect_of_interest_dz": 0.5,
+    "observation_unit": "semantic_context_cluster",
+    "primary_families": [
+      "relation_lexical_robustness",
+      "relation_relevance_interaction",
+      "numeric_relevance_interaction",
+      "factual_entity_relevance_interaction"
+    ],
+    "secondary_families": [
+      "numeric_representation_token_matched",
+      "relation_lexical_subgroup",
+      "changed_span_source_contribution"
+    ]
+  }
+}

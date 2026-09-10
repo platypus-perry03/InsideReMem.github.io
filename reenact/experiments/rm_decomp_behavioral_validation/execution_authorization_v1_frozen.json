@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_EXECUTION_AUTHORIZED",
+  "authorized_at": "2026-09-01",
+  "study_id": "meta_llama_behavioral_validation_v1",
+  "run_id": "meta_llama_behavioral_prevalidation_20260901_01",
+  "physical_gpu": 1,
+  "logical_device": "cuda:0",
+  "batch_size": 4,
+  "dtype": "float32",
+  "implementation_sha256": "99cbecea20b546397f8167f77d1e064de27bd3d9c93306d5ab3218b0c0189531",
+  "test_sha256": "121160b027815157b5e16f43d39b38c1ae91ef4fb0be06c6100726b43289227c",
+  "static_review_sha256": "70f385ca60044a033bf52f0b9b05482c3e523d795cd4e544ca148435ee46dcfa",
+  "locked_inputs": {
+    "design_sha256": "2396054ca8ee2617ea802eab8bb2ec9adf6f730d626f5897d5f2fa19e3d20753",
+    "candidate_manifest_sha256": "c2206b9e285c7e3ffe00fdf11f3149798966925f56707f0aac9972b213a14472",
+    "dataset_sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96",
+    "split_sha256": "d188586c8c5caa9f661064659540889e49423c276075dc7b91b31e53a43b32bd",
+    "model_config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+    "model_index_sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b",
+    "model_shards": {
+      "model-00001-of-00004.safetensors": "f2c144103072514542e327fa8080bd375cb300f2d453fba9ca3aea81d0d4cf33",
+      "model-00002-of-00004.safetensors": "d9eee5f23d94405d90b7e9ff88b9443fee42f8528a658f54214c2aba7530d80c",
+      "model-00003-of-00004.safetensors": "4b8fbc5e113f69768dd8de84661ea20af8a32b734a9976144b4236c447b40ccc",
+      "model-00004-of-00004.safetensors": "5dc34e6bdf2da9e35f0d93b5c333c870f3677dc43dc3a91ea3a8ad28a1fe1acb"
+    }
+  },
+  "baseline_gate_required_before_intervention": true,
+  "automatic_pdf_update_authorized": false,
+  "claim_boundary": "Same-sample exploratory behavioral validation. A strict signal supports behavioral contribution on this prompt and dataset, not a reasoning neuron, memory store, circuit, or independent replication."
+}

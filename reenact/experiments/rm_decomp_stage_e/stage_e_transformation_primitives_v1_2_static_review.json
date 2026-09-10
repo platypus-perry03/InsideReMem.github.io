@@ -1,0 +1,29 @@
+{
+  "schema_id": "stage_e_transformation_primitives_v1_2_static_review",
+  "status": "PASS",
+  "review_date": "2026-08-31",
+  "design_sha256": "e25bd258e7abe365747c51a3d8af3b0797c596c45db920d73e546e672a50225c",
+  "implementation_sha256": "d16c522563bdf8827ac15a92db34bdbf6124e02dcbb65a2dcf50d403f5ebd4ba",
+  "tests_sha256": "03fa1c353a05731fce692bb0cbc0267965752c0545615cbc40a3c4a4498dda1a",
+  "unit_tests": {"passed": 8, "failed": 0},
+  "checks": {
+    "multi_label_not_forced_single_subtype": true,
+    "authoritative_parent_transformation_not_rejudged": true,
+    "parent_y_only_sent_to_annotators": true,
+    "blind_fields_limited_to_id_question_options": true,
+    "preflight_disjoint_from_v1_and_v1_1": true,
+    "feature_specific_reliability_gate": true,
+    "minimum_two_usable_features_required": true,
+    "full_reliability_precedes_internal_outcome_merge": true,
+    "primary_comparison_within_parent_y": true,
+    "discovery_selection_frozen_before_heldout": true,
+    "external_api_code_absent": true,
+    "new_study_model_forward_absent": true,
+    "hidden_state_storage_absent": true,
+    "forward_hook_absent": true,
+    "intervention_absent": true
+  },
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false
+}

@@ -1,0 +1,98 @@
+\documentclass[9pt]{article}
+\usepackage[paperwidth=13.333in,paperheight=7.5in,margin=0.62in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Noto Sans CJK KR}
+\setsansfont{Noto Sans CJK KR}
+\usepackage{booktabs,array,tabularx,xcolor}
+\pagestyle{empty}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{blue}{HTML}{2E6F9E}
+\definecolor{green}{HTML}{16835B}
+\definecolor{pale}{HTML}{EEF5FA}
+\newcommand{\SlideTitle}[1]{\vspace{-5mm}{\fontsize{21}{24}\selectfont\bfseries #1}\par\vspace{1mm}{\color{navy}\rule{\linewidth}{1.2pt}}\vspace{2mm}}
+\newcommand{\PanelTitle}[2]{{\fontsize{12}{14}\selectfont\bfseries\color{navy}#1}\hfill{\fontsize{10}{12}\selectfont\bfseries\color{green}#2}\par\vspace{1mm}}
+\newenvironment{SlideTable}{\fontsize{8.2}{9.3}\selectfont\renewcommand{\arraystretch}{1.08}\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}>{\ttfamily}l rrrr}\toprule ID&M mean&R mean&$\Delta$&gap 감소\\\midrule}{\bottomrule\end{tabular*}}
+\newcommand{\MiniBox}[1]{\noindent\fcolorbox{blue}{pale}{\begin{minipage}{.91\linewidth}\vspace{2mm}#1\vspace{2mm}\end{minipage}}}
+\begin{document}
+\SlideTitle{R-direction Components · Meta-Llama / Mistral}
+{\fontsize{9.5}{11.5}\selectfont R 문항에서 R 방향 contribution $>0$, $\Delta=R-M>0$, heldout·FDR·dose·control·suppression을 모두 통과한 부품}\par
+\vspace{3mm}
+\noindent
+\begin{minipage}[t]{.485\textwidth}
+\PanelTitle{Meta-Llama-3-8B}{Head 5 + Neuron 5}
+\begin{SlideTable}
+L30H6&$-0.0477$&$+0.3904$&$+0.4381$&$0.7198$\\
+L29H30&$-0.0475$&$+0.3691$&$+0.4166$&$0.8417$\\
+L28H5&$-0.0560$&$+0.2763$&$+0.3323$&$0.5526$\\
+L31H3&$+0.0441$&$+0.3503$&$+0.3062$&$0.1450$\\
+L29H31&$-0.1597$&$+0.1237$&$+0.2834$&$0.3303$\\
+L31N8468&$+1.1793$&$+2.3593$&$+1.1800$&$1.1800$\\
+L31N2398&$+1.8643$&$+2.8552$&$+0.9909$&$0.9909$\\
+L31N13336&$+1.0785$&$+1.8778$&$+0.7994$&$0.7994$\\
+L31N6018&$+0.1263$&$+0.6554$&$+0.5292$&$0.5292$\\
+L31N1209&$+1.5254$&$+2.0444$&$+0.5190$&$0.5190$\\
+\end{SlideTable}
+\end{minipage}\hfill
+\begin{minipage}[t]{.485\textwidth}
+\PanelTitle{Mistral-7B-v0.3}{Head 5 + Neuron 4}
+\begin{SlideTable}
+L29H29&$-0.0458$&$+0.2475$&$+0.2933$&$0.8789$\\
+L29H30&$+0.0204$&$+0.2860$&$+0.2656$&$0.6796$\\
+L31H14&$-0.0125$&$+0.2192$&$+0.2317$&$0.1597$\\
+L31H13&$+0.0043$&$+0.2201$&$+0.2158$&$0.2303$\\
+L29H31&$-0.0699$&$+0.1293$&$+0.1992$&$0.4385$\\
+L31N8035&$+0.1073$&$+0.3618$&$+0.2545$&$0.2545$\\
+L31N11179&$+0.3385$&$+0.5859$&$+0.2474$&$0.2474$\\
+L31N1186&$+0.4915$&$+0.7043$&$+0.2128$&$0.2128$\\
+L31N5199&$+0.0444$&$+0.1987$&$+0.1544$&$0.1544$\\
+\end{SlideTable}
+\end{minipage}
+\vfill
+\noindent{\fontsize{9}{11}\selectfont 두 모델 모두 통과 후보가 후반부에 집중됐지만, 같은 ID나 동일 회로라는 뜻은 아니다.}\hfill\textbf{7}
+\newpage
+
+\SlideTitle{R-direction Components · OLMo / Gemma}
+{\fontsize{9.5}{11.5}\selectfont 같은 strict 기준을 적용했으며, 모델 간 scalar 크기는 직접 비교하지 않는다.}\par
+\vspace{3mm}
+\noindent
+\begin{minipage}[t]{.55\textwidth}
+\PanelTitle{OLMo-2-1124-7B}{Head 5 + Neuron 5}
+\begin{SlideTable}
+L30H30&$+1.2367$&$+6.6358$&$+5.3990$&$6.9722$\\
+L31H0&$+1.0170$&$+3.5113$&$+2.4944$&$0.9742$\\
+L31H25&$+0.8903$&$+2.4305$&$+1.5402$&$1.2709$\\
+L29H9&$+0.3646$&$+1.5875$&$+1.2229$&$1.2964$\\
+L30H0&$+0.2395$&$+1.4135$&$+1.1740$&$0.5214$\\
+L31N4479&$+4.7564$&$+20.3736$&$+15.6172$&$4.9227$\\
+L31N5664&$+0.8004$&$+7.7210$&$+6.9207$&$2.9486$\\
+L30N9739&$+1.3562$&$+7.8539$&$+6.4978$&$5.7937$\\
+L29N2564&$+1.9288$&$+8.5200$&$+6.5912$&$9.1117$\\
+L30N1652&$+5.1392$&$+10.1204$&$+4.9811$&$4.0619$\\
+\end{SlideTable}
+\end{minipage}\hfill
+\begin{minipage}[t]{.41\textwidth}
+\PanelTitle{Gemma-2-9B}{strict PASS 0}
+\vspace{2mm}
+\MiniBox{후보 10개는 Discovery와 heldout에서 R 방향 선택성을 보였다. 그러나 suppression의 CI·FDR·dose·control을 모두 통과한 후보는 없었다.}\par
+\vspace{5mm}
+{\fontsize{10}{12}\selectfont\bfseries 전체 결과}\par\vspace{1mm}
+\centering
+\renewcommand{\arraystretch}{1.18}\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lrrr}
+\toprule
+Model&Gap&R-dir&M-dir\\\midrule
+Meta&9&10&7\\
+Mistral&10&9&9\\
+OLMo&10&10&7\\
+Gemma&0&0&2\\
+\bottomrule
+\end{tabular}\par
+\vspace{5mm}
+
+\raggedright
+{\fontsize{9.5}{11.5}\selectfont\color{navy}\bfseries 결론}\par
+{\fontsize{9}{11}\selectfont R-direction Head+Neuron 패턴은 세 모델에서 반복됐지만 Gemma에서는 확인되지 않았다. 보편적 reasoning 회로의 증거는 아니다.}
+\end{minipage}
+\vfill
+\hfill\textbf{8}
+\end{document}

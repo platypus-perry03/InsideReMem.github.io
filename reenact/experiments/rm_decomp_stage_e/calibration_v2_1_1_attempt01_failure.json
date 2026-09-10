@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "run_id": "calv211_baseline_20260830_01",
+  "status": "failed_before_model_load",
+  "failure_date": "2026-08-30",
+  "failure_stage": "cuda_runtime_visibility_before_model_load",
+  "error": "CUDA is required by the frozen execution authorization",
+  "execution_authorization_sha256": "8c6d72d864ac88fd9ba2a89d981077dfca39013434b1972dbfa3b444814aa189",
+  "implementation_sha256": "fbe0e731e1fe0a8ee72db9d1359b813666354e7911339e75191bf6f18978894c",
+  "static_safety_review_sha256": "f9ddc7769597395eaa1c7e9a5eeb5359acfa536584851135962d7d7b7d411666",
+  "locked_input_hash_verification_performed": true,
+  "model_loaded": false,
+  "model_forward_performed": false,
+  "gpu_computation_performed": false,
+  "results_generated": false,
+  "output_directory_preserved": true,
+  "retry_rule": "Use a new run ID and authorization; do not overwrite attempt 1."
+}

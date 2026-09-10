@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_BEFORE_BEHAVIORAL_RESULTS",
+  "frozen_at": "2026-09-01",
+  "candidate_union_rule": "union_of_meta_llama_general_gap_v2_full20_strict_pass_and_m_directed_v1_4_strict_pass",
+  "candidate_count": 13,
+  "candidates": [
+    {"component_id":"L29H00030","source":"general_gap_v2_full20","matched_control":"L29H00016","random_control":"L29H00019","neuron_means":{}},
+    {"component_id":"L29H00031","source":"general_gap_v2_full20","matched_control":"L29H00016","random_control":"L29H00003","neuron_means":{}},
+    {"component_id":"L30H00006","source":"general_gap_v2_full20","matched_control":"L30H00026","random_control":"L30H00012","neuron_means":{}},
+    {"component_id":"L31H00003","source":"general_gap_v2_full20","matched_control":"L31H00012","random_control":"L31H00009","neuron_means":{}},
+    {"component_id":"L31N01209","source":"general_gap_v2_full20","matched_control":"L31N06650","random_control":"L31N06965","neuron_means":{"L31N01209":-22.052912427783014,"L31N06650":-10.454267079333464,"L31N06965":0.10893205191985086}},
+    {"component_id":"L31N02398","source":"general_gap_v2_full20","matched_control":"L31N00711","random_control":"L31N11258","neuron_means":{"L31N02398":-33.9877507907028,"L31N00711":0.7656656653847154,"L31N11258":-0.0899630709515865}},
+    {"component_id":"L31N06018","source":"general_gap_v2_full20","matched_control":"L31N13869","random_control":"L31N01048","neuron_means":{"L31N06018":4.2651629858380575,"L31N13869":5.123844847918954,"L31N01048":-0.10478873377552492}},
+    {"component_id":"L31N08468","source":"general_gap_v2_full20","matched_control":"L31N00711","random_control":"L31N05925","neuron_means":{"L31N08468":-13.830571390652816,"L31N00711":0.7656656653847154,"L31N05925":-0.02273402536559391}},
+    {"component_id":"L31N13336","source":"general_gap_v2_full20","matched_control":"L31N00711","random_control":"L31N03799","neuron_means":{"L31N13336":-17.41093581623087,"L31N00711":0.7656656653847154,"L31N03799":0.0004801060858157758}},
+    {"component_id":"L28H00005","source":"m_directed_v1_4","matched_control":"L28H00015","random_control":"L28H00016","neuron_means":{}},
+    {"component_id":"L31N04695","source":"m_directed_v1_4","matched_control":"L31N14107","random_control":"L31N03370","neuron_means":{"L31N04695":3.635171685451496,"L31N14107":3.5813424257732307,"L31N03370":-0.0229049600432572}},
+    {"component_id":"L31N01831","source":"m_directed_v1_4","matched_control":"L31N14107","random_control":"L31N13545","neuron_means":{"L31N01831":-1.2107771064530244,"L31N14107":3.5813424257732307,"L31N13545":0.002987137135911}},
+    {"component_id":"L31N09114","source":"m_directed_v1_4","matched_control":"L31N14107","random_control":"L31N09418","neuron_means":{"L31N09114":-0.4304056895792019,"L31N14107":3.5813424257732307,"L31N09418":-0.0407511058258552}}
+  ],
+  "claim_boundary": "The manifest freezes previously discovered candidates and controls; it does not assert behavioral necessity."
+}

@@ -1,0 +1,37 @@
+{
+  "schema_id": "stage_e_transformation_primitives_v1_2_local_execution_authorization",
+  "status": "frozen_local_annotation_and_preserved_scalar_analysis_authorized",
+  "authorization_date": "2026-08-31",
+  "run_id": "stagee_transformation_primitives_v1_2_20260831_01",
+  "execution_allowed": true,
+  "execution_scope": "local_blind_multi_label_annotation_and_preserved_scalar_analysis_only",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false,
+  "locked_files": [
+    {
+      "path": "stage_e_transformation_primitives_v1_2_design_frozen.json",
+      "sha256": "e25bd258e7abe365747c51a3d8af3b0797c596c45db920d73e546e672a50225c"
+    },
+    {
+      "path": "run_stage_e_transformation_primitives_v1_2.py",
+      "sha256": "d16c522563bdf8827ac15a92db34bdbf6124e02dcbb65a2dcf50d403f5ebd4ba"
+    },
+    {
+      "path": "stage_e_transformation_primitives_v1_2_static_review.json",
+      "sha256": "e49066b99f650bfdce4b99bc9266b913bbe160a22f2a347de17a09c3222417f0"
+    },
+    {
+      "path": "tests/test_stage_e_transformation_primitives_v1_2.py",
+      "sha256": "03fa1c353a05731fce692bb0cbc0267965752c0545615cbc40a3c4a4498dda1a"
+    }
+  ],
+  "stopping_rules": {
+    "preflight_fail": "stop_before_full_annotation",
+    "fewer_than_two_usable_primitives": "stop_before_full_annotation_or_analysis",
+    "full_reliability_fail": "stop_before_internal_outcome_merge",
+    "heldout_analysis_requires_frozen_discovery_selection": true
+  }
+}

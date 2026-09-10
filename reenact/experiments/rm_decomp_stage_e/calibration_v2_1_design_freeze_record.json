@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "status": "design_freeze_complete_execution_not_approved",
+  "design_id": "stage_e_baseline_calibration_v2_1",
+  "source_design_path": "CALIBRATION_V2_1_DESIGN_DRAFT_KO.md",
+  "approved_prefreeze_source_sha256": "793167b67d91f202fc49ffd3b8ded4f78c307e65205c9a0810f3d2abf32aae38",
+  "frozen_manifest_path": "calibration_v2_1_design_frozen.json",
+  "frozen_manifest_sha256": "d0d6d19432eb48234a9729cc5f297c09963eb485bf5ec02178d504a93dc8307f",
+  "frozen_at": "2026-08-30",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "human_audit_policy": "two_independent_reviewers_each_review_192_of_192_pairs",
+  "human_audit_waiver_allowed": false,
+  "execution_allowed": false,
+  "stage_e_pilot_allowed": false,
+  "next_allowed_work": "deterministic_v2_1_dataset_builder_implementation"
+}

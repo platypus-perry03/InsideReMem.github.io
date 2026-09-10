@@ -1,0 +1,286 @@
+{
+  "schema_version": "2.0",
+  "design_id": "stage_e_baseline_calibration_v2",
+  "status": "design_frozen_execution_not_approved",
+  "frozen_date": "2026-08-29",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "purpose": "Screen baseline difficulty for transformation-dependent answer derivation versus direct-fact retrieval after removing the v1 cross-fact answer-copy shortcut.",
+  "source_design": {
+    "path": "CALIBRATION_V2_DESIGN_DRAFT_KO.md",
+    "approved_prefreeze_sha256": "85334c4fac6b4ffb09d4cb0ffc6cc256158408cbd042604e8164574604f86e35"
+  },
+  "supersedes_for_future_execution": {
+    "design_id": "stage_e_baseline_calibration_v1",
+    "design_sha256": "ba9939e30b1e68c7b061e407f981c37bc2b1878055ef9074ede86f2afe5aacb0",
+    "dataset_sha256": "ba4c0fe2b17633c082ca666c4af7133b90a7e221efb6824bac74c99eddf2505b",
+    "blocking_reason": "Every Relevant answer was stated verbatim in the matched direct fact, permitting answer copying without the intended transformation.",
+    "v1_execution_allowed": false,
+    "v1_reuse_allowed": false
+  },
+  "feature": {
+    "operationalized_name": "transformation-dependent answer derivation vs direct-fact retrieval",
+    "hypothesis_level_description": "Whether single-step relation-transformation task relevance changes the internal pathway.",
+    "relevant_condition": "The answer must be derived by applying one increase or decrease transformation.",
+    "irrelevant_condition": "The answer is retrieved from a separate directly stated fact while the transformation remains present but task-irrelevant.",
+    "pure_arithmetic_claim_allowed": false,
+    "answer_exposure_difference_is_part_of_operationalization": true
+  },
+  "pair_invariants": {
+    "required": [
+      "identical_context_within_pair",
+      "identical_entity_set_within_pair",
+      "identical_operation_and_operands_within_pair",
+      "identical_question_form_except_target_label",
+      "identical_answer_format",
+      "exact_prompt_token_length_match",
+      "equal_target_label_token_count",
+      "identical_source_relation_span"
+    ],
+    "removed_from_v1": [
+      "identical_canonical_answer",
+      "identical_answer_literal_exposure"
+    ]
+  },
+  "numeric_design": {
+    "canonical_answer_min": 10,
+    "canonical_answer_max": 29,
+    "delta_min": 2,
+    "delta_max": 7,
+    "answers_must_differ": true,
+    "minimum_absolute_answer_difference": 2,
+    "answers_must_have_equal_token_count": true,
+    "answers_must_have_equal_digit_length": true,
+    "answers_must_not_equal_start_or_delta": true,
+    "answer_magnitude_direction_must_be_counterbalanced": true,
+    "numeric_blocks_per_template_family": 1,
+    "numeric_block_count": 18,
+    "relevant_answer_must_not_appear_as_independent_numeric_mention_in_context": true,
+    "irrelevant_answer_must_appear_exactly_once_as_an_independent_numeric_mention_in_direct_fact": true,
+    "numeric_mention_matching": "parsed_numeric_mentions_with_boundaries_not_substring_matching"
+  },
+  "counterbalance": {
+    "answer_orientation_levels": 2,
+    "label_role_orientation_levels": 2,
+    "sentence_order_levels": 2,
+    "frames_per_template_family": 8,
+    "full_factorial_required": true,
+    "answer_orientations": [
+      "A_to_relevant_B_to_irrelevant",
+      "B_to_relevant_A_to_irrelevant"
+    ],
+    "sentence_orders": [
+      "direct_then_transformed",
+      "transformed_then_direct"
+    ],
+    "label_pair_assignment": {
+      "templates_1_to_3_within_each_lexical_family": [
+        "red",
+        "blue"
+      ],
+      "templates_4_to_6_within_each_lexical_family": [
+        "green",
+        "black"
+      ]
+    },
+    "label_roles_must_swap_within_template": true,
+    "answer_values_must_appear_equally_in_relevant_and_irrelevant": true,
+    "sentence_orders_must_be_balanced": true
+  },
+  "dataset_design": {
+    "lexical_families": [
+      "decrease",
+      "increase",
+      "temperature"
+    ],
+    "lexical_family_count": 3,
+    "template_families_per_lexical_family": 6,
+    "independent_template_family_count": 18,
+    "frames_per_template_family": 8,
+    "item_instantiations_per_frame": 1,
+    "paired_item_count": 144,
+    "prompt_count": 288,
+    "independent_unit": "template_family",
+    "random_seed": 20260829,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false
+  },
+  "teacher_forced_scoring": {
+    "primary_metric": "counterbalanced_paired_answer_log_odds",
+    "sequence_log_probability_formula": "logP_seq(y|x)=sum_t log p(y_t|x,y_<t)",
+    "prompt_margin_formula": "M(x)=logP_seq(y_correct|x)-logP_seq(y_alt|x)",
+    "template_contrast_formula": "D_k=(1/8)*sum_f[M(x_relevant,f)-M(x_irrelevant,f)]",
+    "alternative_answer_rule": "Use the other answer from the same frozen A/B numeric block.",
+    "forced_choice_correct_rule": "M(x)>0",
+    "forced_choice_tie_rule": "M(x)<=0_is_incorrect",
+    "raw_correct_answer_log_probability_is_primary": false,
+    "secondary_metrics": [
+      "greedy_generation_exact_match_accuracy",
+      "raw_canonical_sequence_log_probability",
+      "length_normalized_canonical_log_probability",
+      "per_token_geometric_mean_probability",
+      "A_B_forced_choice_accuracy"
+    ],
+    "include_eos_in_answer_score": false,
+    "include_newline_in_answer_score": false
+  },
+  "arithmetic_foils": {
+    "decrease": [
+      "start",
+      "delta",
+      "start_plus_delta"
+    ],
+    "increase_and_temperature": [
+      "start",
+      "delta",
+      "start_minus_delta"
+    ],
+    "all_foils_must_differ_from_correct": true,
+    "all_foils_must_differ_from_paired_alternative": true,
+    "foils_must_be_mutually_distinct": true,
+    "collision_action": "reject_numeric_block_and_deterministically_generate_a_new_block",
+    "post_result_foil_changes_allowed": false
+  },
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 8,
+    "stop_rule": [
+      "eos",
+      "first_newline"
+    ],
+    "normalization_order": [
+      "unicode_nfkc",
+      "strip_outer_whitespace",
+      "take_first_line",
+      "lowercase",
+      "remove_terminal_period_comma_exclamation_question_mark",
+      "exact_match_against_prespecified_accepted_answers"
+    ],
+    "automatic_number_word_digit_conversion": false,
+    "post_result_alias_addition_allowed": false
+  },
+  "acceptance_criteria": {
+    "evaluation_scope": "each_lexical_family_independently",
+    "all_criteria_required": true,
+    "family_level_pass_or_fail_only": true,
+    "result_dependent_template_exclusion_allowed": false,
+    "forced_choice_accuracy": {
+      "relevant_floor": 0.60,
+      "relevant_ceiling": 0.95,
+      "irrelevant_floor": 0.60,
+      "irrelevant_ceiling": 0.95,
+      "maximum_absolute_condition_gap": 0.10
+    },
+    "greedy_generation_accuracy": {
+      "relevant_floor": 0.20,
+      "relevant_ceiling": 0.95,
+      "irrelevant_floor": 0.20,
+      "irrelevant_ceiling": 0.95,
+      "maximum_absolute_condition_gap": 0.10
+    },
+    "maximum_absolute_mean_template_contrast_nats": 0.40,
+    "maximum_absolute_cluster_dz": 0.30,
+    "maximum_same_sign_template_count": 4,
+    "same_sign_template_denominator": 6,
+    "zero_contrast_has_no_sign": true,
+    "diagnostic_metrics_not_used_as_gates": [
+      "raw_canonical_sequence_log_probability",
+      "length_normalized_canonical_log_probability",
+      "per_token_geometric_mean_probability"
+    ]
+  },
+  "cluster_statistics": {
+    "independent_unit": "template_family",
+    "template_cluster_count_per_lexical_family": 6,
+    "dz_formula": "d_z=mean_k(D_k)/sample_sd_k(D_k)",
+    "standard_deviation_ddof": 1,
+    "all_cluster_differences_exactly_zero": "set_dz_to_zero",
+    "near_zero_sd_threshold": "float64_machine_epsilon",
+    "near_zero_sd_nonzero_mean": "fail",
+    "nan_inf_or_missing": "fail",
+    "item_level_independent_sample_p_values_allowed": false,
+    "descriptive_cluster_bootstrap": {
+      "enabled": true,
+      "replicates": 10000,
+      "resampling_unit": "template_family_with_replacement_within_each_lexical_family",
+      "confidence_interval": "percentile_95_percent",
+      "random_seed": 20260829,
+      "used_for_pass_fail": false
+    }
+  },
+  "automatic_audit": {
+    "all_checks_required_before_human_audit": true,
+    "checks": [
+      "relevant_answer_absent_as_independent_numeric_mention",
+      "relevant_answer_differs_from_start_and_delta",
+      "irrelevant_answer_present_exactly_once_in_direct_fact",
+      "relevant_and_irrelevant_answers_differ",
+      "answer_value_relevance_balance",
+      "label_direct_transformed_role_balance",
+      "sentence_order_balance",
+      "exact_prompt_token_length_match",
+      "question_structure_differs_only_at_target_label",
+      "answer_magnitude_direction_balance",
+      "answer_token_count_match",
+      "foil_collision_absence"
+    ]
+  },
+  "human_audit": {
+    "independent_primary_reviewer_count": 2,
+    "all_reviewers_review_all_pairs": true,
+    "reviewer_pair_count": 144,
+    "reviewers_blind_to": [
+      "ai_preaudit",
+      "model_predictions",
+      "log_probabilities",
+      "generation_results",
+      "liref_scores",
+      "candidate_states",
+      "intervention_results",
+      "other_reviewer_decisions"
+    ],
+    "pair_pass_rule": "both_primary_reviewers_pass",
+    "disagreement_rule": "third_independent_reviewer_adjudication_with_written_reason",
+    "any_final_fail_or_needs_revision": "dataset_execution_forbidden",
+    "revision_rule": "create_new_dataset_version_then_repeat_automatic_and_human_audits"
+  },
+  "safety": {
+    "baseline_behavior_only": true,
+    "capture_hidden_states": false,
+    "inspect_liref_scores": false,
+    "inspect_candidate_states": false,
+    "enable_forward_hooks": false,
+    "enable_activation_intervention": false,
+    "enable_weight_intervention": false,
+    "confirmatory_claim_allowed": false,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false,
+    "allow_post_result_item_deletion": false,
+    "allow_post_result_threshold_change": false,
+    "allow_loading_discovery_liref_direction": false,
+    "model_training": false
+  },
+  "inherited_artifact_locks": {
+    "stage_a_identity_sha256": "7f0f7f020533b68e20e7b82d39dcacddad9f6e350dd599df6a40be667f8ec9f7",
+    "prompt_sha256": "924c8cb05f84bdcad8da83b67dc617ffbbde6e20d929bfa8b45fd451f4a468e1",
+    "model_config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+    "model_parameter_set_sha256": "a86eda67086313c3b20d92a471820455c0ab6a9489db1870186980b0027bcb0b",
+    "tokenizer_json_sha256": "e134af98b985517b4f068e3755ae90d4e9cd2d45d328325dc503f1c6b2d06cc7",
+    "tokenizer_config_sha256": "690727b4fed286383df1c7ca5e805124cb70c6eb4529f807c7b2e60ff741da7e",
+    "special_tokens_map_sha256": "462d91939dbc37178aa5a3eae7068d1990ccc92e09f288cc71f42cdf139d69cc",
+    "generation_config_sha256": "93caf96e269e32b9ee33ad78b0d76d910408d11a63a8b2c49241030836759311"
+  },
+  "pending_execution_gates": {
+    "deterministic_dataset_builder_created": false,
+    "calibration_dataset_created": false,
+    "calibration_dataset_manifest_sha256": null,
+    "shortcut_counterbalance_tokenizer_audit_complete": false,
+    "ai_preaudit_complete": false,
+    "independent_human_audit_complete": false,
+    "baseline_calibration_implementation_created": false,
+    "baseline_calibration_implementation_sha256": null,
+    "static_safety_review_complete": false,
+    "explicit_execution_approval": false
+  },
+  "execution_allowed": false
+}

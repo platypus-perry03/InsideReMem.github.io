@@ -1,0 +1,26 @@
+{
+  "schema_id": "stage_e_transformation_primitives_v1_3_static_review",
+  "status": "PASS",
+  "review_date": "2026-08-31",
+  "design_sha256": "34321c162cb632f0997fb3f7f0e3d3971aa3051f9008133f6ed55eee6d372068",
+  "implementation_sha256": "98f4537e88ce045d8bc893ff69e3d8bea12553c2115fb794df36b64c46243b2a",
+  "base_implementation_sha256": "d16c522563bdf8827ac15a92db34bdbf6124e02dcbb65a2dcf50d403f5ebd4ba",
+  "tests_sha256": "fe6d5a67f52f154f5968cea4107c448176c12a265bd65b39cd50d8f10fedfced",
+  "unit_tests": {"passed": 8, "failed": 0},
+  "checks": {
+    "free_generation_removed": true,
+    "single_token_y_n_candidates": true,
+    "one_binary_prompt_per_primitive": true,
+    "multi_label_semantics_preserved": true,
+    "preflight_disjoint_from_all_prior_preflights": true,
+    "full_reliability_precedes_internal_outcome_merge": true,
+    "external_api_code_absent": true,
+    "new_study_model_forward_absent": true,
+    "hidden_state_storage_absent": true,
+    "forward_hook_absent": true,
+    "intervention_absent": true
+  },
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false
+}

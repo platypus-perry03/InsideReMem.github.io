@@ -1,0 +1,22 @@
+{
+  "schema_id": "stage_e_transformation_replication_v2_1_preflight_authorization",
+  "status": "frozen_execution_authorized",
+  "authorization_date": "2026-08-31",
+  "run_id": "stagee_transformation_replication_v2_1_preflight_20260831_01",
+  "execution_scope": "v2_1_annotation_preflight_only",
+  "python_interpreter": "/home/jinhyun/.conda/envs/torch/bin/python",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "sampling": false,
+  "locked_files": [
+    {"path": "stage_e_transformation_replication_v2_design_frozen.json", "sha256": "ed055d76e0068221a016b9090b2cb25adb8395c4658823c80fc43947280f9364"},
+    {"path": "stage_e_transformation_replication_v2_1_annotation_instrument_amendment_frozen.json", "sha256": "def80214cb3928c6eb7c291c9e596a8a59dfc5099b65e4d7cd59c1dd5e6d2082"},
+    {"path": "run_stage_e_transformation_replication_v2_1_preflight.py", "sha256": "7fb4d8b0ae09facfc2e5f28cf0e5c0e422948abf595dbf0efe15218baf3593dd"},
+    {"path": "stage_e_transformation_replication_v2_1_preflight_static_review.json", "sha256": "894f879c73929f6c1ad315825c0d958517c0942ec7610e8cffe48b436b1f66bf"},
+    {"path": "stage_e_transformation_replication_v2_assets/annotation_preflight_attempt01_result.json", "sha256": "dd1d2e7e887ad6dcd4c9b560c86a3ff5932670e93ce056f2af5a5e957a0232d5"}
+  ],
+  "allowed": ["prepare disjoint 160-item preflight", "run two local annotators", "audit frozen reliability gates"],
+  "full_candidate_annotation_allowed": false,
+  "study_model_execution_allowed": false,
+  "intervention_allowed": false
+}

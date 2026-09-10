@@ -1,0 +1,18 @@
+{
+  "schema_version": "5.0.1",
+  "status": "catalog_amendment_frozen_before_any_dataset_or_model_result",
+  "date": "2026-08-30",
+  "base_catalog_sha256": "995d2086164a1ccf51b458b11ad70c2b328742c16b51c4ab6f34ad3bba010de2",
+  "reason": "CPU-only tokenizer validation found unequal continuation token lengths for one replication label pair before dataset generation.",
+  "model_result_observed": false,
+  "dataset_created_before_amendment": false,
+  "replacement": {
+    "pool": "replication",
+    "pair_index_zero_based": 0,
+    "old": ["cobalt", "pearl"],
+    "new": ["copper", "pearl"],
+    "new_leading_space_token_ids": [[24166], [70723]]
+  },
+  "design_threshold_or_gate_changed": false,
+  "model_execution_allowed": false
+}

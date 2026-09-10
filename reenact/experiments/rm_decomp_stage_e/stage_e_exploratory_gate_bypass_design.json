@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "run_id": "stage_e_exploratory_gate_bypass_20260830_01",
+  "status": "exploratory_protocol_deviation_design_frozen_execution_not_yet_authorized",
+  "design_date": "2026-08-30",
+  "authorization_source": "user_explicit_request_in_conversation_to_proceed_directly_to_stage_e_pilot",
+  "official_stage_e_pilot_claim_allowed": false,
+  "confirmatory_claim_allowed": false,
+  "protocol_deviations": {
+    "independent_human_audit_complete": false,
+    "baseline_calibration_v2_1_1_run": false,
+    "baseline_calibration_passed_families": [],
+    "calibration_items_reused_for_exploratory_screen": true,
+    "frozen_stage_e_protocol_approved": false
+  },
+  "scope": {
+    "label": "exploratory_feature_association_screen_only",
+    "dataset": "calibration_v2_1_1_dataset_draft.json",
+    "pair_count": 192,
+    "prompt_count": 384,
+    "lexical_families": [
+      "decrease",
+      "increase",
+      "temperature"
+    ],
+    "conditions": [
+      "relevant",
+      "irrelevant"
+    ],
+    "operationalized_feature": "arithmetic value transformation vs matched one-hop keyed fact retrieval",
+    "intervention_allowed_in_this_run": false,
+    "candidate_reselection_allowed": false,
+    "direction_reestimation_allowed": false
+  },
+  "readouts": {
+    "primary_exploratory": [
+      "layer_31_last_prompt_token_projection_on_frozen_discovery_liref_direction",
+      "relevant_minus_irrelevant_template_cluster_contrast"
+    ],
+    "candidate_response": [
+      "L31N13336_gated_activation_and_liref_aligned_output_contribution",
+      "L29H00030_pre_o_state_norm_and_liref_aligned_output_contribution",
+      "L30H00006_pre_o_state_norm_and_liref_aligned_output_contribution",
+      "L29H00031_pre_o_state_norm_and_liref_aligned_output_contribution"
+    ],
+    "behavior": [
+      "canonical_answer_next_token_log_probability",
+      "canonical_vs_paired_alternative_log_odds",
+      "one_token_greedy_accuracy"
+    ]
+  },
+  "candidate_ids": [
+    "L31N13336",
+    "L29H00030",
+    "L30H00006",
+    "L29H00031"
+  ],
+  "candidate_discovery_sign": "positive_for_all_four",
+  "descriptive_statistics": {
+    "independent_unit": "template_family",
+    "templates_per_lexical_family": 8,
+    "bootstrap_repetitions": 10000,
+    "bootstrap_seed": 20260830,
+    "p_values_allowed": false,
+    "pass_fail_thresholds_allowed": false
+  },
+  "execution": {
+    "physical_gpu": "cuda:1",
+    "visible_device_inside_process": "cuda:0",
+    "batch_size": 8,
+    "dtype": "float32",
+    "do_sample": false,
+    "model_training": false,
+    "trust_remote_code": false,
+    "local_files_only": true
+  },
+  "artifact_locks": {
+    "v2_1_frozen_design_sha256": "d0d6d19432eb48234a9729cc5f297c09963eb485bf5ec02178d504a93dc8307f",
+    "v2_1_1_dataset_sha256": "322d80f3c2c0723f6a4e8b0a968b30baac23e28cf68b6c60c5a7a95a5bca7420",
+    "v2_1_1_ai_preaudit_summary_sha256": "3cf6d5645134f66692395d17297eb445194565e66504ed3d14ef382fded4d339",
+    "v2_1_1_human_audit_handoff_sha256": "9f5bfdbf9423ae1caf02b7bc533477427ec4602c7290413b8b00bb0f2a3d401e",
+    "stage_a_direction_sha256": "55647779ecf44a33143f66800af9ae3b2767d34b99b8877abd3711b6bba6adf6",
+    "stage_a_candidate_manifest_sha256": "244b7397790fc71224ed77aafb4b4a1f267cd2dbebe67336b8560d67acbb52b9",
+    "stage_c_causal_design_sha256": "96db9e6dae8d1a6ec75ac7933b19ac657b41a1306260948dd8d4e4ce7e6cd697",
+    "model_config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441"
+  },
+  "interpretation_boundary": "Any result is a gate-bypassed exploratory association on calibration items. It cannot establish an official Stage E feature effect, R/M mechanism, causal component mediation, or confirmatory evidence.",
+  "execution_allowed": false
+}

@@ -1,0 +1,37 @@
+{
+  "schema_id": "rm_decomp_b_feature_schema_v1",
+  "approved": true,
+  "normalization": {
+    "unicode": "NFKC",
+    "casefold": true
+  },
+  "numeric_digit_span": {
+    "pattern": "(?<![A-Za-z0-9_])[-+]?(?:(?:\\d{1,3}(?:,\\d{3})+)|\\d+)(?:\\.\\d+)?%?(?![A-Za-z0-9_])",
+    "flags": ["UNICODE"]
+  },
+  "numeric_word_lexicon": [
+    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+    "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety",
+    "hundred", "thousand", "million", "billion", "trillion",
+    "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"
+  ],
+  "relation_lexicon": {
+    "additive": ["more", "additional", "extra", "increase", "increases", "increased", "increasing", "gain", "gains", "gained", "gaining", "receive", "receives", "received", "receiving"],
+    "subtractive": ["less", "fewer", "decrease", "decreases", "decreased", "decreasing", "lose", "loses", "lost", "losing", "remove", "removes", "removed", "removing"],
+    "temporal_order": ["before", "after", "earlier", "later", "precede", "preceded", "follow", "followed"],
+    "comparison": ["greater", "smaller", "larger", "higher", "lower", "equal", "same", "different"]
+  },
+  "symbolic_operator_set": ["+", "-", "*", "/", "="],
+  "unicode_operator_set": ["×", "÷", "−"],
+  "textual_operator_lexicon": {
+    "addition": ["plus", "add", "added", "sum", "total"],
+    "subtraction": ["minus", "subtract", "subtracted", "difference"],
+    "multiplication": ["times", "multiply", "multiplied", "product"],
+    "division": ["divide", "divided", "quotient", "ratio"],
+    "equality": ["equals", "equal to", "is equal to"]
+  },
+  "domain_source": "MMLU-Pro category",
+  "token_length_definition": "sum(attention_mask) with the frozen Stage A tokenizer",
+  "semantic_roles": ["numeric", "relation", "operator", "other", "prompt_prefix", "prompt_suffix"]
+}

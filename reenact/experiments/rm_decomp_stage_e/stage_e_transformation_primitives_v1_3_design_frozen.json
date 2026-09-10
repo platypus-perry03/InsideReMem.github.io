@@ -1,0 +1,73 @@
+{
+  "schema_id": "stage_e_transformation_primitives_v1_3",
+  "status": "design_frozen_local_preflight_allowed",
+  "freeze_date": "2026-08-31",
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false,
+  "amendment_document": "STAGE_E_TRANSFORMATION_PRIMITIVES_V1_3_FORCED_CHOICE_AMENDMENT_KO.md",
+  "amendment_document_sha256": "04050b9e39ec6b5349292456279d692ae6ca74369378250ea1c6177543e4b6aa",
+  "implementation": "run_stage_e_transformation_primitives_v1_3.py",
+  "implementation_sha256": "98f4537e88ce045d8bc893ff69e3d8bea12553c2115fb794df36b64c46243b2a",
+  "base_implementation": "run_stage_e_transformation_primitives_v1_2.py",
+  "base_implementation_sha256": "d16c522563bdf8827ac15a92db34bdbf6124e02dcbb65a2dcf50d403f5ebd4ba",
+  "preserved_v1_2_preflight_failure": {
+    "sha256": "99025cd863884910fa8586272eb3df0661f677fcbe8ca37c231118c9568ce0c2",
+    "status": "FAIL_PRESERVED"
+  },
+  "inputs": {
+    "dataset": {"path": "liref/dataset/mmlu-pro-3000samples.json", "sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96"},
+    "blind_items": {"path": "experiments/rm_decomp_stage_e/stage_e_natural_feature_discovery_v1_assets/blind_annotation_items.jsonl", "sha256": "6072b1c5dc61e80a17b1813d69d1a3b2f67d5d4f915fb1f51323776ce73230d6"},
+    "annotation_key": {"path": "experiments/rm_decomp_stage_e/stage_e_natural_feature_discovery_v1_assets/annotation_key_DO_NOT_USE_DURING_ANNOTATION.jsonl", "sha256": "9fd4bac3b4d7325d9cab8c9882118a578fa2b722f2dfc0efedb1f14f627e6c0f"},
+    "parent_consensus": {"path": "experiments/rm_decomp_stage_e/stage_e_natural_feature_discovery_v1_assets/consensus_annotations_v1_2.jsonl", "sha256": "868ff52a77cb8e31ff994ed9425ad97ad91cd61da84cf82fad8c01f82340410d"},
+    "parent_runner": {"path": "experiments/rm_decomp_stage_e/run_stage_e_natural_feature_discovery_v1.py", "sha256": "dbf88c9ad594ea4bc052aeab6da7449963b1ba9b26f9fa8ca688908ab6cb1220"},
+    "v1_preflight_key": {"path": "experiments/rm_decomp_stage_e/stage_e_transformation_taxonomy_v1_assets/preflight_private_key.jsonl", "sha256": "ca107d011e5232a28495d6f2cbace2cc52c4877591f337a6fcd6f07187aec1c2"},
+    "v1_1_preflight_key": {"path": "experiments/rm_decomp_stage_e/stage_e_transformation_taxonomy_v1_1_assets/preflight_private_key.jsonl", "sha256": "ac5d06b150499095f51db7544b0ea43ca0de7812e9a402f4d69c0f3ac90b90e5"},
+    "v1_2_preflight_key": {"path": "experiments/rm_decomp_stage_e/stage_e_transformation_primitives_v1_2_assets/preflight_private_key.jsonl", "sha256": "73356f770356295bb13bfcf8d2467b5d1d5d9fcb45632d02eafb653a1bdbfdb3"},
+    "layer_scalars": {"path": "liref_outputs/rm_decomp/v2/e_natural_feature_discovery_v1/tables/layer_liref_scalars.csv.gz", "sha256": "abe3884494a7c9c390b5545b2451ae1d3c3fb6710b8d1fc1b10fdd761bf9b738"},
+    "discovery_component_responses": {"path": "liref_outputs/rm_decomp/v2/b_characterization_v2_b02/tables/natural_responses.csv.gz", "sha256": "8ed5ab76b9fe20dfee6af8037007d87fda62e2d2bc945cf87e22190133fc3e8b"},
+    "validation_component_responses": {"path": "liref_outputs/rm_decomp/v2/pre_stage_c_v2_p01/memory_side/tables/natural_validation_responses.csv.gz", "sha256": "3d2504388e67ab1002a5c06f69d3eb1c85f6b5693da6181ec9b7471df29c7984"}
+  },
+  "models": {
+    "annotator_a": {"path": "models/Meta-Llama-3-8B-Instruct", "config_sha256": "61f3de03a16ca8046b05dc777bce72717022bc8522152eee61a69072272ef54b"},
+    "annotator_b": {"path": "models/Mistral-7B-Instruct-v0.3", "config_sha256": "affafc6478ec0fd07a32f0ca57aa2fc57743f4d17d6730f86a96ac24d1507f99"}
+  },
+  "response_mode": {
+    "type": "teacher_forced_single_token_binary",
+    "candidates": ["Y", "N"],
+    "sampling": false,
+    "generation": false,
+    "parser": false,
+    "tie_rule": "N"
+  },
+  "annotation_scope": {
+    "parent_y_rows": 895,
+    "parent_n_fixed_zero_baseline": 1739,
+    "parent_unc_excluded": 366,
+    "primitives": ["NUM", "RULE", "REL", "COND", "CAUS", "INTER"]
+  },
+  "preflight": {
+    "rows": 96,
+    "seed": 20260831,
+    "disjoint_from_v1_v1_1_v1_2": true,
+    "coverage": 1.0,
+    "raw_agreement_each_usable": 0.8,
+    "cohen_kappa_each_usable": 0.5,
+    "prevalence_range": [0.05, 0.95],
+    "minimum_usable_primitives": 2
+  },
+  "full_reliability": {
+    "joint_valid_coverage_each": 0.9,
+    "cohen_kappa_each": 0.5,
+    "minimum_analysis_usable_primitives": 2
+  },
+  "primary_contrast": "within_parent_transformation_y_primitive_y_vs_n",
+  "primary_endpoints": ["layer31_liref", "L29H00030", "L30H00006"],
+  "secondary_endpoints": ["L31N13336", "L29H00031"],
+  "claims": {
+    "post_discovery_multi_label_association_only": true,
+    "heldout_is_independent_confirmatory": false,
+    "causal_feature": false,
+    "component_mediation": false
+  }
+}

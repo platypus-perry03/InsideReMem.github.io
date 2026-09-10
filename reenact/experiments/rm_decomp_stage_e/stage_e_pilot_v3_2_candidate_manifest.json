@@ -1,0 +1,61 @@
+{
+  "schema_version": "3.2",
+  "manifest_id": "stage_e_limited_same_sample_pilot_v3_2_candidates",
+  "status": "frozen_candidate_set_no_reselection",
+  "indexing": "zero_based_model_index",
+  "candidate_addition_or_reselection_allowed": false,
+  "candidates": [
+    {
+      "component_id": "L31N13336",
+      "component_type": "ffn_neuron",
+      "module_index": 31,
+      "component_index": 13336,
+      "candidate_card_path": "AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01/candidate_cards/L31N13336.json",
+      "candidate_card_sha256": "643ca419bd3cd33b5afe6d2ab4c9871c7eb95db25f1bb91542e417f6ae0cbbe7",
+      "primary_scalar": "gated_activation_z_times_down_column_projection_on_frozen_layer_31_liref_direction",
+      "secondary_scalars": [
+        "signed_gated_activation_z",
+        "absolute_gated_activation_z"
+      ]
+    },
+    {
+      "component_id": "L29H00030",
+      "component_type": "attention_query_head",
+      "module_index": 29,
+      "component_index": 30,
+      "shared_kv_group": 7,
+      "candidate_card_path": "AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01/candidate_cards/L29H00030.json",
+      "candidate_card_sha256": "9b5a9a7df44599255f0af527c6f7e953e9375825580e922a89fd57950ba5769e",
+      "primary_scalar": "pre_o_head_state_dot_o_projection_block_transpose_frozen_layer_29_liref_direction",
+      "secondary_scalars": [
+        "pre_o_head_l2_norm"
+      ]
+    },
+    {
+      "component_id": "L30H00006",
+      "component_type": "attention_query_head",
+      "module_index": 30,
+      "component_index": 6,
+      "shared_kv_group": 1,
+      "candidate_card_path": "AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01/candidate_cards/L30H00006.json",
+      "candidate_card_sha256": "4aeba68ca9b7635d7056895030dc9e1d8a04467516fb95fda02baef97b66c19d",
+      "primary_scalar": "pre_o_head_state_dot_o_projection_block_transpose_frozen_layer_30_liref_direction",
+      "secondary_scalars": [
+        "pre_o_head_l2_norm"
+      ]
+    },
+    {
+      "component_id": "L29H00031",
+      "component_type": "attention_query_head",
+      "module_index": 29,
+      "component_index": 31,
+      "shared_kv_group": 7,
+      "candidate_card_path": "AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01/candidate_cards/L29H00031.json",
+      "candidate_card_sha256": "1465c335c27d820e70fab2b86c32f3b17ecfbf4eb1d07154659d6f630ccdc626",
+      "primary_scalar": "pre_o_head_state_dot_o_projection_block_transpose_frozen_layer_29_liref_direction",
+      "secondary_scalars": [
+        "pre_o_head_l2_norm"
+      ]
+    }
+  ]
+}

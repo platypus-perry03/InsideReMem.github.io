@@ -1,0 +1,61 @@
+{
+  "status": "FROZEN_EXECUTION_AUTHORIZED",
+  "study_id": "cross_dataset_behavioral_validation_v2",
+  "design_sha256": "ce8043033083b62efb1e9cd7d206b3675cfeee00eec6826329b3ef76991834b3",
+  "implementation_sha256": "9579eab51d11f0e129d19955498a1e5f359f039ffd77dcdaafe4ac7767b116b2",
+  "static_review_sha256": "d7b79838f3fce7ee4526a5efd57179641bd955ff1859b640194ed6dfe3301f53",
+  "records_sha256": "ef7b6767be65cd5971fd92e29c276554938818f0eceb99368ee422b160504952",
+  "manifest_sha256": {
+    "Meta-Llama-3-8B": "7af3d8c95c168baaecaa8765e8aa493e324a5aa65343b7027a5aca63543d9689",
+    "Mistral-7B-v0.3": "c7bc554cb7f60ce5e6446686b256556e74c6bd87c618108df60597a6426c46ae",
+    "OLMo-2-1124-7B": "0792397ab766f274a6553b5b95383832043aee6fc7a550a925f61e55748d3d71",
+    "gemma-2-9b": "0374a567b62463fa13a65fb4870e5767be054af6731607c994fe784510e6bb0f"
+  },
+  "model_locks": {
+    "Meta-Llama-3-8B": {
+      "config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+      "index_sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b",
+      "shards": {
+        "model-00001-of-00004.safetensors": "f2c144103072514542e327fa8080bd375cb300f2d453fba9ca3aea81d0d4cf33",
+        "model-00002-of-00004.safetensors": "d9eee5f23d94405d90b7e9ff88b9443fee42f8528a658f54214c2aba7530d80c",
+        "model-00003-of-00004.safetensors": "4b8fbc5e113f69768dd8de84661ea20af8a32b734a9976144b4236c447b40ccc",
+        "model-00004-of-00004.safetensors": "5dc34e6bdf2da9e35f0d93b5c333c870f3677dc43dc3a91ea3a8ad28a1fe1acb"
+      }
+    },
+    "Mistral-7B-v0.3": {
+      "config_sha256": "affafc6478ec0fd07a32f0ca57aa2fc57743f4d17d6730f86a96ac24d1507f99",
+      "index_sha256": "e489ba553b87cde188d921b1a8283c2e0b9d33d635b88147d96ff0fcd6250016",
+      "shards": {
+        "model-00001-of-00003.safetensors": "2d7de8eb9bd554cccc999649fd5a3a28a44d09042879d6c1cedd13f59c86f7a8",
+        "model-00002-of-00003.safetensors": "79a5f871a0fbb7919f263d78caff0d4d3b7a1d444552db3011ada70f48fd5ee4",
+        "model-00003-of-00003.safetensors": "ba7ae59358f726f5f5bc5264fd8a3aec907f42e6009d7b22454007d18723616a"
+      }
+    },
+    "OLMo-2-1124-7B": {
+      "config_sha256": "f1e210de0ba704c579768c154bf57e36e170868ffecb060a6e0d3f2e6b0b9710",
+      "index_sha256": "c285ec59423a5a7203724c6258f61d691c0816e4c3f79b1fede776298f894b07",
+      "shards": {
+        "model-00001-of-00006.safetensors": "880c0d9bd7311ca020584a7304504918dfcf17bfa35b464b1ab8dc01a06138d3",
+        "model-00002-of-00006.safetensors": "de0b6a357d03676c4986588aaf4dc96afc3f44a0498514961d2b2cfa1940655e",
+        "model-00003-of-00006.safetensors": "c1038a7d346a681a8fb6949e054c2246f3f3c80e826855c1cec6af1155cc607d",
+        "model-00004-of-00006.safetensors": "33c0a21146ace02d36928787ae7f34be868f7c81b894dea98ec7b0e5a3ea01b2",
+        "model-00005-of-00006.safetensors": "e7f82a3014ccfc0f67208f63785ae4bc71f09aba86db48bf6139d18178abbfed",
+        "model-00006-of-00006.safetensors": "2dda0bdc36c113e54909a798f8847f76f052b17a082ceaf1fa8b0fd30b0b3041"
+      }
+    },
+    "gemma-2-9b": {
+      "config_sha256": "800e3f504f8e76ef4d6295db8616b92d039cf2e6a3de15b4db45e4eff4e9a4dc",
+      "index_sha256": "089409e405cbc109a2b2a74f0bd4ccfa07d902fdc683e28782bdf9e9dd8a2f7b",
+      "shards": {
+        "model-00001-of-00008.safetensors": "72e486c145f30afdc43a507764a146fd545d26f166e60232c25d01a1510738c0",
+        "model-00002-of-00008.safetensors": "73b2e0b94e18b25a2f7a3abda70ab350053be6c615599cb3772f27efb2ae21eb",
+        "model-00003-of-00008.safetensors": "95310f8181c07b98a18facfbbbdaa7bcf28aafaddb9c33cd9dfa008706206970",
+        "model-00004-of-00008.safetensors": "f4aa5f7d5510456fba5eb22421432a65487b1d0864fbd59ca6f8dfac65184d32",
+        "model-00005-of-00008.safetensors": "96336ba3f200b986fa952df49998420a9ca1185853449b10a26eccc9bc7fc581",
+        "model-00006-of-00008.safetensors": "25d2f65b06a3ffc288fc1653554fa33b9d913f47f9b797be7785db19d3ed1f08",
+        "model-00007-of-00008.safetensors": "d0804ef42bdca870b9f5da75fe222448906bfccfddbebbbf61a5361b2f7a46b3",
+        "model-00008-of-00008.safetensors": "18e1cb9107e250c97ac91ad62bd950449f75de4a427092319ff368164d4617b2"
+      }
+    }
+  }
+}

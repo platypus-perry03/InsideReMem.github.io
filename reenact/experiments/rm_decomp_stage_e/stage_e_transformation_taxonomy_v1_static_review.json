@@ -1,0 +1,40 @@
+{
+  "schema_id": "stage_e_transformation_taxonomy_v1_static_review",
+  "status": "PASS",
+  "review_date": "2026-08-31",
+  "design_sha256": "6987c2d60c0d3a5312263979d84edd609c9c050a038749b6e5bf478e69a4ea9b",
+  "manifest_sha256": "372715b8ddc408fedf1095b05ce83ea37eed37f23559c842851341d6f5026a57",
+  "implementation_sha256": "fee2461df4a9261c8e66ceda092d7d8112e5d30232f24f51aa992bf5b2a2abb0",
+  "tests_sha256": "c80872f8b55a17c21892528cdd835bba7b62df2a021c578ae32719174d3abf5a",
+  "model_free_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "checks": {
+    "blind_annotation_fields_only": true,
+    "rm_label_hidden_during_annotation": true,
+    "answers_hidden_during_annotation": true,
+    "internal_outcomes_hidden_during_annotation": true,
+    "external_api_client_absent": true,
+    "openai_api_call_absent": true,
+    "new_study_model_forward_absent": true,
+    "hidden_state_capture_absent": true,
+    "intervention_absent": true,
+    "preflight_blocks_full_annotation_on_failure": true,
+    "full_reliability_blocks_analysis_on_failure": true,
+    "discovery_selection_locked_before_heldout": true,
+    "heldout_not_described_as_independent_confirmatory": true
+  },
+  "allowed_execution": [
+    "deterministic blind/preflight preparation",
+    "local Meta-Llama-3-8B-Instruct blind annotation",
+    "local Mistral-7B-Instruct-v0.3 blind annotation",
+    "model-free reliability and association analysis using preserved scalar tables"
+  ],
+  "forbidden_execution": [
+    "external API calls",
+    "Meta-Llama-3-8B base study-model forward",
+    "new LiReF or component search",
+    "activation modification, suppression, patching, or intervention"
+  ]
+}

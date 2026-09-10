@@ -1,0 +1,52 @@
+{
+  "study_id": "cross_model_r_directed_homologue_v1_5",
+  "status": "FROZEN_EXECUTION_ALLOWED_AFTER_STATIC_REVIEW",
+  "frozen_at": "2026-09-01",
+  "symmetry_contract": "exact directional mirror of M-directed v1.3/v1.4; only the pole-specific discovery and heldout sign condition changes",
+  "models": [
+    {"name": "Meta-Llama-3-8B", "model_path": "AI/reenact/models/Meta-Llama-3-8B", "gpu": 1, "batch_size": 4},
+    {"name": "Mistral-7B-v0.3", "model_path": "AI/reenact/models/Mistral-7B-v0.3", "gpu": 2, "batch_size": 4},
+    {"name": "OLMo-2-1124-7B", "model_path": "AI/reenact/models/OLMo-2-1124-7B", "gpu": 3, "batch_size": 4},
+    {"name": "gemma-2-9b", "model_path": "AI/reenact/models/gemma-2-9b", "gpu": 4, "batch_size": 4}
+  ],
+  "dataset_path": "AI/reenact/liref/dataset/mmlu-pro-3000samples.json",
+  "split_path": "AI/reenact/liref_outputs/layerwise_liref/split_ids.json",
+  "layerwise_root": "AI/reenact/liref_outputs/layerwise_liref",
+  "output_root": "AI/reenact/liref_outputs/rm_decomp/cross_model_r_directed_v1_5",
+  "prompt_template": "Q: {question}\nA: ",
+  "score_threshold": 0.5,
+  "dtype": "float32",
+  "seed": 20260831,
+  "layer_scope": "all_transformer_blocks",
+  "depth_bins": {"early_max": 0.3333333333333333, "middle_max": 0.6666666666666666},
+  "direction_alignment_cosine_min": 0.999,
+  "discovery_max_candidates_per_component_type": 5,
+  "candidate_selection": "reasoning_mean_positive_and_positive_Delta_global_topk_no_depth_quota",
+  "target_definition": "component projection c is measured on the layer's M-to-R LiReF axis; require mean_R(c)>0 and Delta=mean_R(c)-mean_M(c)>0",
+  "heldout_survival": {"r_directed_same_sign": true, "candidate_family_bh_q_lt": 0.05},
+  "candidate_alphas": [0.5, 1.0],
+  "control_alpha": 1.0,
+  "random_controls_per_candidate": 3,
+  "bootstrap_replicates": 5000,
+  "permutation_replicates": 5000,
+  "fdr_alpha": 0.05,
+  "intervention_position": "last_prompt_token_only",
+  "component_pass": {
+    "heldout_r_directed_same_sign": true,
+    "heldout_survivor_family_bh_q_lt": 0.05,
+    "gap_reduction_ci_low_gt": 0.0,
+    "delta_g_permutation_survivor_family_bh_q_lt": 0.05,
+    "dose_monotonic_abs_gap": true,
+    "candidate_minus_matched_ci_low_gt": 0.0,
+    "candidate_minus_random_mean_ci_low_gt": 0.0
+  },
+  "model_level": {
+    "class_recurrence_min_heads": 1,
+    "class_recurrence_min_neurons": 1,
+    "meta_like_min_heads": 3,
+    "meta_like_min_neurons": 1
+  },
+  "architecture_caveat": "Meta-Llama and Mistral contributions are direct residual-addition decompositions. Gemma-2 and OLMo-2 values are pre-normalization screening proxies; causal suppression on the final-layer endpoint is mandatory.",
+  "claim_boundary": "Exploratory R-directed extension after the R/M gap study; not an independent replication, reasoning circuit, behavioral cause, or universal mechanism.",
+  "result_pdf_update_allowed": false
+}

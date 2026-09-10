@@ -1,0 +1,15 @@
+{
+  "study_id": "cross_model_functional_homologue_v1_1",
+  "attempt": "20260831_01",
+  "status": "FAILED_PREFLIGHT_NO_SCIENTIFIC_RESULT",
+  "models_affected": ["Mistral-7B-v0.3", "OLMo-2-1124-7B", "gemma-2-9b"],
+  "failure_point": "first Discovery batch capture completeness gate",
+  "cause": "DiscoveryCapture.reset rebound pre-hook target dictionaries after hook installation",
+  "model_forwards_per_model": 1,
+  "candidate_selection_performed": false,
+  "heldout_used": false,
+  "suppression_performed": false,
+  "scientific_result_available": false,
+  "failed_output_preserved_at": "AI/reenact/liref_outputs/rm_decomp/cross_model_v1_1_failed_preflight_capture_20260831_01",
+  "attempt01_authorization_superseded": true
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "2.1.1",
+  "status": "dataset_created_automatic_audit_and_determinism_pass_ai_preaudit_pending",
+  "verification_date": "2026-08-30",
+  "design_changed": false,
+  "design_sha256": "d0d6d19432eb48234a9729cc5f297c09963eb485bf5ec02178d504a93dc8307f",
+  "revision_record_sha256": "a899df454b12f1d84719a2a8d1974c023672c5c3598a4e64b070a5353e7fa087",
+  "parent_builder_sha256": "90acf934b46eaffa04be8e44af1a5c0f9e04322795beaed202372af26c50129e",
+  "parent_dataset_sha256": "cfc5a628d75e05c17d4c4ff3907f477d6f6179892453f1e2c3927c8aeed10640",
+  "builder_sha256": "271bbc94027c2f122a2202710b2beb4857003090b53b14ba4f98681b5e3d6776",
+  "dataset_sha256": "322d80f3c2c0723f6a4e8b0a968b30baac23e28cf68b6c60c5a7a95a5bca7420",
+  "automatic_audit_sha256": "93cd89e6901772c87435eb9f208bd4fc310e032b660c7678c34acf044f348e3b",
+  "static_schema_check_sha256": "40685f6aece78468f0b5bbfaffe725d9b3a523e2985be37ef66c7c1dedeb9657",
+  "dataset_manifest_sha256": "d78264b2a9742c73ad82b6ee8ec28e6d1da7ad98c7261d46dfc1fb80bc2386db",
+  "generation_a": {
+    "output_dir": "/tmp/calv211_verify_a_20260830",
+    "dataset_sha256": "322d80f3c2c0723f6a4e8b0a968b30baac23e28cf68b6c60c5a7a95a5bca7420",
+    "automatic_audit_sha256": "93cd89e6901772c87435eb9f208bd4fc310e032b660c7678c34acf044f348e3b",
+    "dataset_manifest_sha256": "d78264b2a9742c73ad82b6ee8ec28e6d1da7ad98c7261d46dfc1fb80bc2386db"
+  },
+  "generation_b": {
+    "output_dir": "/tmp/calv211_verify_b_20260830",
+    "dataset_sha256": "322d80f3c2c0723f6a4e8b0a968b30baac23e28cf68b6c60c5a7a95a5bca7420",
+    "automatic_audit_sha256": "93cd89e6901772c87435eb9f208bd4fc310e032b660c7678c34acf044f348e3b",
+    "dataset_manifest_sha256": "d78264b2a9742c73ad82b6ee8ec28e6d1da7ad98c7261d46dfc1fb80bc2386db"
+  },
+  "byte_identical_files": [
+    "calibration_v2_1_1_static_schema_check.json",
+    "calibration_v2_1_1_dataset_draft.json",
+    "calibration_v2_1_1_automatic_audit.json",
+    "calibration_v2_1_1_dataset_manifest.json"
+  ],
+  "content_diff_against_parent": {
+    "unchanged_pair_content_count": 168,
+    "revised_pair_content_count": 24,
+    "revised_template_families": [
+      "v21_dec_badge_index",
+      "v21_temp_capsule_account",
+      "v21_temp_reservoir_register"
+    ],
+    "unexpected_revised_template_family_count": 0,
+    "all_pair_ids_versioned_and_unique": true
+  },
+  "counts": {
+    "pair_count": 192,
+    "prompt_count": 384,
+    "template_family_count": 24,
+    "frames_per_template_family": 8
+  },
+  "automatic_audit_pass": true,
+  "pair_checks_pass_192_of_192": true,
+  "template_counterbalance_pass_24_of_24": true,
+  "cross_version_near_duplicate_audit_pass": true,
+  "tokenizer_only_environment": {
+    "transformers_version": "5.16.1",
+    "pytorch_installed": false,
+    "trust_remote_code": false,
+    "local_files_only": true
+  },
+  "model_weights_loaded": false,
+  "model_forward_performed": false,
+  "gpu_used": false,
+  "baseline_calibration_execution_allowed": false,
+  "stage_e_pilot_allowed": false
+}

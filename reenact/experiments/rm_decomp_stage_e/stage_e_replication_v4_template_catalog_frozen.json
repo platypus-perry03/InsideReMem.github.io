@@ -1,0 +1,151 @@
+{
+  "schema_version": "4.0",
+  "status": "template_catalog_frozen_model_execution_not_authorized",
+  "random_seed": 20260901,
+  "pools": {
+    "calibration": {
+      "names": ["Adela", "Bram", "Cora", "Dimas", "Esme", "Faris", "Greta", "Ivo"],
+      "label_pairs": [["bronze", "silver"], ["crimson", "indigo"], ["east", "west"], ["high", "low"], ["juniper", "willow"], ["opal", "slate"], ["prime", "second"], ["sun", "moon"]]
+    },
+    "replication": {
+      "names": ["Alina", "Boris", "Clara", "Dario", "Elsa", "Florian", "Helena", "Ivan"],
+      "label_pairs": [["copper", "nickel"], ["scarlet", "violet"], ["left", "right"], ["upper", "lower"], ["birch", "spruce"], ["quartz", "shale"], ["first", "third"], ["dawn", "dusk"]]
+    }
+  },
+  "family_items": {
+    "points_balance": ["tournament score", "reward balance", "league points", "quiz total", "merit score", "arcade balance", "contest points", "credit total"],
+    "temperature": ["chamber temperature", "reservoir reading", "greenhouse temperature", "kiln reading", "reactor temperature", "cooler reading", "vault temperature", "basin reading"]
+  },
+  "calibration_styles": [
+    {
+      "style_id": "cal_style_01",
+      "mapping": "For {name}, the {label} {item} is documented in record {case_key}.",
+      "arithmetic": "Record {case_key} names {key_1} as START and {key_2} as CHANGE and gives rule {operation}. Its result choices are A={choice_a} and B={choice_b}.",
+      "selector": "Record {case_key} marks {active_tag} active; tag {tag_1} selects {key_1}, while tag {tag_2} selects {key_2}. Its result choices are A={choice_a} and B={choice_b}.",
+      "ledger": "The shared value sheet states {key_1}={value_1}, {key_2}={value_2}, {key_3}={value_3}, and {key_4}={value_4}.",
+      "question": "Which choice gives {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "cal_style_02",
+      "mapping": "Case file {case_key} governs {name}'s {label} {item}.",
+      "arithmetic": "The file links baseline key {key_1} and adjustment key {key_2} to instruction {operation}; candidate A is {choice_a} and candidate B is {choice_b}.",
+      "selector": "The file declares selector {active_tag}; branch {tag_1} leads to {key_1} and branch {tag_2} leads to {key_2}; candidate A is {choice_a} and candidate B is {choice_b}.",
+      "ledger": "A separate lookup table maps {key_1} to {value_1}, {key_2} to {value_2}, {key_3} to {value_3}, and {key_4} to {value_4}.",
+      "question": "Which candidate is the present {target_label} {item} for {name}?"
+    },
+    {
+      "style_id": "cal_style_03",
+      "mapping": "Use docket {case_key} when checking the {label} {item} assigned to {name}.",
+      "arithmetic": "Docket {case_key} supplies source {key_1}, shift {key_2}, and command {operation}. The listed answers are A={choice_a} and B={choice_b}.",
+      "selector": "Docket {case_key} displays active seal {active_tag}; seal {tag_1} points at {key_1}, whereas seal {tag_2} points at {key_2}. The listed answers are A={choice_a} and B={choice_b}.",
+      "ledger": "The docket's value index reads {key_1}:{value_1}; {key_2}:{value_2}; {key_3}:{value_3}; {key_4}:{value_4}.",
+      "question": "Which listed answer matches {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "cal_style_04",
+      "mapping": "The {label} {item} for {name} is controlled by panel {case_key}.",
+      "arithmetic": "Panel {case_key} identifies original value key {key_1}, change value key {key_2}, and action {operation}; choose between A={choice_a} and B={choice_b}.",
+      "selector": "Panel {case_key} shows signal {active_tag}; signal {tag_1} routes to {key_1} and signal {tag_2} routes to {key_2}; choose between A={choice_a} and B={choice_b}.",
+      "ledger": "The panel ledger contains {key_1}={value_1} | {key_2}={value_2} | {key_3}={value_3} | {key_4}={value_4}.",
+      "question": "Which choice is correct for {name}'s {target_label} {item} now?"
+    },
+    {
+      "style_id": "cal_style_05",
+      "mapping": "Archive entry {case_key} covers {name}'s {label} {item}.",
+      "arithmetic": "Entry {case_key} defines input key {key_1}, delta key {key_2}, and operator {operation}. Option A gives {choice_a}; option B gives {choice_b}.",
+      "selector": "Entry {case_key} activates marker {active_tag}. Marker {tag_1} names {key_1}; marker {tag_2} names {key_2}. Option A gives {choice_a}; option B gives {choice_b}.",
+      "ledger": "The archive number key assigns {key_1}->{value_1}, {key_2}->{value_2}, {key_3}->{value_3}, and {key_4}->{value_4}.",
+      "question": "Which option gives the current {target_label} {item} belonging to {name}?"
+    },
+    {
+      "style_id": "cal_style_06",
+      "mapping": "Workbook section {case_key} tracks the {label} {item} for {name}.",
+      "arithmetic": "Section {case_key} pairs starting reference {key_1} with update reference {key_2} under rule {operation}. Answer A={choice_a}; answer B={choice_b}.",
+      "selector": "Section {case_key} highlights code {active_tag}. Code {tag_1} resolves through {key_1}; code {tag_2} resolves through {key_2}. Answer A={choice_a}; answer B={choice_b}.",
+      "ledger": "The workbook reference list gives {key_1} {value_1}, {key_2} {value_2}, {key_3} {value_3}, and {key_4} {value_4}.",
+      "question": "Which answer represents {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "cal_style_07",
+      "mapping": "Register {case_key} is the source for {name}'s {label} {item}.",
+      "arithmetic": "Register {case_key} labels {key_1} BEFORE, {key_2} CHANGE, and {operation} the required rule. The alternatives are A={choice_a} and B={choice_b}.",
+      "selector": "Register {case_key} labels {active_tag} the active token. Token {tag_1} references {key_1}; token {tag_2} references {key_2}. The alternatives are A={choice_a} and B={choice_b}.",
+      "ledger": "Its numeric register lists {key_1}:{value_1}, {key_2}:{value_2}, {key_3}:{value_3}, and {key_4}:{value_4}.",
+      "question": "Which alternative gives the current {target_label} {item} for {name}?"
+    },
+    {
+      "style_id": "cal_style_08",
+      "mapping": "For the {label} {item}, {name} must consult card {case_key}.",
+      "arithmetic": "Card {case_key} calls {key_1} the base key and {key_2} the movement key, then requires {operation}. Choice A shows {choice_a}; choice B shows {choice_b}.",
+      "selector": "Card {case_key} calls {active_tag} the live selector. Selector line {tag_1} uses {key_1}; selector line {tag_2} uses {key_2}. Choice A shows {choice_a}; choice B shows {choice_b}.",
+      "ledger": "The card directory decodes {key_1} as {value_1}, {key_2} as {value_2}, {key_3} as {value_3}, and {key_4} as {value_4}.",
+      "question": "Which choice shows {name}'s current {target_label} {item}?"
+    }
+  ],
+  "replication_styles": [
+    {
+      "style_id": "rep_style_01",
+      "mapping": "Folder {case_key} contains the instructions for {name}'s {label} {item}.",
+      "arithmetic": "Inside the folder, {key_1} is the initial-value code, {key_2} is the adjustment code, and the operation is {operation}. A corresponds to {choice_a}; B corresponds to {choice_b}.",
+      "selector": "Inside the folder, {active_tag} is active; route {tag_1} ends at {key_1}, while route {tag_2} ends at {key_2}. A corresponds to {choice_a}; B corresponds to {choice_b}.",
+      "ledger": "The accompanying number chart says {key_1}={value_1}, {key_2}={value_2}, {key_3}={value_3}, and {key_4}={value_4}.",
+      "question": "For {name}'s {target_label} {item}, which letter is correct?"
+    },
+    {
+      "style_id": "rep_style_02",
+      "mapping": "{name}'s {label} {item} points to memo {case_key}.",
+      "arithmetic": "Memo {case_key} assigns START to {key_1}, DIFFERENCE to {key_2}, and directs {operation}. Candidate A has value {choice_a}; candidate B has value {choice_b}.",
+      "selector": "Memo {case_key} identifies {active_tag} as selected. Selection {tag_1} opens {key_1}; selection {tag_2} opens {key_2}. Candidate A has value {choice_a}; candidate B has value {choice_b}.",
+      "ledger": "The memo's lookup strip shows {key_1}->{value_1}; {key_2}->{value_2}; {key_3}->{value_3}; {key_4}->{value_4}.",
+      "question": "Which candidate matches the current {target_label} {item} of {name}?"
+    },
+    {
+      "style_id": "rep_style_03",
+      "mapping": "Ticket {case_key} applies to the {label} {item} recorded for {name}.",
+      "arithmetic": "Ticket {case_key} provides beginning key {key_1}, change key {key_2}, and procedure {operation}. The possible results are A={choice_a} or B={choice_b}.",
+      "selector": "Ticket {case_key} presents active symbol {active_tag}. Symbol {tag_1} connects to {key_1}; symbol {tag_2} connects to {key_2}. The possible results are A={choice_a} or B={choice_b}.",
+      "ledger": "The ticket index translates {key_1} to {value_1}, {key_2} to {value_2}, {key_3} to {value_3}, and {key_4} to {value_4}.",
+      "question": "Which possible result belongs to {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "rep_style_04",
+      "mapping": "The reference for {name}'s {label} {item} is slip {case_key}.",
+      "arithmetic": "Slip {case_key} supplies first value key {key_1}, modification key {key_2}, and calculation {operation}. Select A={choice_a} or B={choice_b}.",
+      "selector": "Slip {case_key} carries selector {active_tag}; position {tag_1} indicates {key_1}, and position {tag_2} indicates {key_2}. Select A={choice_a} or B={choice_b}.",
+      "ledger": "The reference table reports {key_1}:{value_1} / {key_2}:{value_2} / {key_3}:{value_3} / {key_4}:{value_4}.",
+      "question": "Which selection gives the current {target_label} {item} for {name}?"
+    },
+    {
+      "style_id": "rep_style_05",
+      "mapping": "Log page {case_key} describes {name}'s {label} {item}.",
+      "arithmetic": "On page {case_key}, key {key_1} supplies the base, key {key_2} supplies the change, and rule {operation} combines them. Result A is {choice_a}; result B is {choice_b}.",
+      "selector": "On page {case_key}, marker {active_tag} is enabled. Marker {tag_1} chooses {key_1}; marker {tag_2} chooses {key_2}. Result A is {choice_a}; result B is {choice_b}.",
+      "ledger": "The log's number legend contains {key_1}={value_1}, {key_2}={value_2}, {key_3}={value_3}, {key_4}={value_4}.",
+      "question": "Which result is current for {name}'s {target_label} {item}?"
+    },
+    {
+      "style_id": "rep_style_06",
+      "mapping": "Chart {case_key} is assigned to {name}'s {label} {item}.",
+      "arithmetic": "Chart {case_key} identifies prior key {key_1}, increment key {key_2}, and instruction {operation}. Available answer A={choice_a}; available answer B={choice_b}.",
+      "selector": "Chart {case_key} identifies active flag {active_tag}. Flag {tag_1} directs to {key_1}; flag {tag_2} directs to {key_2}. Available answer A={choice_a}; available answer B={choice_b}.",
+      "ledger": "Its value legend pairs {key_1} with {value_1}, {key_2} with {value_2}, {key_3} with {value_3}, and {key_4} with {value_4}.",
+      "question": "Which available answer gives {name}'s current {target_label} {item}?"
+    },
+    {
+      "style_id": "rep_style_07",
+      "mapping": "Sheet {case_key} provides the rule for the {label} {item} belonging to {name}.",
+      "arithmetic": "Sheet {case_key} sets origin code {key_1}, adjustment code {key_2}, and function {operation}. Letter A means {choice_a}; letter B means {choice_b}.",
+      "selector": "Sheet {case_key} sets {active_tag} as the active signal. Signal {tag_1} finds {key_1}; signal {tag_2} finds {key_2}. Letter A means {choice_a}; letter B means {choice_b}.",
+      "ledger": "The sheet's codebook defines {key_1} as {value_1}, {key_2} as {value_2}, {key_3} as {value_3}, and {key_4} as {value_4}.",
+      "question": "Which letter gives the current {target_label} {item} belonging to {name}?"
+    },
+    {
+      "style_id": "rep_style_08",
+      "mapping": "To resolve {name}'s {label} {item}, open note {case_key}.",
+      "arithmetic": "Note {case_key} names starting pointer {key_1}, change pointer {key_2}, and method {operation}. The answer list reads A={choice_a}, B={choice_b}.",
+      "selector": "Note {case_key} names {active_tag} the chosen indicator. Indicator {tag_1} points to {key_1}; indicator {tag_2} points to {key_2}. The answer list reads A={choice_a}, B={choice_b}.",
+      "ledger": "The note directory lists {key_1} {value_1}; {key_2} {value_2}; {key_3} {value_3}; {key_4} {value_4}.",
+      "question": "Which answer-list letter resolves {name}'s current {target_label} {item}?"
+    }
+  ]
+}

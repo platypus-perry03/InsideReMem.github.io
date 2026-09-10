@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "status": "authorization_frozen_for_single_baseline_run",
+  "authorization_path": "calibration_v2_execution_authorization_frozen.json",
+  "authorization_sha256": "45769b9cf00a77c21317a237c09ecec14f9e772dd5c9ce7524ae61d367a1d96f",
+  "run_id": "calv2_baseline_20260830_01",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "approved_scope": "baseline_calibration_v2_behavior_only",
+  "human_audit": "not_performed",
+  "human_audit_gate": "waived_by_user",
+  "pilot_or_confirmatory_execution_allowed": false,
+  "frozen_at": "2026-08-30T10:30:54Z"
+}

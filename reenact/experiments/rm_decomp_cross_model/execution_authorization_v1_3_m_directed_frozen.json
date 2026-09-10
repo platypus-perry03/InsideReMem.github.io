@@ -1,0 +1,85 @@
+{
+  "authorization_id": "cross_model_m_directed_homologue_v1_3_20260831_01",
+  "status": "FROZEN_EXECUTION_AUTHORIZED",
+  "authorized_at": "2026-08-31",
+  "authorized_models": [
+    "Mistral-7B-v0.3",
+    "OLMo-2-1124-7B",
+    "gemma-2-9b"
+  ],
+  "gpu_map": {
+    "Mistral-7B-v0.3": 1,
+    "OLMo-2-1124-7B": 2,
+    "gemma-2-9b": 3
+  },
+  "batch_size": {
+    "Mistral-7B-v0.3": 4,
+    "OLMo-2-1124-7B": 4,
+    "gemma-2-9b": 4
+  },
+  "dtype": "float32",
+  "design_sha256": "03a2cd0a51b6614f2662f1d64db39cdea2bb970530fd16abf711b8e03989c1d5",
+  "implementation_sha256": "fd5c69bec7560c49245a848bb0036b5fa5d5e6df9eb832fd520207cd4fb3be23",
+  "static_review_sha256": "6c840a3ece7620d2c90a4ecc1c749b3536e387cc326973eaf8cc853b11a67b69",
+  "inputs": {
+    "dataset_sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96",
+    "split_sha256": "d188586c8c5caa9f661064659540889e49423c276075dc7b91b31e53a43b32bd",
+    "layerwise_liref_sha256": {
+      "Mistral-7B-v0.3": "6174d89ba28fefdac759d6b0cff5aa867681a0f3a6cc7f30c5992742d5646eee",
+      "OLMo-2-1124-7B": "5e10c3293b8dc3212593ccda1737de856ace53bfca729755ea18431068fe892b",
+      "gemma-2-9b": "38c4e9760721038c4cd35471bd2ce4f141b6586127c821d8a807e2afef245a31"
+    }
+  },
+  "model_locks": {
+    "Mistral-7B-v0.3": {
+      "config_sha256": "affafc6478ec0fd07a32f0ca57aa2fc57743f4d17d6730f86a96ac24d1507f99",
+      "index_sha256": "e489ba553b87cde188d921b1a8283c2e0b9d33d635b88147d96ff0fcd6250016",
+      "shards": {
+        "model-00001-of-00003.safetensors": "2d7de8eb9bd554cccc999649fd5a3a28a44d09042879d6c1cedd13f59c86f7a8",
+        "model-00002-of-00003.safetensors": "79a5f871a0fbb7919f263d78caff0d4d3b7a1d444552db3011ada70f48fd5ee4",
+        "model-00003-of-00003.safetensors": "ba7ae59358f726f5f5bc5264fd8a3aec907f42e6009d7b22454007d18723616a"
+      }
+    },
+    "OLMo-2-1124-7B": {
+      "config_sha256": "f1e210de0ba704c579768c154bf57e36e170868ffecb060a6e0d3f2e6b0b9710",
+      "index_sha256": "c285ec59423a5a7203724c6258f61d691c0816e4c3f79b1fede776298f894b07",
+      "shards": {
+        "model-00001-of-00006.safetensors": "880c0d9bd7311ca020584a7304504918dfcf17bfa35b464b1ab8dc01a06138d3",
+        "model-00002-of-00006.safetensors": "de0b6a357d03676c4986588aaf4dc96afc3f44a0498514961d2b2cfa1940655e",
+        "model-00003-of-00006.safetensors": "c1038a7d346a681a8fb6949e054c2246f3f3c80e826855c1cec6af1155cc607d",
+        "model-00004-of-00006.safetensors": "33c0a21146ace02d36928787ae7f34be868f7c81b894dea98ec7b0e5a3ea01b2",
+        "model-00005-of-00006.safetensors": "e7f82a3014ccfc0f67208f63785ae4bc71f09aba86db48bf6139d18178abbfed",
+        "model-00006-of-00006.safetensors": "2dda0bdc36c113e54909a798f8847f76f052b17a082ceaf1fa8b0fd30b0b3041"
+      }
+    },
+    "gemma-2-9b": {
+      "config_sha256": "800e3f504f8e76ef4d6295db8616b92d039cf2e6a3de15b4db45e4eff4e9a4dc",
+      "index_sha256": "089409e405cbc109a2b2a74f0bd4ccfa07d902fdc683e28782bdf9e9dd8a2f7b",
+      "shards": {
+        "model-00001-of-00008.safetensors": "72e486c145f30afdc43a507764a146fd545d26f166e60232c25d01a1510738c0",
+        "model-00002-of-00008.safetensors": "73b2e0b94e18b25a2f7a3abda70ab350053be6c615599cb3772f27efb2ae21eb",
+        "model-00003-of-00008.safetensors": "95310f8181c07b98a18facfbbbdaa7bcf28aafaddb9c33cd9dfa008706206970",
+        "model-00004-of-00008.safetensors": "f4aa5f7d5510456fba5eb22421432a65487b1d0864fbd59ca6f8dfac65184d32",
+        "model-00005-of-00008.safetensors": "96336ba3f200b986fa952df49998420a9ca1185853449b10a26eccc9bc7fc581",
+        "model-00006-of-00008.safetensors": "25d2f65b06a3ffc288fc1653554fa33b9d913f47f9b797be7785db19d3ed1f08",
+        "model-00007-of-00008.safetensors": "d0804ef42bdca870b9f5da75fe222448906bfccfddbebbbf61a5361b2f7a46b3",
+        "model-00008-of-00008.safetensors": "18e1cb9107e250c97ac91ad62bd950449f75de4a427092319ff368164d4617b2"
+      }
+    }
+  },
+  "allowed": [
+    "Discovery-only M-directed gap-supporting component screening",
+    "held-out validation of frozen candidates",
+    "last-token candidate/control suppression",
+    "scalar/statistical output"
+  ],
+  "forbidden": [
+    "candidate replacement after held-out inspection",
+    "negative-Delta candidates mislabeled as M-directed",
+    "new input-feature search",
+    "full hidden-state persistence",
+    "weight updates",
+    "automatic result.pdf modification"
+  ],
+  "result_pdf_update_allowed": false
+}

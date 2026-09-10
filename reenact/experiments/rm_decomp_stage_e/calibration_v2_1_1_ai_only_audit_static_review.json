@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "review_id": "calibration_v2_1_1_ai_only_audit_static_review_v1",
+  "review_date": "2026-08-30",
+  "status": "pass",
+  "implementation": "run_ai_only_audit_v2_1_1.py",
+  "implementation_sha256": "1f6d937169732cc0b9d3d2693d9e11c98143c84e76fec0d0453449c3f9d36a5a",
+  "checks": {
+    "dataset_sha256_locked": true,
+    "parent_design_sha256_locked": true,
+    "ai_only_policy_sha256_locked": true,
+    "automatic_audit_sha256_locked": true,
+    "prior_ai_preaudit_csv_and_summary_locked": true,
+    "adversarial_review_sha256_locked": true,
+    "exact_pair_count_192_required": true,
+    "exact_template_family_count_24_required": true,
+    "ten_pair_criteria_all_required": true,
+    "all_eight_frames_per_template_required": true,
+    "model_library_imported": false,
+    "tokenizer_loaded": false,
+    "model_loaded": false,
+    "model_forward_possible": false,
+    "gpu_access_present": false,
+    "human_reviewer_csv_write_path_present": false,
+    "audit_outputs_written_atomically": true,
+    "calibration_execution_authorized_by_script": false,
+    "stage_e_pilot_authorized_by_script": false,
+    "confirmatory_claim_authorized": false
+  },
+  "output_scope": [
+    "calibration_v2_1_1_ai_only_audit.csv",
+    "calibration_v2_1_1_ai_only_audit_summary.json"
+  ],
+  "conclusion": "The implementation is dataset-only, hash-locked, cannot modify the human reviewer worksheets, and cannot authorize model execution."
+}

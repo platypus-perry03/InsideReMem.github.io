@@ -1,0 +1,38 @@
+{
+  "authorization_id": "meta_llama_full20_gap_validation_20260831_01",
+  "status": "FROZEN_EXECUTION_AUTHORIZED",
+  "authorized_at": "2026-08-31",
+  "run_id": "v2_c02_full20",
+  "model": "Meta-Llama-3-8B base",
+  "gpu_id": 1,
+  "batch_size": 8,
+  "dtype": "float32",
+  "candidate_count": 20,
+  "config_sha256": "44df9222a58dd177cd8329424ed60b7452b54ef65015d78a1bf71b4765a42853",
+  "implementation_sha256": "f68aa1c04dc4003befc330c96dd4ab597a3fd8a28548375360ad477d1c8b6fd9",
+  "static_review_sha256": "9967de076d88b5ccc9cbf63e0beeb1321378d89aea16660f7869fecf6399d008",
+  "design_sha256": "fa7a9840e806cc345c5dc7b939880c78aaadd9419ad4c6513a780bc508e9cdce",
+  "conditions_sha256": "8f41e043365de871465c514255c51c751d8e31050985cb8a1ca531d0f9c6cd96",
+  "means_sha256": "557a3bf6697c84483aa79a0b15f827744ce9abed829514a7681769aabb8561f9",
+  "dataset_sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96",
+  "split_sha256": "d188586c8c5caa9f661064659540889e49423c276075dc7b91b31e53a43b32bd",
+  "direction_sha256": "55647779ecf44a33143f66800af9ae3b2767d34b99b8877abd3711b6bba6adf6",
+  "model_parameters_sha256": "a86eda67086313c3b20d92a471820455c0ab6a9489db1870186980b0027bcb0b",
+  "allowed": [
+    "GPU sanity check",
+    "held-out 600-item scalar gap measurement",
+    "last-token 50/100 percent candidate suppression",
+    "frozen matched/random control suppression",
+    "gap-only statistical report"
+  ],
+  "forbidden": [
+    "candidate removal or replacement",
+    "new candidate search",
+    "synthetic mediation execution",
+    "joint intervention",
+    "full hidden-state persistence",
+    "weight updates",
+    "automatic result.pdf modification"
+  ],
+  "result_pdf_update_allowed": false
+}

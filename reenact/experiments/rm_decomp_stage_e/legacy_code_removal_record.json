@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "status": "legacy_python_sources_removed_by_explicit_user_request",
+  "removed_at": "2026-08-30",
+  "scope": "v1_v2_v2_1_v2_1_1_and_protocol_deviating_exploratory_python_sources_only",
+  "removed_file_count": 15,
+  "removed_bytes": 327342,
+  "current_v3_sources_preserved": [
+    "build_calibration_v3_dataset.py",
+    "run_ai_linguistic_audit_v3.py"
+  ],
+  "research_artifacts_preserved": [
+    "datasets",
+    "results",
+    "manifests",
+    "audits",
+    "authorizations",
+    "failure_records",
+    "hash_and_provenance_records"
+  ],
+  "reproducibility_note": "Historical outputs remain available, but the removed legacy pipelines can no longer be rerun from this directory without restoring the recorded source files.",
+  "removed_files": [
+    {"path": "build_calibration_dataset.py", "sha256": "3cfdb5e8e2183b20706ed66838f58e302d45116a284b6b5cf7d5ff26f7c735aa"},
+    {"path": "build_calibration_v2_1_1_dataset.py", "sha256": "271bbc94027c2f122a2202710b2beb4857003090b53b14ba4f98681b5e3d6776"},
+    {"path": "build_calibration_v2_1_dataset.py", "sha256": "90acf934b46eaffa04be8e44af1a5c0f9e04322795beaed202372af26c50129e"},
+    {"path": "build_calibration_v2_dataset.py", "sha256": "58bdf5d6b6294513c4f282b129586d090e3519b6589cf425849b912140980757"},
+    {"path": "prepare_calibration_v2_1_1_human_audit.py", "sha256": "9e21a9d7299a02963bb81a2cdfdec514def7653b985b5c23d1511db95fedc70b"},
+    {"path": "review_calibration_v2_1_1_baseline_static.py", "sha256": "6e37c79f9a700b5a45c9377bf718dafc6730b584f9b91f250ad39863cd7e03a8"},
+    {"path": "review_calibration_v2_baseline_static.py", "sha256": "03fe9353d788cd7df98ac1078c57c7cf5d2f32af4795dceace3e6444fbe1921d"},
+    {"path": "run_ai_linguistic_preaudit.py", "sha256": "30216489df773184c927e24c7871f4c40218a83cf5677d0b2d2970fd872d5a6c"},
+    {"path": "run_ai_linguistic_preaudit_v2.py", "sha256": "06701674615e83c4de8aade72d110c1ad8d24d17be44fa067d13f83cd75c932f"},
+    {"path": "run_ai_linguistic_preaudit_v2_1.py", "sha256": "cc32e5c3a22e8a875a78f590034aabf2018ef444d10705ae30d3501e53b4a925"},
+    {"path": "run_ai_linguistic_preaudit_v2_1_1.py", "sha256": "06d3d13ef0ed8b1fb6c37f540c2ced7d779a46375d742ce836e1d917927d0745"},
+    {"path": "run_ai_only_audit_v2_1_1.py", "sha256": "1f6d937169732cc0b9d3d2693d9e11c98143c84e76fec0d0453449c3f9d36a5a"},
+    {"path": "run_calibration_v2_1_1_baseline.py", "sha256": "fbe0e731e1fe0a8ee72db9d1359b813666354e7911339e75191bf6f18978894c"},
+    {"path": "run_calibration_v2_baseline.py", "sha256": "78681b8e2b778e4cb7f224baff82a6eb9a4f67eaa7dcf139d13097e9131b9884"},
+    {"path": "run_stage_e_exploratory_gate_bypass.py", "sha256": "7389e00a4e007edc175b9c7df766a832975717432ad08217c77588cb3738724b"}
+  ]
+}

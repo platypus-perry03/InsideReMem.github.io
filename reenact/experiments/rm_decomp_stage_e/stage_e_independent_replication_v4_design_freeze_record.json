@@ -1,0 +1,15 @@
+{
+  "schema_version": "4.0",
+  "record_type": "independent_replication_design_freeze_record",
+  "status": "design_frozen_dataset_build_allowed_model_execution_not_authorized",
+  "frozen_date": "2026-08-30",
+  "source_design_sha256": "23a4be315bca4b7fe35289921e169922c3e0f3cc64aca8400543bedf1f3c7d3a",
+  "template_catalog_sha256": "d49fab4ceb9be75ec6d9ec2549b433abcbb108fb57862d12659232a3b7fe186b",
+  "machine_readable_design_sha256": "0382a059f2ac3578446e772939a10dc6911d11b7a90bb4cb0f7bd78ed5ebe106",
+  "calibration_pair_count": 128,
+  "replication_pair_count": 128,
+  "primary_hypothesis": "points_balance_layer31_arithmetic_minus_selector_greater_than_zero",
+  "model_execution_authorized": false,
+  "intervention_authorized": false,
+  "next_allowed_action": "implement_deterministic_builder_and_generate_two_disjoint_pools"
+}

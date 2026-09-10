@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "validation_id": "stage_e_exploratory_gate_bypass_20260830_01_postrun_validation",
+  "validated_at": "2026-08-30",
+  "status": "pass_for_artifact_integrity_only",
+  "run_id": "stage_e_exploratory_gate_bypass_20260830_01",
+  "scope": "Post-run structural, numerical, hash, and output-safety validation. This is not scientific approval of the protocol-deviating exploratory result.",
+  "counts": {
+    "prompt_rows": 384,
+    "pair_rows": 192,
+    "template_cluster_rows": 24,
+    "relevant_prompts": 192,
+    "irrelevant_prompts": 192,
+    "pairs_per_lexical_family": 64,
+    "templates_per_lexical_family": 8
+  },
+  "checks": {
+    "each_pair_has_exactly_one_relevant_and_one_irrelevant_prompt": true,
+    "all_pair_ids_unique_in_pair_table": true,
+    "all_expected_lexical_families_present": true,
+    "all_expected_template_clusters_present": true,
+    "all_numeric_prompt_metrics_finite": true,
+    "all_numeric_pair_differences_finite": true,
+    "prompt_metrics_hash_matches_run_manifest": true,
+    "pair_differences_hash_matches_run_manifest": true,
+    "template_cluster_effects_hash_matches_run_manifest": true,
+    "summary_hash_matches_run_manifest": true,
+    "raw_hidden_state_tensors_saved": false,
+    "raw_candidate_state_tensors_saved": false,
+    "checkpoint_or_numpy_tensor_outputs_present": false,
+    "intervention_output_present": false
+  },
+  "artifact_sha256": {
+    "run_manifest": "60209919492712f5fb388b81367ee53acdba1fd7c9896d628c0e9ea1600ffc31",
+    "prompt_metrics": "017925305dfeb74de6422dc5824c402f5b6e0c828ef7a223b49168028f8ee9db",
+    "pair_differences": "12820ed146c17bf1375009404e45376ccb042fb9a15c763a5333b94b117a38dc",
+    "template_cluster_effects": "b3c3028d37b2ad5bfc12d07a0249631287a6169ae8458e577fe13ff57de787d4",
+    "exploratory_summary": "6862ae6faa48c3c18f57ba50c50957bad53578528169d917a6e65a7c95ddad05"
+  },
+  "scientific_gate_status": {
+    "independent_human_audit_complete": false,
+    "baseline_calibration_v2_1_1_run": false,
+    "official_stage_e_pilot_claim_allowed": false,
+    "confirmatory_claim_allowed": false,
+    "intervention_authorized": false
+  },
+  "conclusion": "The exploratory output is structurally complete, finite, hash-consistent, and limited to scalar readouts. Protocol deviations remain and the result cannot be promoted to an official Stage E Pilot result."
+}

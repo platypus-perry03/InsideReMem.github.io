@@ -1,0 +1,52 @@
+{
+  "authorization_id": "meta_llama_m_directed_homologue_v1_4_20260831_01",
+  "status": "FROZEN_EXECUTION_AUTHORIZED",
+  "authorized_at": "2026-08-31",
+  "authorized_models": [
+    "Meta-Llama-3-8B"
+  ],
+  "gpu_map": {
+    "Meta-Llama-3-8B": 1
+  },
+  "batch_size": {
+    "Meta-Llama-3-8B": 4
+  },
+  "dtype": "float32",
+  "design_sha256": "c60541f7e916b79c2e2b251e5d004cdce0512cfa907b149dc32d3b63fa865ef5",
+  "implementation_sha256": "f409cdfd45c7c2512714aee0d31fafd29566e532b043995a38c54a108e2010fc",
+  "static_review_sha256": "b657de0956315e7767ded4820bcca7edf92d0ccedada32bde7ca283f74a6376e",
+  "inputs": {
+    "dataset_sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96",
+    "split_sha256": "d188586c8c5caa9f661064659540889e49423c276075dc7b91b31e53a43b32bd",
+    "layerwise_liref_sha256": {
+      "Meta-Llama-3-8B": "533928bb6a450ae844e9f90d57f772ce431fb3025d1894712179269e63e41cef"
+    }
+  },
+  "model_locks": {
+    "Meta-Llama-3-8B": {
+      "config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+      "index_sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b",
+      "shards": {
+        "model-00001-of-00004.safetensors": "f2c144103072514542e327fa8080bd375cb300f2d453fba9ca3aea81d0d4cf33",
+        "model-00002-of-00004.safetensors": "d9eee5f23d94405d90b7e9ff88b9443fee42f8528a658f54214c2aba7530d80c",
+        "model-00003-of-00004.safetensors": "4b8fbc5e113f69768dd8de84661ea20af8a32b734a9976144b4236c447b40ccc",
+        "model-00004-of-00004.safetensors": "5dc34e6bdf2da9e35f0d93b5c333c870f3677dc43dc3a91ea3a8ad28a1fe1acb"
+      }
+    }
+  },
+  "allowed": [
+    "Discovery-only M-directed gap-supporting component screening",
+    "held-out validation of frozen candidates",
+    "last-token candidate/control suppression",
+    "scalar/statistical output"
+  ],
+  "forbidden": [
+    "candidate replacement after held-out inspection",
+    "negative-Delta candidates mislabeled as M-directed",
+    "new input-feature search",
+    "full hidden-state persistence",
+    "weight updates",
+    "automatic result.pdf modification"
+  ],
+  "result_pdf_update_allowed": false
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "4.0",
+  "amendment_id": "stage_e_replication_v4_calibration_implementation_20260830",
+  "status": "calibration_implementation_and_static_review_allowed_execution_not_authorized",
+  "date": "2026-08-30",
+  "reason": "The calibration and replication pools passed all frozen automatic, primary AI, and adversarial AI audits. This amendment opens only baseline-calibration implementation and model-free static review.",
+  "locked_inputs": {
+    "design_sha256": "0382a059f2ac3578446e772939a10dc6911d11b7a90bb4cb0f7bd78ed5ebe106",
+    "catalog_sha256": "d49fab4ceb9be75ec6d9ec2549b433abcbb108fb57862d12659232a3b7fe186b",
+    "catalog_amendment_sha256": "0cd26c72db2c3510e4013c4427e25ab3622796b3f6e9f202100c5e7e4e5b68cb",
+    "calibration_dataset_sha256": "e4b660057b8103533c3303c8defc8a3b03268fac036ff3b8232c9e20662f6ded",
+    "calibration_automatic_audit_sha256": "aaa777b9e794db807f8a01dc1a9865b4fdcf58bc0ac5a135fddc49752eb6aaa0",
+    "calibration_primary_ai_audit_sha256": "800f652a876f8971857d7b9dac93d758688291044d588a5e185d132a5cac5b6d",
+    "calibration_adversarial_ai_audit_sha256": "51edae3f42f8ee6aef1558ec98f8f58c5bdcf280928b8878f2523c484cb31f03",
+    "ai_audit_summary_sha256": "a98408356b0f8ba40ea01b288bbde333f2dd582136b2601457fb802e86763471"
+  },
+  "audit_status": {
+    "automatic_calibration_pool": "PASS_128_of_128",
+    "primary_ai_calibration_pool": "PASS_128_of_128",
+    "adversarial_ai_calibration_templates": "PASS_16_of_16",
+    "automatic_replication_pool": "PASS_128_of_128",
+    "primary_ai_replication_pool": "PASS_128_of_128",
+    "adversarial_ai_replication_templates": "PASS_16_of_16",
+    "human_audit": "not_performed",
+    "human_audited_evidence": false
+  },
+  "permissions": {
+    "calibration_runner_implementation_allowed": true,
+    "model_free_unit_tests_allowed": true,
+    "static_safety_review_allowed": true,
+    "execution_authorization_creation_allowed_after_static_review_pass": true,
+    "model_loading_allowed": false,
+    "gpu_forward_allowed": false,
+    "replication_pool_model_use_allowed": false,
+    "liref_loading_allowed": false,
+    "candidate_component_access_allowed": false,
+    "hidden_state_capture_allowed": false,
+    "hooks_allowed": false,
+    "intervention_allowed": false
+  },
+  "next_gate": "hash_locked_calibration_runner_and_static_review_then_separate_execution_authorization"
+}

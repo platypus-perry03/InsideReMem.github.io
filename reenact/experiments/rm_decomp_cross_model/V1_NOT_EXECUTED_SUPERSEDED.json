@@ -1,0 +1,8 @@
+{
+  "study_id": "cross_model_functional_homologue_v1",
+  "status": "NOT_EXECUTED_SUPERSEDED",
+  "superseded_by": "cross_model_functional_homologue_v1_1",
+  "reason": "The late-15%-only screen could miss functional candidates at middle depth. No model inference under v1 was started.",
+  "v1_execution_forbidden": true,
+  "recorded_at": "2026-08-31"
+}

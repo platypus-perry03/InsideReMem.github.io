@@ -1,0 +1,388 @@
+{
+  "schema_version": "3.0",
+  "design_id": "stage_e_baseline_calibration_v3",
+  "status": "design_frozen_execution_not_approved",
+  "frozen_date": "2026-08-30",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "purpose": "Establish a baseline-difficulty-overlapping controlled comparison of arithmetic composition and selector-guided value retrieval after matched multi-hop binding before any official Stage E Pilot.",
+  "source_design": {
+    "path": "CALIBRATION_V3_DESIGN_DRAFT_KO.md",
+    "approved_prefreeze_sha256": "34d23bed83584963d0a8fd88881b1d666bb4aefd759a91453e7d4e9686081137"
+  },
+  "authoritative_predecessor_status": {
+    "status_document": "STAGE_E_CURRENT_STATUS_KO.md",
+    "statement": "Protocol-deviating diagnostic baseline run: all three families failed; official Calibration not performed.",
+    "v2_1_1_human_audit": "not_performed",
+    "v2_1_1_official_calibration": "not_performed",
+    "v2_1_1_artifact_modification_allowed": false,
+    "v2_v2_1_v2_1_1_item_reuse_allowed": false
+  },
+  "feature": {
+    "operationalized_name": "arithmetic composition vs selector-guided value retrieval after matched multi-hop binding",
+    "arithmetic_condition": "Resolve target label to case, resolve two value keys in a common ledger, and apply the stated ADD/SUB terminal rule.",
+    "selector_condition": "Resolve target label to case, resolve two value keys in a common ledger, and use an arbitrary seal/tag match to select the active entry.",
+    "shared_steps": [
+      "identify_question_target_label",
+      "resolve_label_to_case_key",
+      "read_case_terminal_instruction_and_two_value_keys",
+      "resolve_two_values_in_common_ledger",
+      "choose_or_derive_one_numeric_answer"
+    ],
+    "manipulated_terminal_rule": "arithmetic_composition_vs_selector_guided_retrieval",
+    "reasoning_memorization_dataset_claim_allowed": false,
+    "pure_arithmetic_effect_claim_allowed": false,
+    "perfect_exposure_invariance_claim_allowed": false,
+    "calibration_pass_interpretation": "The two operationalized conditions have sufficiently overlapping baseline difficulty for a controlled Pilot comparison."
+  },
+  "prompt_output_contract": {
+    "template": "Q: {question}\nAnswer with one Arabic numeral only.\nA: ",
+    "answer_format": "one_canonical_arabic_integer",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 1,
+    "accepted_aliases_allowed": false,
+    "units_allowed": false,
+    "explanations_allowed": false,
+    "equations_allowed": false,
+    "punctuation_allowed": false,
+    "normalization_order": [
+      "decode_generated_suffix_token_only",
+      "unicode_nfkc",
+      "strip_outer_whitespace",
+      "require_full_match_regex_[0-9]+",
+      "exact_match_canonical_answer"
+    ],
+    "metric_name": "one_token_unrestricted_generation_accuracy",
+    "long_form_generation_claim_allowed": false
+  },
+  "pair_invariants": {
+    "required": [
+      "byte_identical_context_within_pair",
+      "identical_entity_and_label_set",
+      "identical_label_to_case_bindings",
+      "identical_case_and_value_key_set",
+      "identical_value_ledger",
+      "identical_arithmetic_and_selector_blocks",
+      "identical_question_form_except_target_label",
+      "identical_output_instruction",
+      "identical_answer_digit_length",
+      "identical_answer_continuation_token_count",
+      "exact_prompt_token_count_match"
+    ],
+    "condition_specific": [
+      "question_target_label",
+      "canonical_answer",
+      "primary_alternative",
+      "absolute_answer_exposure_regime"
+    ]
+  },
+  "multi_hop_matching": {
+    "both_channels_require_label_to_case_binding": true,
+    "both_channels_require_two_value_key_resolution": true,
+    "both_channels_use_common_value_ledger": true,
+    "question_contains_case_or_value_key": false,
+    "keys_are_alphabetic_only": true,
+    "paired_keys_have_equal_token_count": true,
+    "selector_requires_tag_match_between_two_entries": true,
+    "selector_correct_and_alternative_each_appear_once": true,
+    "arithmetic_correct_and_alternative_absent_as_numeric_mentions": true
+  },
+  "within_condition_exposure_matched_scoring": {
+    "arithmetic_correct_exposure": "absent_from_context",
+    "arithmetic_alternative_exposure": "absent_from_context",
+    "selector_correct_exposure": "appears_once_in_value_ledger",
+    "selector_alternative_exposure": "appears_once_in_value_ledger",
+    "absolute_exposure_regime_equal_across_conditions": false,
+    "interpretation_limit": "D_k is a calibrated difficulty contrast and not a perfectly exposure-invariant terminal-rule effect.",
+    "cross_condition_canonical_answer_as_primary_alternative_allowed": false
+  },
+  "numeric_design": {
+    "candidate_value_min": 30,
+    "candidate_value_max": 69,
+    "delta_min": 2,
+    "delta_max": 9,
+    "candidate_pair_distance_formula": "2_times_delta",
+    "candidate_pair_distance_min": 4,
+    "candidate_pair_distance_max": 18,
+    "candidate_pair_distance_must_be_even": true,
+    "candidate_pair_values_same_parity": true,
+    "midpoint_must_be_integer": true,
+    "answer_digit_length": 2,
+    "answer_continuation_token_count": 1,
+    "candidate_pairs_per_template": 2,
+    "numeric_seed": 20260831,
+    "all_correct_alternative_operand_and_ledger_values_must_be_collision_free": true,
+    "collision_action": "reject_numeric_block_and_deterministically_generate_next_block",
+    "reuse_prior_version_numeric_block_allowed": false
+  },
+  "arithmetic_primary_foil": {
+    "rule": "wrong_operation_result",
+    "add_or_warming_correct": "start_plus_delta",
+    "add_or_warming_alternative": "start_minus_delta",
+    "subtract_or_cooling_correct": "start_minus_delta",
+    "subtract_or_cooling_alternative": "start_plus_delta",
+    "random_offset_foil_allowed": false,
+    "start_or_delta_as_primary_foil_allowed": false,
+    "post_result_foil_change_allowed": false,
+    "negative_out_of_range_or_collision_action": "reject_numeric_block_and_deterministically_generate_next_block"
+  },
+  "teacher_forced_scoring": {
+    "primary_metric": "within_condition_exposure_matched_template_level_candidate_log_odds_contrast",
+    "arithmetic_margin_formula": "M_A(x)=logP(y_arithmetic_correct|x)-logP(y_arithmetic_alt|x)",
+    "selector_margin_formula": "M_S(x)=logP(y_selector_correct|x)-logP(y_selector_alt|x)",
+    "template_contrast_formula": "D_k=mean_f(M_A(x_arithmetic,f)-M_S(x_selector,f))",
+    "forced_choice_correct_rule": "condition_margin_greater_than_zero",
+    "forced_choice_tie_rule": "margin_less_than_or_equal_to_zero_is_incorrect",
+    "joint_prompt_answer_tokenization_required": true,
+    "score_answer_suffix_tokens_only": true,
+    "include_eos_in_answer_score": false,
+    "include_newline_in_answer_score": false,
+    "secondary_metrics": [
+      "condition_candidate_forced_choice_accuracy",
+      "one_token_unrestricted_generation_accuracy",
+      "raw_canonical_log_probability",
+      "per_token_geometric_probability",
+      "arithmetic_no_change_or_operand_diagnostic_foil_log_odds",
+      "selector_inactive_entry_foil_log_odds",
+      "condition_margin_distribution",
+      "template_cluster_overlap"
+    ]
+  },
+  "counterbalance": {
+    "design_type": "OA(8,5,2,2)_strength_2_orthogonal_counterbalance",
+    "used_for": "counterbalancing_only",
+    "main_effect_estimation_allowed": false,
+    "factor_interaction_estimation_allowed": false,
+    "fractional_factorial_resolution_interpretation": "resolution_III_if_viewed_as_a_fraction",
+    "factor_count": 5,
+    "frames_per_template": 8,
+    "factor_level_balance": "4_to_4",
+    "every_factor_pair_2x2_cell_count": 2,
+    "factors": {
+      "A": {
+        "name": "numeric_candidate_pair_assignment",
+        "level_0": "P_arithmetic_Q_selector",
+        "level_1": "Q_arithmetic_P_selector"
+      },
+      "B": {
+        "name": "arithmetic_operation",
+        "level_0": "ADD_or_warming",
+        "level_1": "SUB_or_cooling"
+      },
+      "C": {
+        "name": "selector_active_entry",
+        "level_0": "entry_1",
+        "level_1": "entry_2"
+      },
+      "D": {
+        "name": "label_case_role_orientation",
+        "level_0": "label1_arithmetic_label2_selector",
+        "level_1": "label2_arithmetic_label1_selector"
+      },
+      "E": {
+        "name": "channel_block_order",
+        "level_0": "arithmetic_block_first",
+        "level_1": "selector_block_first"
+      }
+    },
+    "matrix_columns": ["A", "B", "C", "D", "E"],
+    "matrix": [
+      [0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 1],
+      [0, 1, 0, 1, 0],
+      [0, 1, 1, 1, 1],
+      [1, 0, 0, 1, 1],
+      [1, 0, 1, 1, 0],
+      [1, 1, 0, 0, 1],
+      [1, 1, 1, 0, 0]
+    ],
+    "derived_columns": {
+      "D": "A_xor_B",
+      "E": "A_xor_C"
+    },
+    "matrix_substitution_allowed": false
+  },
+  "dataset_design": {
+    "lexical_families": [
+      "object_count",
+      "points_balance",
+      "temperature"
+    ],
+    "lexical_family_count": 3,
+    "operation_direction_balanced_within_each_family": true,
+    "temperature_includes_warming_and_cooling": true,
+    "template_families_per_lexical_family": 8,
+    "independent_template_family_count": 24,
+    "frames_per_template_family": 8,
+    "item_instantiations_per_frame": 1,
+    "paired_item_count": 192,
+    "prompt_count": 384,
+    "prompts_per_condition_per_lexical_family": 64,
+    "independent_unit": "template_family",
+    "dataset_seed": 20260831,
+    "all_templates_entities_keys_contexts_and_numeric_blocks_new": true,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false
+  },
+  "acceptance_criteria": {
+    "evaluation_scope": "each_lexical_family_independently",
+    "all_hard_criteria_required": true,
+    "family_level_pass_or_fail_only": true,
+    "result_dependent_template_or_family_exclusion_allowed": false,
+    "authoritative_accuracy_unit": "integer_count_out_of_64_per_condition_per_family",
+    "candidate_forced_choice": {
+      "minimum_correct_count": 40,
+      "maximum_correct_count": 56,
+      "denominator": 64,
+      "minimum_fraction": 0.625,
+      "maximum_fraction": 0.875,
+      "chance_one_sided_exact_binomial_tail_at_minimum": 0.029971,
+      "maximum_absolute_condition_count_gap": 6,
+      "exact_maximum_fractional_gap": 0.09375
+    },
+    "one_token_generation": {
+      "minimum_correct_count": 16,
+      "maximum_correct_count": 56,
+      "denominator": 64,
+      "minimum_fraction": 0.25,
+      "maximum_fraction": 0.875,
+      "maximum_absolute_condition_count_gap": 6,
+      "exact_maximum_fractional_gap": 0.09375
+    },
+    "maximum_absolute_mean_template_contrast_nats": 0.40,
+    "maximum_absolute_cluster_dz": 0.30,
+    "hard_same_sign_template_count_gate_enabled": false,
+    "threshold_change_after_result_allowed": false,
+    "diagnostic_only": [
+      "same_sign_D_k_count",
+      "condition_margin_10_to_90_percentile_overlap",
+      "template_margin_distributions",
+      "raw_canonical_log_probability",
+      "per_token_geometric_probability",
+      "descriptive_bootstrap_confidence_interval"
+    ]
+  },
+  "cluster_statistics": {
+    "independent_unit": "template_family",
+    "template_cluster_count_per_lexical_family": 8,
+    "dz_formula": "d_z=mean_k(D_k)/sample_sd_k(D_k)",
+    "standard_deviation_ddof": 1,
+    "all_cluster_differences_exactly_zero": "set_dz_to_zero",
+    "near_zero_sd_threshold": "float64_machine_epsilon",
+    "near_zero_sd_nonzero_mean": "fail",
+    "nan_inf_or_missing": "fail",
+    "same_sign_rule": "descriptive_max_count_positive_or_negative_zero_excluded",
+    "item_level_independent_sample_p_values_allowed": false,
+    "descriptive_cluster_bootstrap": {
+      "enabled": true,
+      "replicates": 10000,
+      "resampling_unit": "template_family_with_replacement_within_each_lexical_family",
+      "confidence_interval": "percentile_95_percent",
+      "random_seed": 20260831,
+      "used_for_pass_fail": false
+    }
+  },
+  "automatic_audit": {
+    "all_checks_required_before_ai_audit": true,
+    "checks": [
+      "no_exact_or_near_duplicate_template_relative_to_v2_v2_1_v2_1_1",
+      "arithmetic_correct_and_primary_alternative_absent_from_context_numeric_mentions",
+      "selector_correct_and_primary_alternative_each_appear_exactly_once_in_ledger",
+      "selector_tag_and_two_entries_unambiguous",
+      "both_channels_require_label_case_value_key_ledger_path",
+      "all_candidate_operand_and_ledger_values_collision_free",
+      "pair_context_byte_identical",
+      "question_skeleton_identical_except_target_label",
+      "prompt_token_count_exact_match",
+      "all_answer_candidates_are_one_token_continuations",
+      "five_factor_levels_each_balanced_4_to_4",
+      "every_factor_pair_2x2_cell_occurs_exactly_twice",
+      "numeric_pair_condition_operation_selector_and_correct_alternative_roles_balanced",
+      "eight_independent_templates_per_family_and_192_pairs_total"
+    ],
+    "any_failure_action": "do_not_advance_to_ai_or_human_audit"
+  },
+  "near_duplicate_nonreuse": {
+    "comparison_scope": "v2_v2_1_v2_1_1_vs_v3_template_families",
+    "normalization": [
+      "unicode_nfkc",
+      "lowercase",
+      "replace_person_names_with_<NAME>",
+      "replace_semantic_labels_with_<LABEL>",
+      "replace_case_value_and_tag_keys_with_<KEY>",
+      "replace_numeric_mentions_with_<NUM>",
+      "normalize_punctuation",
+      "collapse_repeated_whitespace",
+      "tokenize_words"
+    ],
+    "template_skeleton_sha256_exact_match": "fail",
+    "normalized_word_ngram_n": 5,
+    "jaccard_fail_threshold_inclusive": 0.80,
+    "empty_ngram_fallback": "exact_normalized_token_sequence_comparison",
+    "duplicate_skeleton_across_distinct_v3_template_families": "fail"
+  },
+  "ai_audit": {
+    "required_pair_count": 192,
+    "model_blind": true,
+    "all_pairs_must_pass": true,
+    "criteria": [
+      "arithmetic_rule_and_canonical_answer_correct",
+      "selector_tag_active_entry_and_answer_correct",
+      "binding_paths_clear_and_semantically_symmetric",
+      "arithmetic_answer_copy_shortcut_absent",
+      "selector_requires_more_than_single_numeric_surface_copy",
+      "question_meaning_unchanged_except_target",
+      "grammar_and_semantics_natural",
+      "counterbalance_counterpart_equivalent",
+      "one_numeral_output_instruction_clear",
+      "semantic_nonreuse_relative_to_prior_datasets"
+    ]
+  },
+  "human_audit": {
+    "required": true,
+    "waiver_allowed": false,
+    "primary_reviewer_count": 2,
+    "pairs_per_primary_reviewer": 192,
+    "both_primary_reviewers_must_pass_each_pair": true,
+    "disagreement_adjudicator_count": 1,
+    "adjudication_scope": "disagreements_only",
+    "blind_to": [
+      "model_scores",
+      "forced_choice_and_generation_outputs",
+      "calibration_results",
+      "exploratory_LiReF_and_component_results",
+      "L31N13336_family_specific_sign_reversal_hypothesis",
+      "other_reviewer_judgments_and_comments",
+      "candidate_intervention_or_pilot_results"
+    ],
+    "reviewer_receives_only": [
+      "dataset_pairs",
+      "frozen_linguistic_audit_guide",
+      "own_reviewer_id"
+    ],
+    "any_final_fail_or_needs_revision_action": "preserve_dataset_and_create_new_dataset_version_then_restart_all_audits"
+  },
+  "liref_dataset_role": {
+    "existing_liref_data": "historical_R_M_direction_and_candidate_discovery_evidence",
+    "held_out_unused_liref_items": "external_validity_only_after_official_pilot",
+    "reuse_direction_training_or_candidate_discovery_items_for_stage_e_validation_allowed": false,
+    "split_provenance_and_nonoverlap_audit_required": true,
+    "cross_fitting_allowed_if_prefrozen": true
+  },
+  "safety": {
+    "execution_allowed": false,
+    "dataset_generation_allowed_after_freeze": true,
+    "model_loading_allowed": false,
+    "baseline_calibration_execution_allowed": false,
+    "load_liref_direction": false,
+    "capture_hidden_states": false,
+    "inspect_candidate_states": false,
+    "forward_hooks": false,
+    "activation_or_weight_intervention": false,
+    "stage_e_pilot_allowed": false,
+    "confirmatory_claim_allowed": false,
+    "post_result_item_deletion_allowed": false,
+    "post_result_threshold_change_allowed": false
+  },
+  "next_allowed_work": "deterministic_v3_dataset_builder_implementation"
+}

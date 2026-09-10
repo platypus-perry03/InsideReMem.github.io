@@ -1,0 +1,28 @@
+{
+  "run_id": "v2_pre_c01",
+  "dataset_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref/dataset/mmlu-pro-3000samples.json",
+  "split_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/layerwise_liref/split_ids.json",
+  "stage_a_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/a_core",
+  "stage_b_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/b_characterization_v2_b02",
+  "stage_b_extension_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/b_extension_v2_b04_corrected",
+  "causal_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01",
+  "output_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/pre_stage_c_v2_p01",
+  "seed": 42,
+  "stage_b_audit_per_stratum": 5,
+  "memory_label": "memory",
+  "discovery_effect_threshold": 0.15,
+  "validation_effect_threshold": 0.10,
+  "fdr_alpha": 0.05,
+  "minimum_discovery_present": 50,
+  "minimum_discovery_absent": 50,
+  "minimum_validation_present": 15,
+  "minimum_validation_absent": 15,
+  "validation_max_batch_size": 8,
+  "validation_max_padded_tokens": 800,
+  "audit_acceptance": {
+    "expected_answer_accuracy_min": 1.0,
+    "core_item_pass_rate_min": 0.95,
+    "naturalness_mean_min": 4.0,
+    "inter_rater_kappa_min": 0.8
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "run_id": "stage_e_exploratory_gate_bypass_20260830_01",
+  "status": "static_review_pass_for_explicitly_labeled_protocol_deviation",
+  "review_date": "2026-08-30",
+  "design_sha256": "52bafaefd7d2bebec338299821a352b85265f61cd5c803c30ac83d9b30bd86ce",
+  "implementation_sha256": "7389e00a4e007edc175b9c7df766a832975717432ad08217c77588cb3738724b",
+  "preflight_pass": true,
+  "protocol_gate_findings": {
+    "human_audit_complete": false,
+    "baseline_calibration_v2_1_1_executed": false,
+    "official_stage_e_pilot_allowed": false,
+    "user_requested_gate_bypass": true,
+    "output_isolated_from_official_stage_e": true,
+    "confirmatory_claim_allowed": false
+  },
+  "implementation_checks": {
+    "frozen_stage_a_direction_hash_locked": true,
+    "direction_reestimation_absent": true,
+    "four_candidate_ids_hard_locked": true,
+    "candidate_reselection_absent": true,
+    "dataset_hash_locked": true,
+    "ai_preaudit_hash_locked": true,
+    "pending_human_audit_hash_locked": true,
+    "runtime_tokenizer_suffix_contract_checked_384_prompts": true,
+    "trust_remote_code_false": true,
+    "local_files_only_true": true,
+    "model_eval_asserted": true,
+    "model_training_absent": true,
+    "gradient_or_optimizer_code_absent": true,
+    "activation_or_weight_intervention_absent": true,
+    "generation_loop_absent": true,
+    "capture_hooks_read_only": true,
+    "raw_hidden_state_tensors_not_saved": true,
+    "raw_candidate_state_tensors_not_saved": true,
+    "scalar_readouts_only": true,
+    "output_overwrite_refused": true,
+    "authorization_hash_gate_present": true
+  },
+  "captured_scalar_scope": [
+    "layer_31_last_prompt_token_liref_projection",
+    "candidate_pre_o_state_norm_or_neuron_gated_activation",
+    "candidate_liref_aligned_output_contribution",
+    "canonical_and_alternative_next_token_log_probability",
+    "one_token_greedy_accuracy"
+  ],
+  "statistics_scope": {
+    "descriptive_only": true,
+    "template_family_cluster_unit": true,
+    "bootstrap_repetitions": 10000,
+    "p_values_computed": false,
+    "pass_fail_thresholds_applied": false
+  },
+  "known_limitations": [
+    "Calibration items are reused for this exploratory screen contrary to the official non-reuse plan.",
+    "Human audit is pending and no human-audited claim is allowed.",
+    "Baseline difficulty balance is unknown because Calibration v2.1.1 was not run.",
+    "Observed LiReF or component differences can be caused by difficulty or other uncontrolled behavior differences.",
+    "No intervention is performed, so candidate response is associational rather than causal mediation evidence."
+  ],
+  "execution_allowed_by_this_review_alone": false,
+  "separate_frozen_authorization_required": true
+}

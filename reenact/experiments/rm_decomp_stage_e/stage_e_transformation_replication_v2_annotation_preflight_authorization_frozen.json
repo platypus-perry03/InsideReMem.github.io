@@ -1,0 +1,53 @@
+{
+  "schema_id": "stage_e_transformation_replication_v2_annotation_preflight_authorization",
+  "status": "frozen_execution_authorized",
+  "authorization_date": "2026-08-31",
+  "run_id": "stagee_transformation_replication_v2_annotation_preflight_20260831_01",
+  "execution_scope": "annotation_preflight_only",
+  "python_interpreter": "/home/jinhyun/.conda/envs/torch/bin/python",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "sampling": false,
+  "annotator_models": ["Meta-Llama-3-8B-Instruct", "Mistral-7B-Instruct-v0.3"],
+  "locked_files": [
+    {
+      "path": "stage_e_transformation_replication_v2_design_frozen.json",
+      "sha256": "ed055d76e0068221a016b9090b2cb25adb8395c4658823c80fc43947280f9364"
+    },
+    {
+      "path": "run_stage_e_transformation_replication_v2_annotations.py",
+      "sha256": "9d2c1319b4c8fd7ccc532bfc575bbca0abb6da1133a22b11c01cc6cb12c01846"
+    },
+    {
+      "path": "stage_e_transformation_replication_v2_annotation_static_review.json",
+      "sha256": "e6db0cd8ab0847188a68762cf0d94f80c2647698bd0229c1c47a0377debdc534"
+    },
+    {
+      "path": "stage_e_transformation_replication_v2_assets/candidate_pool_blind.jsonl",
+      "sha256": "c0295f1abe071b076d6d7aa2c4cd9a66b73e3eac0cc5688bf5c22fc212d28844"
+    },
+    {
+      "path": "stage_e_transformation_replication_v2_assets/candidate_pool_audit.json",
+      "sha256": "277bb84456927030ab297a3d4823c68f421790ee530d2007b099068e1d863131"
+    }
+  ],
+  "allowed": [
+    "prepare 192-item blind preflight",
+    "reasoning-score proxy annotation",
+    "transformation annotation",
+    "preflight reliability and agreement audit"
+  ],
+  "forbidden": [
+    "full 8656-item candidate annotation before preflight PASS",
+    "Meta-Llama-3-8B study-model execution",
+    "LiReF direction loading",
+    "candidate component access",
+    "hidden-state capture",
+    "forward hooks",
+    "intervention",
+    "dataset selection using internal outcomes"
+  ],
+  "full_candidate_annotation_allowed": false,
+  "study_model_execution_allowed": false,
+  "intervention_allowed": false
+}

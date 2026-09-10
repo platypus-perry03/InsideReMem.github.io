@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "amendment_id": "stage_e_calibration_v3_1_ai_only_audit_policy",
+  "status": "audit_policy_frozen_execution_not_approved",
+  "frozen_date": "2026-08-30",
+  "approved_by": "user_explicit_instruction_in_conversation",
+  "source_policy_document": "CALIBRATION_V3_1_AI_ONLY_AUDIT_POLICY_KO.md",
+  "approved_prefreeze_source_sha256": "688c54a4cc4b2b292b78bf01b4beb04aa57a8ae34cc3bc6aba38a5043c148e17",
+  "parent_frozen_design": {
+    "path": "calibration_v3_design_frozen.json",
+    "sha256": "c60a579729376d391582dbc03af9cfd3ba0a1e1743a9e9a884967aacc177adfc",
+    "modified": false
+  },
+  "authoritative_dataset": {
+    "path": "calibration_v3_assets/calibration_v3_dataset_draft.json",
+    "sha256": "d2187c0623ba9752776cf0251dee3dabf9d80ac04e339cf3eb4bd1d1b42761a1",
+    "pair_count": 192,
+    "prompt_count": 384,
+    "modified": false
+  },
+  "unchanged_design_sections": [
+    "feature",
+    "prompt_output_contract",
+    "pair_invariants",
+    "multi_hop_matching",
+    "within_condition_exposure_matched_scoring",
+    "numeric_design",
+    "arithmetic_primary_foil",
+    "teacher_forced_scoring",
+    "counterbalance",
+    "dataset_design",
+    "acceptance_criteria",
+    "cluster_statistics",
+    "near_duplicate_nonreuse",
+    "nonreuse"
+  ],
+  "audit_policy": {
+    "policy_type": "ai_only_nonhuman_substitution",
+    "automatic_audit_required": true,
+    "primary_ai_audit_required": true,
+    "adversarial_ai_audit_required": true,
+    "independent_human_audit_required": false,
+    "independent_human_audit_performed": false,
+    "human_audited_claim_allowed": false,
+    "disclosure_required": true,
+    "disclosure_text": "AI-only audited controlled dataset; independent human audit not performed."
+  },
+  "locked_audit_evidence": {
+    "automatic_audit": {
+      "path": "calibration_v3_assets/calibration_v3_automatic_audit.json",
+      "sha256": "e904fcec13b97bf9d09afc707aedd2b37c100c911b560f2b88f0ed270e654e26",
+      "pass": true
+    },
+    "primary_ai_audit": {
+      "path": "calibration_v3_assets/ai_audit/calibration_v3_ai_linguistic_audit_summary.json",
+      "sha256": "d5e1743e27aa7e78e6879a5d6902cabd7998774844e67d1eb29de9133a70827a",
+      "reviewed_pairs": 192,
+      "pass": true
+    },
+    "adversarial_ai_audit": {
+      "path": "calibration_v3_ai_only_additional_review.json",
+      "sha256": "94dcf1ea437ab2a16e30b2475778372e7c78e0e325c7f288d5a6a547e209f712",
+      "reviewed_pairs": 192,
+      "pass": true
+    }
+  },
+  "ai_only_audit_gate_satisfied": true,
+  "baseline_calibration_implementation_allowed": true,
+  "baseline_calibration_static_review_allowed": true,
+  "baseline_calibration_execution_allowed": false,
+  "model_loading_allowed": false,
+  "gpu_execution_allowed": false,
+  "liref_or_candidate_access_allowed": false,
+  "stage_e_pilot_allowed": false,
+  "separate_execution_authorization_required": true,
+  "result_label_if_executed": "protocol_authorized_ai_only_audited_baseline_calibration_v3_1",
+  "forbidden_result_labels": [
+    "human_audited_calibration",
+    "independently_human_reviewed_calibration",
+    "official_frozen_v3_human_gate_pass"
+  ],
+  "next_allowed_work": "baseline_calibration_v3_implementation_and_static_review_only"
+}

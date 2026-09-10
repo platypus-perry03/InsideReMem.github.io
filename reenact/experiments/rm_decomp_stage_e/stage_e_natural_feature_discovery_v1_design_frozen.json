@@ -1,0 +1,94 @@
+{
+  "schema_id": "stage_e_natural_feature_discovery_v1",
+  "status": "design_frozen_ai_annotation_and_read_only_scalar_extraction_allowed",
+  "freeze_date": "2026-08-30",
+  "model_under_study": "Meta-Llama-3-8B-base",
+  "execution_allowed": true,
+  "intervention_allowed": false,
+  "design_document": "STAGE_E_NATURAL_FEATURE_DISCOVERY_V1_DESIGN_KO.md",
+  "design_document_sha256": "af493781019d636f764ae290c3555c7e079b02c55057ef3cdfcb36680369fc6f",
+  "inputs": {
+    "dataset": {
+      "path": "liref/dataset/mmlu-pro-3000samples.json",
+      "sha256": "20b10eb08ef5aa62144f59501bc3191a1e58a44e387a24868cf43d3570092e96",
+      "rows": 3000
+    },
+    "split": {
+      "path": "liref_outputs/layerwise_liref/split_ids.json",
+      "sha256": "d188586c8c5caa9f661064659540889e49423c276075dc7b91b31e53a43b32bd",
+      "discovery_rows": 2400,
+      "validation_rows": 600
+    },
+    "directions": {
+      "path": "liref_outputs/rm_decomp/v2/a_core/checkpoints/discovery_liref_directions.pt",
+      "sha256": "55647779ecf44a33143f66800af9ae3b2767d34b99b8877abd3711b6bba6adf6"
+    },
+    "discovery_component_responses": {
+      "path": "liref_outputs/rm_decomp/v2/b_characterization_v2_b02/tables/natural_responses.csv.gz",
+      "sha256": "8ed5ab76b9fe20dfee6af8037007d87fda62e2d2bc945cf87e22190133fc3e8b"
+    },
+    "validation_component_responses": {
+      "path": "liref_outputs/rm_decomp/v2/pre_stage_c_v2_p01/memory_side/tables/natural_validation_responses.csv.gz",
+      "sha256": "3d2504388e67ab1002a5c06f69d3eb1c85f6b5693da6181ec9b7471df29c7984"
+    },
+    "hidden_cache_identity_only": {
+      "path": "liref_outputs/hidden_states/.partial/Meta-Llama-3-8B/mmlu-pro_3000samples.pt",
+      "sha256": "e8e823f6c43b2c797c0a4ebb7721722b78c1d9a9f3711ee4c1ce985687468001",
+      "note": "The cache lacks final block output and is not used as the Layer 31 endpoint."
+    }
+  },
+  "models": {
+    "study": {
+      "path": "models/Meta-Llama-3-8B",
+      "config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441"
+    },
+    "annotator_a": {
+      "path": "models/Meta-Llama-3-8B-Instruct",
+      "config_sha256": "61f3de03a16ca8046b05dc777bce72717022bc8522152eee61a69072272ef54b"
+    },
+    "annotator_b": {
+      "path": "models/Mistral-7B-Instruct-v0.3",
+      "config_sha256": "affafc6478ec0fd07a32f0ca57aa2fc57743f4d17d6730f86a96ac24d1507f99"
+    },
+    "adjudicator": {
+      "path": "models/gemma-2-9b-it",
+      "config_sha256": "8ecc124513fdb0bb31bf51b4f0dd6c8658a68296dc8cd30af612205ff4a1bc49"
+    }
+  },
+  "annotation_features": [
+    "answer_mode",
+    "transformation_required",
+    "composition_required",
+    "multi_step_required",
+    "external_knowledge_required",
+    "answer_directness"
+  ],
+  "candidate_components": [
+    "L31N13336",
+    "L29H00030",
+    "L30H00006",
+    "L29H00031"
+  ],
+  "primary_internal_endpoint": "layer_31_raw_block_output_dot_frozen_liref_direction",
+  "secondary_internal_endpoint": "layer_0_to_30_raw_block_output_dot_frozen_liref_direction",
+  "discovery_tests": 36,
+  "fdr_alpha": 0.05,
+  "minimum_counts": {
+    "discovery_per_level": 50,
+    "validation_per_level": 15
+  },
+  "bootstrap_seed": 20260830,
+  "model_execution": {
+    "device": "cuda:1",
+    "annotation_batch_size": 8,
+    "study_batch_size": 8,
+    "study_dtype": "float32",
+    "sampling": false
+  },
+  "claims": {
+    "association_only": true,
+    "human_annotated": false,
+    "causal_feature": false,
+    "component_mediation": false
+  }
+}

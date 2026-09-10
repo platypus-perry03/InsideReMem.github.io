@@ -1,0 +1,31 @@
+{
+  "run_id": "v2",
+  "model_name": "Meta-Llama-3-8B",
+  "model_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/models/Meta-Llama-3-8B",
+  "dataset_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref/dataset/mmlu-pro-3000samples.json",
+  "split_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/layerwise_liref/split_ids.json",
+  "existing_cache_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/hidden_states/.partial/Meta-Llama-3-8B/mmlu-pro_3000samples.pt",
+  "output_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2",
+  "prompt_template": "Q: {question}\nA: ",
+  "score_threshold": 0.5,
+  "split_seed": 42,
+  "gpu_id": 1,
+  "dtype": "float32",
+  "batch_size": 4,
+  "sanity_per_group": 25,
+  "direction_epsilon": 1e-8,
+  "statistics_epsilon": 1e-12,
+  "fdr_alpha": 0.05,
+  "topk_global_per_sign": 20,
+  "topk_per_layer_per_sign": 3,
+  "topk_detailed_per_sign": 5,
+  "tolerances": {
+    "layer_vector_max_abs": 0.0002,
+    "layer_scalar_max_abs": 0.002,
+    "head_scalar_max_abs": 0.002,
+    "ffn_scalar_max_abs": 0.005,
+    "ffn_vector_max_abs": 0.002,
+    "gated_activation_max_abs": 0.0002,
+    "cache_cosine_min": 0.99999
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "study_id": "cross_dataset_behavioral_validation_v2",
+  "status": "FROZEN_BEFORE_V2_BEHAVIORAL_RESULTS",
+  "frozen_at": "2026-09-01",
+  "run_id": "cross_dataset_behavioral_validation_v2_20260901_01",
+  "research_question": "Do frozen R/M direction components causally change answer behavior on external LiReF task families?",
+  "models": [
+    {"name": "Meta-Llama-3-8B", "model_path": "AI/reenact/models/Meta-Llama-3-8B", "gpu": 1, "batch_size": 4},
+    {"name": "Mistral-7B-v0.3", "model_path": "AI/reenact/models/Mistral-7B-v0.3", "gpu": 2, "batch_size": 4},
+    {"name": "OLMo-2-1124-7B", "model_path": "AI/reenact/models/OLMo-2-1124-7B", "gpu": 3, "batch_size": 4},
+    {"name": "gemma-2-9b", "model_path": "AI/reenact/models/gemma-2-9b", "gpu": 4, "batch_size": 4}
+  ],
+  "dataset_asset": "AI/reenact/experiments/rm_decomp_behavioral_validation/v2_assets/evaluation_records_frozen.json",
+  "manifest_root": "AI/reenact/experiments/rm_decomp_behavioral_validation/v2_assets/candidate_manifests",
+  "output_root": "AI/reenact/liref_outputs/rm_decomp/behavioral_validation_v2",
+  "task_poles": {
+    "ceval_h": "M",
+    "gsm8k": "R",
+    "gsm_symbolic": "R",
+    "mgsm_en": "R"
+  },
+  "task_pole_note": "These are the external task-family roles used by LiReF, not newly generated per-item memory_reason_score labels.",
+  "dataset_samples_each": 100,
+  "primary_samples_each": 70,
+  "confirmation_samples_each": 30,
+  "dataset_seed": 20260901,
+  "prompt_template": "Question: {question}\nChoices:\n{choices}\nAnswer with only the letter of the correct choice.\nAnswer:",
+  "answer_labels": "ABCD",
+  "dtype": "float32",
+  "candidate_alphas": [0.5, 1.0],
+  "control_alpha": 1.0,
+  "intervention_position": "last_prompt_token_only",
+  "bootstrap_replicates": 5000,
+  "permutation_replicates": 5000,
+  "fdr_alpha": 0.05,
+  "baseline_gate": {
+    "minimum_accuracy_above_uniform_chance_each_dataset": 0.03,
+    "minimum_valid_choice_rate_each_dataset": 1.0
+  },
+  "strict_target_behavioral_signal": {
+    "target_accuracy_drop_ci_low_gt": 0.0,
+    "target_accuracy_mcnemar_bh_q_lt": 0.05,
+    "target_probability_drop_ci_low_gt": 0.0,
+    "target_probability_signflip_bh_q_lt": 0.05,
+    "probability_dose_monotonic": true,
+    "candidate_minus_matched_ci_low_gt": 0.0,
+    "candidate_minus_random_ci_low_gt": 0.0,
+    "target_accuracy_drop_ge_off_target": true
+  },
+  "conditional_gate": {
+    "meta_strict_primary": "launch_other_three_models_on_primary_split",
+    "meta_probability_only_primary": "run_meta_confirmation_split; launch_other_models_only_if_confirmation_has_strict_accuracy_signal",
+    "meta_no_signal_or_baseline_fail": "stop"
+  },
+  "claim_boundary": "External task-family behavioral validation. A strict result supports answer-decision contribution under the frozen forced-choice format; it does not establish a complete reasoning or memorization circuit.",
+  "automatic_result_pdf_update_allowed": false
+}

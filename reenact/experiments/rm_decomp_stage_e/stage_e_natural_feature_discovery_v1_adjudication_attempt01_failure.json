@@ -1,0 +1,10 @@
+{
+  "status": "FAILED_BEFORE_OUTPUT",
+  "date": "2026-08-31",
+  "phase": "blind AI adjudication",
+  "planned_rows": 2634,
+  "output_artifact_created": false,
+  "internal_outcomes_loaded": false,
+  "failure": "Gemma-2-9b-it HybridCache/CUDAGraph repeatedly compiled dynamic shapes; execution was manually interrupted after preflight PASS to avoid an unbounded multi-hour run.",
+  "research_effect": "No adjudicator labels are used. The separately frozen v1.2 consensus amendment uses exact two-annotator agreement only."
+}

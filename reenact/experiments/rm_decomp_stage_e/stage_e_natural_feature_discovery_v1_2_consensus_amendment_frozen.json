@@ -1,0 +1,25 @@
+{
+  "schema_id": "stage_e_natural_feature_discovery_v1_2_consensus_amendment",
+  "status": "frozen_before_internal_outcome_analysis",
+  "freeze_date": "2026-08-31",
+  "internal_outcomes_inspected": false,
+  "reason": [
+    "The two blind annotators disagreed on at least one feature for 2634 of 3000 items.",
+    "Feature-level kappa was adequate only for transformation_required (0.7366); composition, multi-step, external knowledge, answer mode, and directness were not sufficiently reliable for feature selection.",
+    "The frozen Gemma adjudicator passed a 48-item preflight but full adjudication repeatedly recompiled dynamic CUDAGraphs and was interrupted before any output artifact was written.",
+    "A third model's decisions would not repair low primary inter-annotator reliability."
+  ],
+  "consensus_rule": "Use a feature value only when Annotator A and Annotator B exactly agree; otherwise set that feature to UNC. Do not use third-model adjudication.",
+  "feature_selection_reliability_gate": {
+    "metric": "Cohen's kappa between Annotator A and Annotator B",
+    "minimum": 0.6,
+    "effect": "Features below the gate may be reported descriptively but cannot be selected as a Stage E feature candidate."
+  },
+  "eligible_feature_known_before_outcomes": [
+    "transformation_required"
+  ],
+  "dataset_changed": false,
+  "feature_definitions_changed": false,
+  "internal_endpoint_definitions_changed": false,
+  "intervention_allowed": false
+}

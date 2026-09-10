@@ -1,0 +1,26 @@
+{
+  "schema_id": "stage_e_transformation_primitives_v1_3_local_execution_authorization",
+  "status": "frozen_local_forced_choice_annotation_and_preserved_scalar_analysis_authorized",
+  "authorization_date": "2026-08-31",
+  "run_id": "stagee_transformation_primitives_v1_3_20260831_01",
+  "execution_allowed": true,
+  "execution_scope": "local_blind_forced_choice_annotation_and_preserved_scalar_analysis_only",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false,
+  "locked_files": [
+    {"path": "stage_e_transformation_primitives_v1_3_design_frozen.json", "sha256": "34321c162cb632f0997fb3f7f0e3d3971aa3051f9008133f6ed55eee6d372068"},
+    {"path": "run_stage_e_transformation_primitives_v1_3.py", "sha256": "98f4537e88ce045d8bc893ff69e3d8bea12553c2115fb794df36b64c46243b2a"},
+    {"path": "run_stage_e_transformation_primitives_v1_2.py", "sha256": "d16c522563bdf8827ac15a92db34bdbf6124e02dcbb65a2dcf50d403f5ebd4ba"},
+    {"path": "stage_e_transformation_primitives_v1_3_static_review.json", "sha256": "01aae45c70d8e313e3898ba3685cc1a9b03a55f1804d5c8779e099c6ade7e63b"},
+    {"path": "tests/test_stage_e_transformation_primitives_v1_3.py", "sha256": "fe6d5a67f52f154f5968cea4107c448176c12a265bd65b39cd50d8f10fedfced"}
+  ],
+  "stopping_rules": {
+    "preflight_fail": "stop_before_full_annotation",
+    "fewer_than_two_usable_primitives": "stop_before_full_annotation_or_analysis",
+    "full_reliability_fail": "stop_before_internal_outcome_merge",
+    "heldout_analysis_requires_frozen_discovery_selection": true
+  }
+}

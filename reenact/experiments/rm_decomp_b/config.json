@@ -1,0 +1,59 @@
+{
+  "stage_b_run_id": "v2_b02",
+  "stage_a_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/a_core",
+  "output_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/b_characterization_v2_b02",
+  "model_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/models/Meta-Llama-3-8B",
+  "dataset_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref/dataset/mmlu-pro-3000samples.json",
+  "split_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/layerwise_liref/split_ids.json",
+  "prompt_template": "Q: {question}\nA: ",
+  "score_threshold": 0.5,
+  "dtype": "float32",
+  "gpu_id": 1,
+  "batch_size": 4,
+  "seed": 42,
+  "expected_candidates": {
+    "head": 10,
+    "neuron": 10,
+    "positive_per_type": 5,
+    "negative_per_type": 5
+  },
+  "controls": {
+    "matched_per_candidate": 1,
+    "random_per_candidate": 3,
+    "allow_reuse_across_candidates": true
+  },
+  "natural": {
+    "source_contribution_topk": 20,
+    "hypotheses_max_per_candidate": 3
+  },
+  "backend_tolerances": {
+    "logit_max_abs_tolerance": 0.002,
+    "hidden_state_max_abs_tolerance": 0.002,
+    "hidden_state_cosine_tolerance": 0.99999,
+    "head_reconstruction_mean_tolerance": 0.00001,
+    "head_reconstruction_max_tolerance": 0.001,
+    "source_reconstruction_mean_tolerance": 0.00001,
+    "source_reconstruction_max_tolerance": 0.001
+  },
+  "statistics": {
+    "bootstrap_iterations": 10000,
+    "permutation_iterations": 10000,
+    "random_seed": 42,
+    "fdr_alpha": 0.05,
+    "observation_unit": "template_family",
+    "bootstrap_method": "template_family_percentile",
+    "permutation_method": "template_family_sign_flip"
+  },
+  "confirmatory_power": {
+    "target_power": 0.8,
+    "two_sided_alpha": 0.05,
+    "minimum_effect_of_interest_dz": 0.3,
+    "multiplicity_adjustment_plan": "bonferroni_over_frozen_primary_hypotheses_for_planning_then_BH_FDR_for_reporting",
+    "expected_template_exclusion_rate": 0.05,
+    "planned_confirmatory_template_count": null,
+    "maximum_template_count": 1000,
+    "sample_size_method": "two_sided_paired_normal_approximation_for_standardized_template_effect_with_pilot_variance_and_exclusion_estimates"
+  },
+  "feature_schema_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/experiments/rm_decomp_b/feature_schema.json",
+  "template_rules_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/experiments/rm_decomp_b/template_rules.json"
+}

@@ -1,0 +1,376 @@
+{
+  "schema_version": "2.1",
+  "design_id": "stage_e_baseline_calibration_v2_1",
+  "status": "design_frozen_execution_not_approved",
+  "frozen_date": "2026-08-30",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "purpose": "Establish a baseline-balanced controlled feature contrasting arithmetic value transformation with matched one-hop keyed fact retrieval before Stage E Pilot.",
+  "source_design": {
+    "path": "CALIBRATION_V2_1_DESIGN_DRAFT_KO.md",
+    "approved_prefreeze_sha256": "793167b67d91f202fc49ffd3b8ded4f78c307e65205c9a0810f3d2abf32aae38"
+  },
+  "preserved_v2_failure": {
+    "design_sha256": "a8f3dad7fced945377194074f9aa12d673faff3b55c3ec45bd82e397b5a5302b",
+    "dataset_sha256": "c58390cdcb0f7282e36c918b193db69a0733851cfd07c291ab59a6fe12df1c87",
+    "pair_results_sha256": "4cdf5d57295d483ddb2ad3bfe1683442c1c72759c5d447f7a1d18999283c3668",
+    "summary_sha256": "cec0432036344dccfaebc60ccc82f5d9aa463171eeae8d5c0dc7d6a1d9b295ce",
+    "family_status": {
+      "decrease": "FAIL",
+      "increase": "FAIL",
+      "temperature": "FAIL"
+    },
+    "failure_reasons": [
+      "Decrease and increase Irrelevant forced-choice accuracy reached 1.00 ceiling.",
+      "Decrease and increase Relevant paired-answer margins were consistently lower than Irrelevant margins.",
+      "Temperature forced-choice accuracy was at ceiling in both conditions.",
+      "Eight-token free-form generation introduced an answer-format confound."
+    ],
+    "post_result_v2_item_deletion_performed": false,
+    "post_result_v2_threshold_change_performed": false,
+    "v2_item_context_template_fact_reuse_allowed": false
+  },
+  "feature": {
+    "operationalized_name": "arithmetic value transformation vs matched one-hop keyed fact retrieval",
+    "relevant_condition": "Resolve the target label to its arbitrary record key, select that record, and apply one increase or decrease operation to its start value and delta.",
+    "irrelevant_condition": "Resolve the target label to its arbitrary record key, select that record, and retrieve its explicitly listed current value.",
+    "shared_steps": [
+      "identify_question_target_label",
+      "resolve_target_label_to_record_key",
+      "select_target_record"
+    ],
+    "manipulated_final_step": "arithmetic_derivation_vs_stated_value_retrieval",
+    "reasoning_memorization_dataset_claim_allowed": false,
+    "pure_arithmetic_claim_allowed": false,
+    "answer_exposure_difference_is_part_of_operationalization": true
+  },
+  "prompt_output_contract": {
+    "template": "Q: {question}\nAnswer with one Arabic numeral only.\nA: ",
+    "answer_format": "one_canonical_arabic_integer",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 1,
+    "accepted_aliases_allowed": false,
+    "units_allowed": false,
+    "explanations_allowed": false,
+    "equations_allowed": false,
+    "punctuation_allowed": false,
+    "normalization_order": [
+      "decode_generated_suffix_token_only",
+      "unicode_nfkc",
+      "strip_outer_whitespace",
+      "require_full_match_regex_[0-9]+",
+      "exact_match_canonical_answer"
+    ],
+    "metric_name": "one_token_unrestricted_generation_accuracy",
+    "long_form_generation_claim_allowed": false
+  },
+  "pair_invariants": {
+    "required": [
+      "byte_identical_context_within_pair",
+      "identical_entity_set",
+      "identical_label_to_record_mapping",
+      "identical_record_key_set",
+      "identical_direct_and_transformed_facts",
+      "identical_operation_and_operands",
+      "identical_question_form_except_target_label",
+      "identical_output_instruction",
+      "identical_answer_digit_length",
+      "identical_answer_continuation_token_count",
+      "exact_prompt_token_count_match",
+      "record_source_spans_recorded"
+    ],
+    "condition_specific": [
+      "question_target_label",
+      "canonical_answer",
+      "answer_literal_exposure"
+    ]
+  },
+  "keyed_retrieval_matching": {
+    "both_channels_require_label_to_record_binding": true,
+    "equal_referential_hop_count_before_final_step": true,
+    "question_contains_record_key": false,
+    "record_keys_are_alphabetic_only": true,
+    "paired_record_keys_have_equal_token_count": true,
+    "direct_channel_current_value_appears_exactly_once": true,
+    "relevant_answer_absent_as_independent_numeric_mention": true,
+    "record_block_position_counterbalanced": true
+  },
+  "numeric_design": {
+    "canonical_answer_min": 30,
+    "canonical_answer_max": 59,
+    "delta_min": 2,
+    "delta_max": 9,
+    "answers_must_differ": true,
+    "minimum_absolute_answer_difference": 3,
+    "answer_digit_length": 2,
+    "answer_continuation_token_count": 1,
+    "answers_must_not_equal_start_or_delta": true,
+    "all_correct_alternative_start_delta_and_foil_values_must_be_distinct": true,
+    "numeric_blocks_per_template_family": 1,
+    "numeric_block_count": 24,
+    "numeric_block_seed": 20260830,
+    "copy_v2_numeric_block_allowed": false,
+    "numeric_mention_matching": "parsed_independent_numeric_mentions_with_boundaries"
+  },
+  "counterbalance": {
+    "answer_orientation_levels": 2,
+    "label_record_role_orientation_levels": 2,
+    "record_block_order_levels": 2,
+    "frames_per_template_family": 8,
+    "full_factorial_required": true,
+    "answer_orientations": [
+      "A_to_relevant_B_to_irrelevant",
+      "B_to_relevant_A_to_irrelevant"
+    ],
+    "label_record_roles": [
+      "label1_key1_direct_label2_key2_transformed",
+      "label2_key2_direct_label1_key1_transformed"
+    ],
+    "record_block_orders": [
+      "direct_block_first",
+      "transformed_block_first"
+    ],
+    "answer_orientation_balance_per_template": "4_to_4",
+    "label_key_role_balance_per_template": "4_to_4",
+    "record_block_order_balance_per_template": "4_to_4",
+    "answer_magnitude_direction_balance_per_template": "4_to_4"
+  },
+  "dataset_design": {
+    "lexical_families": [
+      "decrease",
+      "increase",
+      "temperature"
+    ],
+    "lexical_family_count": 3,
+    "template_families_per_lexical_family": 8,
+    "independent_template_family_count": 24,
+    "frames_per_template_family": 8,
+    "item_instantiations_per_frame": 1,
+    "paired_item_count": 192,
+    "prompt_count": 384,
+    "prompts_per_condition_per_lexical_family": 64,
+    "independent_unit": "template_family",
+    "random_seed": 20260830,
+    "all_surface_templates_entities_keys_contexts_and_numeric_blocks_new_relative_to_v2": true,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false
+  },
+  "teacher_forced_scoring": {
+    "primary_metric": "counterbalanced_template_level_paired_answer_log_odds",
+    "sequence_log_probability_formula": "logP_seq(y|x)=sum_t log p(y_t|x,y_<t)",
+    "prompt_margin_formula": "M(x)=logP_seq(y_correct|x)-logP_seq(y_alt|x)",
+    "cell_contrast_formula": "C_k,g=0.5*((M_R-M_I)_A_to_relevant+(M_R-M_I)_B_to_relevant)",
+    "template_contrast_formula": "D_k=mean_g(C_k,g)",
+    "cell_factors": "label_record_role_by_record_block_order",
+    "alternative_answer_rule": "Use the other answer from the same frozen A/B numeric block.",
+    "forced_choice_correct_rule": "M(x)>0",
+    "forced_choice_tie_rule": "M(x)<=0_is_incorrect",
+    "joint_prompt_answer_tokenization_required": true,
+    "score_answer_suffix_tokens_only": true,
+    "include_eos_in_answer_score": false,
+    "include_newline_in_answer_score": false,
+    "secondary_metrics": [
+      "A_B_forced_choice_accuracy",
+      "one_token_unrestricted_generation_accuracy",
+      "raw_canonical_sequence_log_probability",
+      "per_token_geometric_probability",
+      "arithmetic_foil_log_odds",
+      "answer_orientation_cancellation_residual"
+    ]
+  },
+  "arithmetic_foils": {
+    "decrease": [
+      "start",
+      "delta",
+      "start_plus_delta"
+    ],
+    "increase_and_temperature": [
+      "start",
+      "delta",
+      "start_minus_delta"
+    ],
+    "all_foils_must_differ_from_correct": true,
+    "all_foils_must_differ_from_paired_alternative": true,
+    "foils_must_be_mutually_distinct": true,
+    "collision_action": "reject_numeric_block_and_deterministically_generate_a_new_block",
+    "post_result_foil_changes_allowed": false
+  },
+  "acceptance_criteria": {
+    "evaluation_scope": "each_lexical_family_independently",
+    "all_criteria_required": true,
+    "family_level_pass_or_fail_only": true,
+    "result_dependent_template_exclusion_allowed": false,
+    "authoritative_accuracy_unit": "integer_count_out_of_64_per_condition_per_family",
+    "forced_choice_accuracy": {
+      "minimum_correct_count": 39,
+      "maximum_correct_count": 60,
+      "denominator": 64,
+      "reported_floor": 0.60,
+      "reported_ceiling": 0.95,
+      "maximum_absolute_condition_count_gap": 6,
+      "maximum_reported_condition_gap": 0.10,
+      "exact_maximum_fractional_gap": 0.09375
+    },
+    "one_token_generation_accuracy": {
+      "minimum_correct_count": 16,
+      "maximum_correct_count": 60,
+      "denominator": 64,
+      "reported_floor": 0.25,
+      "reported_ceiling": 0.95,
+      "maximum_absolute_condition_count_gap": 6,
+      "maximum_reported_condition_gap": 0.10,
+      "exact_maximum_fractional_gap": 0.09375
+    },
+    "maximum_absolute_mean_template_contrast_nats": 0.50,
+    "maximum_absolute_cluster_dz": 0.35,
+    "maximum_same_sign_template_count": 5,
+    "same_sign_template_denominator": 8,
+    "zero_contrast_has_no_sign": true,
+    "diagnostic_metrics_not_used_as_gates": [
+      "raw_canonical_sequence_log_probability",
+      "per_token_geometric_probability",
+      "arithmetic_foil_log_odds",
+      "answer_orientation_cancellation_residual",
+      "bootstrap_confidence_interval"
+    ]
+  },
+  "cluster_statistics": {
+    "independent_unit": "template_family",
+    "template_cluster_count_per_lexical_family": 8,
+    "dz_formula": "d_z=mean_k(D_k)/sample_sd_k(D_k)",
+    "standard_deviation_ddof": 1,
+    "all_cluster_differences_exactly_zero": "set_dz_to_zero",
+    "near_zero_sd_threshold": "float64_machine_epsilon",
+    "near_zero_sd_nonzero_mean": "fail",
+    "nan_inf_or_missing": "fail",
+    "same_sign_rule": "max(count(D_k>0),count(D_k<0)); zero excluded",
+    "item_level_independent_sample_p_values_allowed": false,
+    "descriptive_cluster_bootstrap": {
+      "enabled": true,
+      "replicates": 10000,
+      "resampling_unit": "template_family_with_replacement_within_each_lexical_family",
+      "confidence_interval": "percentile_95_percent",
+      "random_seed": 20260830,
+      "used_for_pass_fail": false
+    }
+  },
+  "near_duplicate_nonreuse": {
+    "cross_version_comparison_scope": "v2_template_families_vs_v2_1_template_families",
+    "normalization": [
+      "unicode_nfkc",
+      "lowercase",
+      "replace_person_names_with_<NAME>",
+      "replace_color_labels_with_<COLOR>",
+      "replace_record_keys_with_<KEY>",
+      "replace_numeric_mentions_with_<NUM>",
+      "normalize_punctuation",
+      "collapse_repeated_whitespace",
+      "tokenize_words"
+    ],
+    "template_skeleton_sha256_exact_match": "fail",
+    "normalized_word_ngram_n": 5,
+    "jaccard_fail_threshold_inclusive": 0.80,
+    "empty_ngram_set_fallback": "exact_normalized_token_sequence_comparison",
+    "exclude_counterbalance_frames_within_same_v2_1_template_family_from_cross_version_test": true,
+    "duplicate_skeleton_across_distinct_v2_1_template_families": "fail"
+  },
+  "automatic_audit": {
+    "all_checks_required_before_ai_preaudit": true,
+    "checks": [
+      "v2_cross_version_exact_and_near_duplicate_absence",
+      "relevant_answer_absent_as_independent_numeric_mention",
+      "irrelevant_answer_present_exactly_once_in_selected_direct_record",
+      "numeric_and_foil_collision_absence",
+      "both_channels_require_label_to_record_binding",
+      "byte_identical_context_within_pair",
+      "question_differs_only_at_target_label",
+      "exact_prompt_token_count_match",
+      "canonical_and_alternative_answer_each_one_continuation_token",
+      "answer_orientation_balance_4_to_4",
+      "label_key_role_balance_4_to_4",
+      "record_block_order_balance_4_to_4",
+      "answer_magnitude_direction_balance_4_to_4",
+      "eight_unique_factorial_cells_per_template",
+      "eight_independent_templates_per_family",
+      "total_pair_count_192",
+      "total_prompt_count_384"
+    ]
+  },
+  "ai_preaudit": {
+    "required": true,
+    "review_pair_count": 192,
+    "human_audit_substitute": false,
+    "checks": [
+      "arithmetic_answer_correct",
+      "direct_record_answer_correct",
+      "binding_path_unambiguous",
+      "relevant_answer_copy_shortcut_absent",
+      "meaning_differs_only_at_question_target",
+      "grammar_and_semantics_natural",
+      "counterbalance_counterpart_equivalent",
+      "output_instruction_clear"
+    ]
+  },
+  "human_audit": {
+    "required": true,
+    "waiver_allowed_for_this_frozen_design": false,
+    "independent_primary_reviewer_count": 2,
+    "all_reviewers_review_all_pairs": true,
+    "reviewer_pair_count": 192,
+    "reviewers_blind_to": [
+      "ai_preaudit",
+      "model_predictions",
+      "log_probabilities",
+      "generation_results",
+      "liref_scores",
+      "candidate_states",
+      "intervention_results",
+      "other_reviewer_decisions"
+    ],
+    "pair_pass_rule": "both_primary_reviewers_pass",
+    "disagreement_rule": "third_independent_reviewer_blind_adjudication_with_written_reason",
+    "any_final_fail_or_needs_revision": "dataset_execution_forbidden",
+    "revision_rule": "create_new_dataset_version_then_repeat_automatic_ai_and_human_audits"
+  },
+  "safety": {
+    "baseline_behavior_only": true,
+    "capture_hidden_states": false,
+    "inspect_liref_scores": false,
+    "inspect_candidate_states": false,
+    "enable_forward_hooks": false,
+    "enable_activation_intervention": false,
+    "enable_weight_intervention": false,
+    "allow_loading_discovery_liref_direction": false,
+    "confirmatory_claim_allowed": false,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false,
+    "allow_post_result_item_deletion": false,
+    "allow_post_result_threshold_change": false,
+    "model_training": false
+  },
+  "inherited_artifact_locks": {
+    "stage_a_identity_sha256": "7f0f7f020533b68e20e7b82d39dcacddad9f6e350dd599df6a40be667f8ec9f7",
+    "model_config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+    "model_parameter_set_sha256": "a86eda67086313c3b20d92a471820455c0ab6a9489db1870186980b0027bcb0b",
+    "tokenizer_json_sha256": "e134af98b985517b4f068e3755ae90d4e9cd2d45d328325dc503f1c6b2d06cc7",
+    "tokenizer_config_sha256": "690727b4fed286383df1c7ca5e805124cb70c6eb4529f807c7b2e60ff741da7e",
+    "special_tokens_map_sha256": "462d91939dbc37178aa5a3eae7068d1990ccc92e09f288cc71f42cdf139d69cc",
+    "generation_config_sha256": "93caf96e269e32b9ee33ad78b0d76d910408d11a63a8b2c49241030836759311"
+  },
+  "pending_execution_gates": {
+    "deterministic_dataset_builder_created": false,
+    "calibration_dataset_created": false,
+    "calibration_dataset_manifest_sha256": null,
+    "shortcut_near_duplicate_counterbalance_tokenizer_audit_complete": false,
+    "ai_preaudit_complete": false,
+    "independent_human_audit_complete": false,
+    "human_reviewer_1_id": null,
+    "human_reviewer_2_id": null,
+    "baseline_calibration_implementation_created": false,
+    "baseline_calibration_implementation_sha256": null,
+    "static_safety_review_complete": false,
+    "explicit_execution_approval": false
+  },
+  "execution_allowed": false,
+  "stage_e_pilot_allowed": false
+}

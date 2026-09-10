@@ -1,0 +1,16 @@
+{
+  "schema_version": "5.0",
+  "status": "design_freeze_complete_model_execution_not_authorized",
+  "freeze_date": "2026-08-30",
+  "source_design_sha256": "8475470e857978cf0c5c0d61a5768420e5a65743ba3c0d6789c53439fb02aee3",
+  "template_catalog_sha256": "995d2086164a1ccf51b458b11ad70c2b328742c16b51c4ab6f34ad3bba010de2",
+  "frozen_manifest_sha256": "033969f85f9f982ff686c22f4bdd3977baae1dcc76a4f91b537e758a8fd98982",
+  "cluster_dz_policy": "computed_and_reported_descriptive_not_hard_gate",
+  "calibration_pair_count": 64,
+  "replication_pair_count": 128,
+  "model_loading_allowed": false,
+  "gpu_forward_allowed": false,
+  "liref_loading_allowed": false,
+  "intervention_allowed": false,
+  "next_allowed_work": "deterministic_builder_and_model_free_audits"
+}

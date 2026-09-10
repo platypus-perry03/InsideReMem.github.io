@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "status": "authorization_frozen_for_single_baseline_run",
+  "authorization_path": "calibration_v2_execution_authorization_frozen_run02.json",
+  "authorization_sha256": "e3cac9f2224ea4c3b7424bdaeda8709f5767986d46ab5e2e1c7ff55ba1b772b1",
+  "run_id": "calv2_baseline_20260830_02",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "approved_scope": "baseline_calibration_v2_behavior_only",
+  "human_audit": "not_performed",
+  "human_audit_gate": "waived_by_user",
+  "pilot_or_confirmatory_execution_allowed": false,
+  "retry_of": "calv2_baseline_20260830_01",
+  "retry_reason": "Run 01 was blocked before model loading because sandboxed Python could not access CUDA.",
+  "frozen_at": "2026-08-30T10:33:25Z"
+}

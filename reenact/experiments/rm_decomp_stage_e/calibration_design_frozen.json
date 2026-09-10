@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "design_id": "stage_e_baseline_calibration_v1",
+  "status": "design_frozen_execution_not_approved",
+  "frozen_date": "2026-08-28",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "purpose": "Screen baseline difficulty of single-step relation-transformation relevance pairs before freezing Stage E feature hypotheses.",
+  "scope": {
+    "lexical_families": [
+      "decrease",
+      "increase",
+      "temperature"
+    ],
+    "baseline_behavior_only": true,
+    "primary_feature_candidate": "Whether producing the answer from an identical context requires a single-step relation transformation.",
+    "relevant_condition": "The transformation must be applied to obtain the answer.",
+    "irrelevant_condition": "The same transformation is present, but the answer is retrieved from a matched direct fact.",
+    "pair_invariants": [
+      "identical_context",
+      "identical_entity_set",
+      "identical_canonical_answer",
+      "identical_answer_literal_exposure",
+      "identical_answer_format"
+    ],
+    "counterbalance_rule": "Direct and transformed target labels are assigned symmetrically within every template family."
+  },
+  "dataset_design": {
+    "lexical_family_count": 3,
+    "template_families_per_lexical_family": 6,
+    "counterbalance_frames_per_template_family": 4,
+    "item_instantiations_per_frame": 2,
+    "paired_item_count": 144,
+    "prompt_count": 288,
+    "independent_template_family_count": 18,
+    "independent_unit": "template_family",
+    "random_seed": 42,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false
+  },
+  "teacher_forced_scoring": {
+    "canonical_answer_only": true,
+    "primary_metric": "canonical_answer_sequence_log_probability_sum",
+    "primary_formula": "logP_seq(y|x)=sum_t log p(y_t|x,y_<t)",
+    "secondary_metrics": [
+      "length_normalized_sequence_log_probability",
+      "prespecified_max_foil_log_odds"
+    ],
+    "absolute_headroom_metric": "per_token_geometric_mean_probability",
+    "absolute_headroom_formula": "P_geo=exp(logP_seq/T)",
+    "leading_space_rule": "Tokenize prompt plus canonical answer jointly and score only the answer-suffix token positions; do not trim the answer independently.",
+    "include_eos_in_answer_score": false,
+    "include_newline_in_answer_score": false,
+    "accepted_alias_probability_aggregation": "not_allowed",
+    "accepted_alias_use": "generation_accuracy_only",
+    "foil_rule": "Freeze a foil set per item before inference and use the maximum scoring foil only as a secondary metric."
+  },
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 8,
+    "stop_rule": [
+      "eos",
+      "first_newline"
+    ],
+    "normalization_order": [
+      "unicode_nfkc",
+      "strip_outer_whitespace",
+      "take_first_line",
+      "lowercase",
+      "remove_terminal_period_comma_exclamation_question_mark",
+      "exact_match_against_prespecified_accepted_answers"
+    ],
+    "allow_answer_after_explanation": false,
+    "automatic_number_word_digit_conversion": false,
+    "unit_alias_rule": "Enumerate allowed aliases in accepted_answers before inference."
+  },
+  "acceptance_criteria": {
+    "generation_accuracy": {
+      "relevant_floor": 0.20,
+      "relevant_ceiling": 0.95,
+      "irrelevant_floor": 0.20,
+      "irrelevant_ceiling": 0.95
+    },
+    "mean_per_token_geometric_probability": {
+      "relevant_floor": 0.20,
+      "relevant_ceiling": 0.95,
+      "irrelevant_floor": 0.20,
+      "irrelevant_ceiling": 0.95
+    },
+    "minimum_passing_templates_per_lexical_family": 5,
+    "template_count_per_lexical_family": 6,
+    "maximum_failing_templates_per_lexical_family": 1,
+    "maximum_absolute_paired_accuracy_gap": 0.10,
+    "maximum_absolute_paired_sequence_logp_gap_nats": 0.30,
+    "maximum_absolute_paired_dz": 0.30,
+    "maximum_same_gap_direction_templates": 4,
+    "gap_direction_template_denominator": 6,
+    "all_gap_criteria_required": true,
+    "dz_definition": {
+      "cluster_difference": "D_k=mean_i_in_k[logP_seq(Relevant_i)-logP_seq(Irrelevant_i)]",
+      "formula": "d_z=mean_k(D_k)/sd_k(D_k)",
+      "cluster_unit": "template_family",
+      "all_cluster_differences_zero": "set_dz_to_zero",
+      "near_zero_sd_nonzero_mean": "fail",
+      "near_zero_sd_threshold": "machine_epsilon_for_analysis_dtype",
+      "nan_inf_or_missing": "fail"
+    }
+  },
+  "safety": {
+    "baseline_behavior_only": true,
+    "capture_hidden_states": false,
+    "inspect_liref_scores": false,
+    "inspect_candidate_states": false,
+    "enable_forward_hooks": false,
+    "enable_activation_intervention": false,
+    "enable_weight_intervention": false,
+    "confirmatory_claim_allowed": false,
+    "reuse_in_pilot": false,
+    "reuse_in_confirmatory": false,
+    "allow_feature_reselection": false,
+    "allow_direction_change": false,
+    "model_training": false,
+    "allow_loading_discovery_liref_direction": false
+  },
+  "artifacts": {
+    "stage_a_identity": "7f0f7f020533b68e20e7b82d39dcacddad9f6e350dd599df6a40be667f8ec9f7",
+    "prompt_sha256": "924c8cb05f84bdcad8da83b67dc617ffbbde6e20d929bfa8b45fd451f4a468e1",
+    "model_config_sha256": "2430cee764b6530ff8673cf9ba8561e1d5a33152d503cd0de909ff5718261441",
+    "model_parameter_set_sha256": "a86eda67086313c3b20d92a471820455c0ab6a9489db1870186980b0027bcb0b",
+    "tokenizer_json_sha256": "e134af98b985517b4f068e3755ae90d4e9cd2d45d328325dc503f1c6b2d06cc7",
+    "tokenizer_config_sha256": "690727b4fed286383df1c7ca5e805124cb70c6eb4529f807c7b2e60ff741da7e",
+    "special_tokens_map_sha256": "462d91939dbc37178aa5a3eae7068d1990ccc92e09f288cc71f42cdf139d69cc",
+    "generation_config_sha256": "93caf96e269e32b9ee33ad78b0d76d910408d11a63a8b2c49241030836759311",
+    "calibration_design_document_sha256": "f8497a1ccc8455192c364eeab986c3b875fa33459f22739dd3189737e19c85db",
+    "stage_e_protocol_document_sha256": "5d650adecb80c4bee9fa5e5af5b8852b1c7402cec1d4a261d2b0049ec726a552",
+    "literature_comparison_document_sha256": "b37b8e7bbb7b6736eb0f0634eb71f0da0ad311dd35bf726a848684e5ca032556"
+  },
+  "pending_execution_gates": {
+    "calibration_dataset_created": false,
+    "calibration_dataset_manifest_sha256": null,
+    "tokenizer_audit_complete_for_full_dataset": false,
+    "human_linguistic_audit_complete": false,
+    "human_linguistic_reviewer": null,
+    "calibration_implementation_created": false,
+    "calibration_implementation_sha256": null,
+    "static_safety_review_complete": false,
+    "explicit_execution_approval": false
+  },
+  "execution_allowed": false
+}

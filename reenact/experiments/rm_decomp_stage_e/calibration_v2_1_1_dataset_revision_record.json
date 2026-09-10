@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "record_type": "dataset_linguistic_revision_authorization",
+  "dataset_version": "2.1.1",
+  "parent_dataset_version": "2.1",
+  "status": "revision_authorized_generation_pending",
+  "record_date": "2026-08-30",
+  "design_changed": false,
+  "authoritative_design_manifest": "calibration_v2_1_design_frozen.json",
+  "authoritative_design_sha256": "d0d6d19432eb48234a9729cc5f297c09963eb485bf5ec02178d504a93dc8307f",
+  "parent_builder_sha256": "90acf934b46eaffa04be8e44af1a5c0f9e04322795beaed202372af26c50129e",
+  "parent_dataset_sha256": "cfc5a628d75e05c17d4c4ff3907f477d6f6179892453f1e2c3927c8aeed10640",
+  "parent_dataset_manifest_sha256": "074075188f09f76d0cbae7b369dae056d12183d85e6350ed3225b101526dce72",
+  "parent_automatic_audit_sha256": "f594fd5c892473a52a93a12868d7f1dad48677d744f8eaf965e2243aa53957d1",
+  "parent_ai_preaudit_summary_sha256": "54cb46010b703f45d106e22e7fd2d26e4aeac48b9382a0d879a4e080648c4bcc",
+  "parent_ai_preaudit_result": {
+    "pass": 168,
+    "fail": 0,
+    "needs_revision": 24,
+    "affected_template_family_count": 3
+  },
+  "authorized_template_revisions": [
+    {
+      "template_family_id": "v21_dec_badge_index",
+      "old_transformed_template": "Card {key} states an earlier amount of {start} badges and a trade of {delta} badges.",
+      "new_transformed_template": "Card {key} states an earlier amount of {start} badges and notes that {delta} badges were given away.",
+      "reason": "Make the subtraction direction explicit."
+    },
+    {
+      "template_family_id": "v21_temp_reservoir_register",
+      "old_transformed_template": "Entry {key} shows {start} degrees before gaining {delta} degrees.",
+      "new_transformed_template": "Entry {key} shows an earlier reading of {start} degrees, after which the recorded temperature rose by {delta} degrees.",
+      "reason": "Make the recorded temperature, rather than the record entry, the semantic subject of the increase."
+    },
+    {
+      "template_family_id": "v21_temp_capsule_account",
+      "old_transformed_template": "Account {key} records {start} degrees before adding {delta} degrees.",
+      "new_transformed_template": "Account {key} records an earlier temperature of {start} degrees, after which the recorded temperature increased by {delta} degrees.",
+      "reason": "Make the recorded temperature, rather than the account, the semantic subject of the increase."
+    }
+  ],
+  "unchanged_contract": {
+    "operationalized_feature": "arithmetic value transformation vs matched one-hop keyed fact retrieval",
+    "dataset_size": "192 pairs / 384 prompts / 24 template families",
+    "counterbalance": "answer orientation 2 x label/key role 2 x record-block order 2",
+    "numeric_design": "unchanged",
+    "prompt_output_contract": "unchanged",
+    "scoring": "unchanged",
+    "acceptance_criteria": "unchanged",
+    "human_audit": "two independent reviewers each review 192/192; waiver disallowed",
+    "pilot_and_confirmatory_reuse": false
+  },
+  "required_revalidation": [
+    "regenerate_all_192_pairs",
+    "repeat_full_automatic_audit",
+    "repeat_determinism_check",
+    "repeat_full_192_pair_ai_preaudit",
+    "perform_human_audit_only_after_192_of_192_ai_preaudit_pass"
+  ],
+  "overwrite_parent_artifacts_allowed": false,
+  "model_forward_allowed": false,
+  "gpu_allowed": false,
+  "baseline_calibration_execution_allowed": false,
+  "stage_e_pilot_allowed": false
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "status": "builder_implemented_and_temporary_determinism_verification_pass",
+  "verified_at": "2026-08-30",
+  "scope": "dataset_builder_only_no_official_dataset_published",
+  "builder_path": "build_calibration_v3_dataset.py",
+  "builder_sha256": "b3ba73e505a1c081a1180dada8193411b7ca4309d01a6283ee07513a3f125b94",
+  "frozen_design_path": "calibration_v3_design_frozen.json",
+  "frozen_design_sha256": "c60a579729376d391582dbc03af9cfd3ba0a1e1743a9e9a884967aacc177adfc",
+  "dataset_seed": 20260831,
+  "temporary_generation_runs": 2,
+  "all_output_files_byte_identical_across_runs": true,
+  "temporary_output_hashes": {
+    "calibration_v3_static_schema_check.json": "c697b9c3e37b297fb8a9d900d9fc88d22b5453e91551e9439c0b84bddfb33d55",
+    "calibration_v3_dataset_draft.json": "d2187c0623ba9752776cf0251dee3dabf9d80ac04e339cf3eb4bd1d1b42761a1",
+    "calibration_v3_automatic_audit.json": "e904fcec13b97bf9d09afc707aedd2b37c100c911b560f2b88f0ed270e654e26",
+    "calibration_v3_dataset_manifest.json": "a157ec7bd463c739ee046f9e3f85a08d2e3ebb7dc6a794a63757653c93fad822"
+  },
+  "structure": {
+    "pair_count": 192,
+    "prompt_count": 384,
+    "template_family_count": 24,
+    "pairs_per_semantic_family": 64,
+    "templates_per_semantic_family": 8,
+    "frames_per_template": 8,
+    "operation_count_per_family": {
+      "add": 32,
+      "subtract": 32
+    }
+  },
+  "oa_validation": {
+    "design": "OA(8,5,2,2)",
+    "exact_frozen_matrix_used": true,
+    "each_factor_balanced_4_to_4": true,
+    "every_factor_pair_2x2_cell_occurs_exactly_twice": true
+  },
+  "automatic_audit": {
+    "pass": true,
+    "pair_checks_passed": 192,
+    "pair_checks_total": 192,
+    "all_template_checks_pass": true,
+    "all_cross_version_nonreuse_checks_pass": true,
+    "maximum_prior_template_5gram_jaccard": 0.05405405405405406,
+    "near_duplicate_failure_threshold_inclusive": 0.8,
+    "all_answer_candidates_one_token": true,
+    "all_prompt_token_counts_pair_matched": true,
+    "all_wrong_operation_primary_foils_verified": true,
+    "all_numeric_collision_checks_pass": true
+  },
+  "tokenizer": {
+    "local_files_only": true,
+    "trust_remote_code": false,
+    "tokenizer_json_sha256": "e134af98b985517b4f068e3755ae90d4e9cd2d45d328325dc503f1c6b2d06cc7",
+    "tokenizer_config_json_sha256": "690727b4fed286383df1c7ca5e805124cb70c6eb4529f807c7b2e60ff741da7e",
+    "special_tokens_map_json_sha256": "462d91939dbc37178aa5a3eae7068d1990ccc92e09f288cc71f42cdf139d69cc"
+  },
+  "safety": {
+    "model_weights_loaded": false,
+    "model_forward_performed": false,
+    "gpu_used": false,
+    "liref_direction_loaded": false,
+    "hidden_states_captured": false,
+    "hooks_or_interventions_used": false,
+    "official_dataset_created": false,
+    "ai_audit_complete": false,
+    "human_audit_complete": false,
+    "official_baseline_calibration_authorized": false,
+    "stage_e_pilot_authorized": false
+  },
+  "next_allowed_work": "publish_frozen_builder_output_as_new_v3_dataset_then_run_automatic_and_ai_audits"
+}

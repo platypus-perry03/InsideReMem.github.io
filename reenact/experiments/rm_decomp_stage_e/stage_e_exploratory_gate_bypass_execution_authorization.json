@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "run_id": "stage_e_exploratory_gate_bypass_20260830_01",
+  "status": "frozen_exploratory_protocol_deviation_execution_authorized",
+  "authorization_date": "2026-08-30",
+  "authorized_by": "user_explicit_request_in_conversation_just_proceed_with_stage_e_pilot",
+  "authorization_interpretation": "Authorization applies only to an isolated exploratory association screen and does not retroactively satisfy the official human-audit or Baseline Calibration gates.",
+  "design_sha256": "52bafaefd7d2bebec338299821a352b85265f61cd5c803c30ac83d9b30bd86ce",
+  "implementation_sha256": "7389e00a4e007edc175b9c7df766a832975717432ad08217c77588cb3738724b",
+  "static_review_sha256": "237681074f70fd39ac9ed30f74383469c10a098a4554f3c2fbb1c78569494dfa",
+  "execution_scope": {
+    "dataset_sha256": "322d80f3c2c0723f6a4e8b0a968b30baac23e28cf68b6c60c5a7a95a5bca7420",
+    "prompt_count": 384,
+    "physical_gpu": 1,
+    "cuda_visible_devices": "1",
+    "visible_device_inside_process": 0,
+    "batch_size": 8,
+    "dtype": "float32",
+    "read_only_capture_hooks": true,
+    "scalar_outputs_only": true,
+    "intervention_allowed": false,
+    "direction_reestimation_allowed": false,
+    "candidate_reselection_allowed": false
+  },
+  "unmet_official_gates_acknowledged": {
+    "independent_human_audit": "pending",
+    "baseline_calibration_v2_1_1": "not_run",
+    "official_stage_e_protocol": "draft_not_frozen",
+    "calibration_pilot_nonreuse": "violated_for_this_exploratory_screen"
+  },
+  "official_stage_e_pilot_claim_allowed": false,
+  "confirmatory_claim_allowed": false,
+  "execution_allowed": true
+}

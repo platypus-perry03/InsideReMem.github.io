@@ -1,0 +1,29 @@
+{
+  "run_id": "v2_d07_exploratory",
+  "execution_label": "AI-audited exploratory; not protocol-confirmatory",
+  "source_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/d_feature_causal_v2_d06",
+  "output_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/d_feature_causal_v2_d07_exploratory",
+  "model_path": "/home/jinhyun/prj_ws/jiho/AI/reenact/models/Meta-Llama-3-8B",
+  "stage_a_root": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/a_core",
+  "stage_c_conditions": "/home/jinhyun/prj_ws/jiho/AI/reenact/liref_outputs/rm_decomp/v2/c_causal_v2_c01/manifests/intervention_conditions.json",
+  "prompt_template": "Q: {question}\nA: ",
+  "dtype": "float32",
+  "gpu_id": 1,
+  "batch_size": 8,
+  "seed": 42,
+  "bootstrap_replicates": 5000,
+  "fdr_alpha": 0.05,
+  "primary_abs_paired_dz_min": 0.30,
+  "template_sign_consistency_min": 0.80,
+  "individual_patch_abs_dz_min": 0.20,
+  "individual_patch_fraction_min": 0.15,
+  "joint_patch_fraction_min": 0.30,
+  "primary_candidates": [
+    "L31N13336",
+    "L29H00030",
+    "L30H00006",
+    "L29H00031"
+  ],
+  "allow_ai_audited_exploratory": true,
+  "human_audit_passed": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "3.2",
+  "record_type": "stage_e_pilot_continuation_amendment_freeze_record",
+  "status": "frozen_model_execution_not_authorized",
+  "frozen_date": "2026-08-30",
+  "source_document": "STAGE_E_PILOT_CONTINUATION_AMENDMENT_V3_2_KO.md",
+  "source_document_sha256": "2f55e76c05360146b3e55c08d67078b047adfdb28eb1d143b0f3924dc6f01654",
+  "machine_readable_amendment": "stage_e_pilot_continuation_amendment_v3_2_frozen.json",
+  "machine_readable_amendment_sha256": "3e9d14c676c96ee6d950761d39faa176c0e9267d613856d1bd57ff826d41e5fe",
+  "schema_and_evidence_validation": "PASS",
+  "calibration_fail_outcome_preserved": true,
+  "same_sample_reuse_explicitly_disclosed": true,
+  "independent_pilot_claim_allowed": false,
+  "pilot_design_implementation_and_static_review_allowed": true,
+  "pilot_model_execution_allowed": false,
+  "intervention_allowed": false,
+  "next_allowed_work": "limited_same_sample_pilot_v3_2_design_freeze_implementation_and_static_review_only"
+}

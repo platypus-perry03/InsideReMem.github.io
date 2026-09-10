@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "status": "builder_schema_determinism_and_automatic_audit_pass",
+  "design_sha256": "d0d6d19432eb48234a9729cc5f297c09963eb485bf5ec02178d504a93dc8307f",
+  "builder_path": "build_calibration_v2_1_dataset.py",
+  "builder_sha256": "90acf934b46eaffa04be8e44af1a5c0f9e04322795beaed202372af26c50129e",
+  "static_schema_check_sha256": "581a914d4b8b17c8194b7c911ed7d5976b6235d33da8a128fa3c70a344750681",
+  "dataset_sha256": "cfc5a628d75e05c17d4c4ff3907f477d6f6179892453f1e2c3927c8aeed10640",
+  "automatic_audit_sha256": "f594fd5c892473a52a93a12868d7f1dad48677d744f8eaf965e2243aa53957d1",
+  "dataset_manifest_sha256": "074075188f09f76d0cbae7b369dae056d12183d85e6350ed3225b101526dce72",
+  "determinism_check": {
+    "independent_generation_count": 2,
+    "same_seed": 20260830,
+    "dataset_byte_identical": true,
+    "automatic_audit_byte_identical": true,
+    "static_schema_check_byte_identical": true,
+    "dataset_manifest_byte_identical": true
+  },
+  "generated_counts": {
+    "lexical_families": 3,
+    "template_families_per_lexical_family": 8,
+    "frames_per_template_family": 8,
+    "paired_items": 192,
+    "prompts": 384,
+    "independent_template_families": 24
+  },
+  "automatic_audit": {
+    "pair_checks_pass": "192/192",
+    "template_checks_pass": "24/24",
+    "maximum_v2_cross_version_5gram_jaccard": 0.058823529411764705,
+    "near_duplicate_fail_threshold_inclusive": 0.80,
+    "all_checks_pass": true
+  },
+  "runtime_safety": {
+    "tokenizer_only": true,
+    "trust_remote_code": false,
+    "local_files_only": true,
+    "model_weights_loaded": false,
+    "model_forward_performed": false,
+    "gpu_used": false,
+    "liref_loaded": false,
+    "hidden_states_captured": false,
+    "hooks_or_interventions_used": false
+  },
+  "next_gate": "ai_preaudit_192_of_192_then_two_independent_human_reviews",
+  "baseline_calibration_execution_allowed": false,
+  "stage_e_pilot_allowed": false
+}

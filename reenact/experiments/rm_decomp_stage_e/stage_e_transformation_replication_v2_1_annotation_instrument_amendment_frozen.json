@@ -1,0 +1,30 @@
+{
+  "schema_id": "stage_e_transformation_replication_v2_1_annotation_instrument_amendment",
+  "status": "frozen_after_v2_preflight_failure_before_v2_1_preflight",
+  "freeze_date": "2026-08-31",
+  "parent_design": "stage_e_transformation_replication_v2_design_frozen.json",
+  "parent_attempt_result": "stage_e_transformation_replication_v2_assets/annotation_preflight_attempt01_result.json",
+  "parent_attempt_status": "FAIL_INSTRUMENT_OUTPUT_CONTRACT",
+  "changes": {
+    "reasoning_score_output": "one line SCORE=<0.00-1.00>, no justification",
+    "reasoning_score_parser": "accept SCORE= or SCORE: followed by a bounded decimal",
+    "reasoning_score_max_new_tokens": 12,
+    "transformation_instrument": "reuse frozen Natural Feature Discovery v1.1 multi-feature codebook and parse T field",
+    "transformation_max_new_tokens": 48,
+    "preflight_rows": 160,
+    "preflight_rows_per_score_bin": 40,
+    "preflight_nonreuse": "exclude all 192 attempt01 preflight question IDs"
+  },
+  "unchanged": {
+    "two_independent_local_annotators": true,
+    "blind_fields": ["question", "options"],
+    "preflight_thresholds": true,
+    "full_candidate_annotation_blocked_until_preflight_pass": true,
+    "study_model_execution_not_authorized": true,
+    "intervention_not_authorized": true
+  },
+  "claims": {
+    "local_proxy_is_official_gpt4o_score": false,
+    "human_annotated": false
+  }
+}

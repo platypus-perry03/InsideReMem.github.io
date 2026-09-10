@@ -1,0 +1,36 @@
+{
+  "schema_id": "stage_e_transformation_taxonomy_v1_1_local_execution_authorization",
+  "status": "frozen_local_annotation_and_preserved_scalar_analysis_authorized",
+  "authorization_date": "2026-08-31",
+  "run_id": "stagee_transformation_taxonomy_v1_1_20260831_01",
+  "execution_allowed": true,
+  "execution_scope": "local_blind_parent_y_subtype_step_annotation_and_preserved_scalar_analysis_only",
+  "device": "cuda:1",
+  "batch_size": 8,
+  "external_api_allowed": false,
+  "new_study_model_forward_allowed": false,
+  "intervention_allowed": false,
+  "locked_files": [
+    {
+      "path": "stage_e_transformation_taxonomy_v1_1_instrument_amendment_frozen.json",
+      "sha256": "b011e04e796376e20c85dd025bc430ea4351799a9dda12df83417bb1e9e28f95"
+    },
+    {
+      "path": "run_stage_e_transformation_taxonomy_v1_1.py",
+      "sha256": "a3e3cf3a9ae25827c4ef791dd9f9f12f1deecf04e21f95cca8890e49c0834c18"
+    },
+    {
+      "path": "stage_e_transformation_taxonomy_v1_1_static_review.json",
+      "sha256": "86236cb5488315812ffbbb76976c2632628f3a47c3ee30a33d700ded921f1ebc"
+    },
+    {
+      "path": "tests/test_stage_e_transformation_taxonomy_v1_1.py",
+      "sha256": "9fdae095923cec8585e0cf711d1abb4286b1e579b7c969b7894f458715d258a8"
+    }
+  ],
+  "stopping_rules": {
+    "preflight_fail": "stop_before_full_annotation",
+    "full_reliability_fail": "stop_before_internal_outcome_merge",
+    "heldout_analysis_requires_frozen_discovery_selection": true
+  }
+}

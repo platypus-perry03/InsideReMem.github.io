@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "status": "design_freeze_complete_execution_not_approved",
+  "design_id": "stage_e_baseline_calibration_v3",
+  "source_design_path": "CALIBRATION_V3_DESIGN_DRAFT_KO.md",
+  "approved_prefreeze_source_sha256": "34d23bed83584963d0a8fd88881b1d666bb4aefd759a91453e7d4e9686081137",
+  "frozen_manifest_path": "calibration_v3_design_frozen.json",
+  "frozen_manifest_sha256": "c60a579729376d391582dbc03af9cfd3ba0a1e1743a9e9a884967aacc177adfc",
+  "frozen_at": "2026-08-30",
+  "approved_by": "user_explicit_approval_in_conversation",
+  "dataset_design": "3_semantic_families_x_8_templates_x_8_OA_frames_equals_192_pairs_384_prompts",
+  "counterbalance_design": "OA(8,5,2,2)_exact_matrix_frozen",
+  "primary_scoring": "within_condition_exposure_matched_candidate_log_odds_template_contrast",
+  "human_audit_policy": "two_independent_blind_reviewers_each_review_192_of_192_pairs",
+  "human_audit_waiver_allowed": false,
+  "execution_allowed": false,
+  "model_loading_allowed": false,
+  "stage_e_pilot_allowed": false,
+  "next_allowed_work": "deterministic_v3_dataset_builder_implementation"
+}
