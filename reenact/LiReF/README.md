@@ -239,30 +239,31 @@ GSM-Symbolic 등 systematic generalization 평가는 의미 있는 후속 축이
 
 ```text
 reenact/
-├── README.md                         # 전체 연구 질문·결과·진행 순서
-├── AGENTS.md                         # 재현 프로젝트 공통 작업 원칙
-├── liref/                            # LiReF 원 구현 및 재현 문서
-│   ├── README.md
-│   ├── REPRODUCTION_KR.md
-│   ├── STUDY.md
-│   └── reasoning_representation/
-├── experiments/                     # 단계별 R/M mechanism 실험
-│   ├── rm_decomp/
-│   ├── rm_decomp_b/
-│   ├── rm_decomp_b_extension/
-│   ├── rm_decomp_pre_stage_c/
-│   ├── rm_decomp_causal/
-│   ├── rm_decomp_cross_model/
-│   ├── rm_decomp_behavioral_validation/
-│   ├── rm_decomp_feature_causal/
-│   └── rm_decomp_stage_e/
-├── scripts/                          # LiReF·robustness 분석 유틸리티
-├── pdf/                              # 발표 자료와 생성 소스
-├── run_liref_hidden_states.sh        # hidden-state 추출 진입점
-├── run_mgsm_language_robustness.sh   # MGSM 언어 강건성 진입점
-├── models/                           # 로컬 모델; Git 제외
-├── liref_models/                     # 로컬 모델 링크/복사본; Git 제외
-└── liref_outputs/                    # cache·표·그림·log; Git 제외
+└── LiReF/
+    ├── README.md                     # 전체 연구 질문·결과·진행 순서
+    ├── AGENTS.md                     # 재현 프로젝트 작업 원칙
+    ├── liref/                        # LiReF 원 구현 및 재현 문서
+    │   ├── README.md
+    │   ├── REPRODUCTION_KR.md
+    │   ├── STUDY.md
+    │   └── reasoning_representation/
+    ├── experiments/                 # 단계별 R/M mechanism 실험
+    │   ├── rm_decomp/
+    │   ├── rm_decomp_b/
+    │   ├── rm_decomp_b_extension/
+    │   ├── rm_decomp_pre_stage_c/
+    │   ├── rm_decomp_causal/
+    │   ├── rm_decomp_cross_model/
+    │   ├── rm_decomp_behavioral_validation/
+    │   ├── rm_decomp_feature_causal/
+    │   └── rm_decomp_stage_e/
+    ├── scripts/                      # LiReF·robustness 분석 유틸리티
+    ├── pdf/                          # 발표 자료와 생성 소스
+    ├── run_liref_hidden_states.sh    # hidden-state 추출 진입점
+    ├── run_mgsm_language_robustness.sh
+    ├── models/                       # 로컬 모델; Git 제외
+    ├── liref_models/                 # 로컬 모델 링크/복사본; Git 제외
+    └── liref_outputs/                # cache·표·그림·log; Git 제외
 ```
 
 대용량 모델, dataset, hidden-state cache 및 output은 로컬에서만 관리한다.
@@ -274,7 +275,7 @@ reenact/
 Stage A는 반드시 sanity gate를 먼저 실행한다.
 
 ```bash
-cd /home/jinhyun/prj_ws/jiho/AI/reenact
+cd reenact/LiReF
 bash experiments/rm_decomp/run.sh sanity
 bash experiments/rm_decomp/run.sh full
 ```
