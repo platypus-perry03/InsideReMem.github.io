@@ -1,6 +1,6 @@
 # InsideReMem
 
-대규모 언어 모델 내부에서 **Reasoning과 Memorization이 어떻게 다르게 표현되고 처리되는지** 분석하는 연구 소개 페이지입니다.
+대규모 언어 모델 내부에서 **Reasoning과 Memorization이 어떻게 다르게 표현되고 처리되는지** 분석하는 연구
 
 ## Research Focus
 
